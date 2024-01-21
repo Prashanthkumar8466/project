@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block banner-slider %}
+<div class="slideimg">
+  <div class="slide fade" >
+      <img src="{% static 'images/banner/b1.jpg'%}" alt="Image1">
+  </div>
+  <div class="slide fade">
+      <img src="{% static 'images/banner/b2.jpg'%}" alt="Image2">
+  </div>
+  <div class="slide fade">
+      <img src="{% static 'images/banner/b3.jpg'%}" alt="Image3">
+  </div>
+  <button id="prevBtn" class="prev">&#10094;</button>
+  <button id="nextBtn" class="next">&#10095;</button>
+</div>
+{% endblock%}
+{% block information%}
+<div class="container">
+  <div class="dairy">
+    <h1>products</h1>
+    <small class="fs-5">
+      In “Diary Milk’ messages and images are unique aimed to influence attitudes and perception of consumers. In this ad, affect and cognition have each been assumed to play a major role in consumers’ reactions to Diary Milk commercial. There are many ways to see this, but one of the most obvious is simply to look at the two historically dominant ways of assessing Diary Milk effectiveness. When customers see the Diary Milk commercial, there are cognitive (especially memory) measures of meaning transfer. These measures are based on the assumption of “the more”, “the better”, although the actual reasons for why this should be the case have never been fully articulated. Clow, K.E. and Baack
+    </small>
+  </div>
+</div>
+{% endblock %}
+{% block main%}
+      <div class="container">
+          <h2 class="text-center">Dairy Products</h2>
+      </div>
+      <div class="advertisment">
+        <div class="adv-item">
+          <a href="{% url 'ghee' %}">
+        <img src="{% static 'images/products/dbtoned-milk.png'%}" alt="..." style="width: 200px;"></a>
+        <p class="item">Milk</p>
+        </div>
+        <div class="adv-item">
+          <a href="{% url 'kulfi' %}">
+        <img src="{% static 'images/products/kulfi.png'%}" alt="..." style="width: 200px;"></a>
+        <p class="adv-item">Kulfi</p>
+        </div>
+        <div class="adv-item">
+          <a href="{% url 'curd' %}">
+        <img src="{% static 'images/products/curd-total.png'%}" alt="..." style="width: 200px;"></a>
+        <p class="item">Curd</p>
+      </div>
+    </div>
+{% endblock%}
+

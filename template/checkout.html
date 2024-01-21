@@ -1,0 +1,91 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock %}
+{% block main %}
+<div class="about">
+<form method="post" >
+    {% csrf_token %}
+    <div>
+    {% for product in cart_items %}
+        <div class="product">
+        <img src="{{product.product_image.url}}" alt="{{product.title}}">
+        <p><b>Name:</b>{{product.title}}</p>
+        <p><b>Selling_price:</b>{{product.selling_price}}</p>
+        <p><b>Discounted_price:</b>{{product.discounted_price}}</p>
+        <div class="my-3">
+            <label for="Quantity">Quantity:</label>
+            <a class="minus-cart btn" pid={{product.id}}><i class="fas fa-minus-square fa-lag"></i></a>
+            <span id="Quantity">{{product.quantity}}</span>
+            <a class="plus-cart btn" pid={{product.id}}><i class="fas fa-plus-square fa-lag"></i></a>
+        </div>    
+    </div>
+</div>
+    {% endfor %}
+<div>
+    <h3>place Order</h3>
+    <div>
+        {% for address in address %}
+        <div class="product">
+            <label>
+                <input type="radio" name="custid" style="cursor: pointer;" value="{{address.id}}">
+               <h3>address{{forloop.counter}}</h3>
+            </label>
+        <p><b>Name:</b>{{address.name}}</p>
+        <p><b>locality:</b>{{address.locality}}</p>
+        <p><b>City:</b>{{address.city}}</p>
+        <p><b>State:</b>{{address.state}}</p>
+        <p><b>Phone:</b>{{address.phone}}</p>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+<label for="total_price">Total Price:{{totalamount}}</label>
+</form>
+</div>
+{% endblock %}
+{% block paymentlink%}
+<button type="button" class="btn btn-danger" id='rzp-button1'>Pay with Razorpay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_bpqoKmhjwz4F3z", // Enter the Key ID generated from the Dashboard
+    "amount": "{{razoramount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "prashanth Corp",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        //alert(response.razorpay_payment_id);
+        //alert(response.razorpay_order_id);
+        //alert(response.razorpay_signature)
+    },
+    "prefill": {
+        "name": "{{user.username}}",
+        "email": "{{user.email}}",
+        "contact": "{{address.phone}}"
+    },
+    "notes": {
+        "address": "prashanth Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+{% endblock %}.

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/wishlist.css' %}">{% endblock%}
+
+{% block main %}
+<div class="about">
+<form class="wishlist">
+    {% csrf_token %}
+    <h3>Wishlist</h3>
+    <div class="list">
+        {% for product in wishlist %}
+        <div class="list-items">
+            <div >
+                <a href="productdetails/{{product.id}}"><img src="{{product.product_image.url}}" alt="{{product.title}}"></a>
+            </div>
+            <div >
+                <p><b>Name:</b>{{product.title}}</p>
+                <p>{{product.description}}</p>
+                <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="btn btn-warning">Add to Cart</button></a>
+                <a href="{% url 'remove-from-wishlist' product_id=product.id %}"><button type="button" class="btn btn-dark">Remove</button></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</form>
+</div>
+{% endblock %}

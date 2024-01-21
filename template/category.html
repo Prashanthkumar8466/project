@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock %}
+{% block main %}
+<div class="about">
+<h1>category:</h1>
+{% if products %}
+<form class="products">
+{% for product in products %}
+    <a href="productdetails/{{product.id}}"><div class="product">
+    <img src="{{product.product_image.url}}" alt="{{product.title}}">
+    <p><b>Name:</b>{{product.title}}</p>
+    <p><b>Selling_price:</b>{{product.selling_price}}</p>
+    <p><b>Discounted_price:</b>{{product.discounted_price}}</p>
+</div></a>
+{% endfor %}
+</form>
+{% else %}
+<h4>No products</h4>
+{% endif %}
+</div>
+<br>
+<br>
+{% endblock %}

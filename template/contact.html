@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">{% endblock %}
+{% block main%}
+<div class="about">
+<div class="contactus">
+<form class="form" method="post" novalidate="novalidate" >
+    {% csrf_token %}
+    <h1>Contact Us</h1>
+    <div class="form-floating mb-3">
+        <label for="floatingInput">Name</label>
+        <input type="text" name='name'class="form-control" id="floatingInput" placeholder="name" required>
+
+    </div>
+    <div class="form-floating mb-3">
+        <label for="floatingInput">Email address</label>
+ 
+        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+           </div>
+    <div class="form-floating mb-3">
+        <label for="floatingInput">Phone</label>
+
+        <input type="phone" name="phone" class="form-control" id="floatingInput" placeholder="91XXXXXXX" required>
+    </div>
+    <div class="form-floating mb-3">
+        <label for="floatingInput">Message</label>
+        <input type="text" name="message" class="form-control" id="floatingInput" placeholder="" required>
+            </div>
+    <button type="submit" class="btn btn-outline-info">Submit</button>
+</form>
+<div class="contactinfo">
+    <br>
+    <br>
+    <br>
+    <h2>Contact Info</h2>
+<h4>India Office</h4>
+ <p>XXXX Nagar, Madhapur, Hyderabad, india.</p>
+
+ <link>contact@XXXXinfo.com<link>
+<p>+91 XXXXXXX</p>
+<h2 class='message'>{{message}}</h2>
+</div>
+
+</div>
+</div>
+{% endblock %}
+  

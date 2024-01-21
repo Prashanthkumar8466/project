@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block main %}
+<div class="container my-5" >
+    <div class="row">
+        <h3>welcome <span class="text-captilize">{{request.user}}</span></h3>
+    </div>
+    <div class="col-sm-2 border-end">
+        <ul class="list-unstyled">
+            <li class="d-grid"><a href="{% url 'profile'%}" class="btn">Profile</a></li><br>
+            <li class="d-grid"><a href="{% url 'address'%}" class="btn btn-primary">Adress</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-8 offset-sm-1">
+<form class="products">
+    {% for address in address %}
+        <div class="product">
+        <p><b>Name:</b>{{address.name}}</p>
+        <p><b>locality:</b>{{address.locality}}</p>
+        <p><b>City:</b>{{address.city}}</p>
+        <p><b>State:</b>{{address.state}}</p>
+        <p><b>Phone:</b>{{address.phone}}</p>
+        <div class="btns">
+        <a href="address/{{address.id}}"><button type="button" class="btn btn-outline-success">Update</button></a>
+        <a href="{% url 'address' address_id=address.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+        
+        </div>
+    </div>  
+</div>
+</div>  
+    {% endfor %}
+    </form>
+{% endblock %}
