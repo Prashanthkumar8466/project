@@ -1,0 +1,35 @@
+.form{
+    width:70%;
+    position: relative;
+    margin: 30px;
+    border:1px solid black;
+    padding: 30px;
+    border-radius: 10px;
+}
+.contactus{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem,0.5fr));
+    gap:auto;
+   
+}
+.contactus .contactinfo{
+   justify-content: center;
+   right: 0;
+   
+}
+.message{
+    color: green;
+}
+@media screen and (max-width:860px){
+   .contactus{
+    display: block;
+    
+   }
+   .contactus .contactinfo{
+    justify-content: center;
+    right: 0;
+    text-align: center;
+    
+ }
+}
+    
