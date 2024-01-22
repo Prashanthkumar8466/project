@@ -29,26 +29,28 @@
   </div>
 </div>
 {% endblock %}
-{% block main%}
-      <div class="container">
-          <h2 class="text-center">Dairy Products</h2>
-      </div>
-      <div class="advertisment">
-        <div class="adv-item">
-          <a href="{% url 'ghee' %}">
-        <img src="{% static 'images/products/dbtoned-milk.png'%}" alt="..." style="width: 200px;"></a>
-        <p class="item">Milk</p>
-        </div>
-        <div class="adv-item">
-          <a href="{% url 'kulfi' %}">
-        <img src="{% static 'images/products/kulfi.png'%}" alt="..." style="width: 200px;"></a>
+{% block main %}
+<div class="">
+  <h2 class="text-center">Dairy Products</h2>
+  <ul class="adv">
+    <li>
+      <a href="{% url 'ghee' %}">
+      <img src="{% static 'images/products/dbtoned-milk.png'%}" alt="..." ></a>
+      <p class="adv-item">Kulfi</p>
+    </li>
+    <li>
+      <a href="{% url 'kulfi' %}">
+        <img src="{% static 'images/products/kulfi.png'%}" alt="..."></a>
         <p class="adv-item">Kulfi</p>
-        </div>
-        <div class="adv-item">
-          <a href="{% url 'curd' %}">
-        <img src="{% static 'images/products/curd-total.png'%}" alt="..." style="width: 200px;"></a>
+    </li> 
+    <li>
+        <a href="{% url 'curd' %}">
+        <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
         <p class="item">Curd</p>
-      </div>
-    </div>
+    </li>
+    <li>
+   <a><img scr="" alt="image"></a>
+  </li>
+</ul>
+</div>
 {% endblock%}
-
