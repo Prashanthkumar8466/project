@@ -131,7 +131,7 @@ EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER='prashanthkurmar143@gmail.com'
-EMAIL_HOST_PASSWORD='kumar@8466'
+EMAIL_HOST_PASSWORD='  .'
 # Define the URL pattern for serving static files during development
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
