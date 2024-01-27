@@ -1,5 +1,4 @@
 
-from typing import Self
 from urllib import request
 from django.conf import settings
 from django.urls import reverse_lazy
