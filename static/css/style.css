@@ -31,22 +31,22 @@ header ul li a{
     display: flex;
     color: #090909;
 }
-.menu {
+header .menu {
     list-style: none;
     padding: 0;
     margin: 0;
     transition: background-color 0.3s ease
 }
-.menu li {
+header .menu li {
   display: inline-block;
   position: relative;
   padding: 10px 20px;
   cursor: pointer;
 }
-.menu li a:hover{
+header .menu li a:hover{
 color: #00ffff;
 }
-.submenu {
+header .submenu {
     display: none;
     position: absolute;
     top: 100%;
@@ -54,28 +54,28 @@ color: #00ffff;
     background-color: rgb(240, 240, 240);
     z-index: 1;
 }
-.menu li:hover .submenu {
+header .menu li:hover .submenu {
     display:block;
     transition: 0.9s;
 }
-.menu li:hover .submenu li {
+header .menu li:hover .submenu li {
     display: block;
     padding: 8px 0;
 }
-.menu li:hover .submenu li a{
+header .menu li:hover .submenu li a{
     padding:0;
 }
-.submenu li:hover {
+header .submenu li:hover {
     color: aqua;
 }
-.burger{
+header .burger{
     height:28px;
     width: 32px;
     display: none;
     color: #ececec;
     cursor: pointer;
 }
-.layer1,.layer2,.layer3{
+header .layer1,.layer2,.layer3{
   background: rgb(24, 24, 24);
   height: 4px;
   margin-top: 4px;
@@ -83,7 +83,7 @@ color: #00ffff;
   border-radius: 10px;
   position: relative;
 }  
-.menu-sidebar{
+footer .menu-sidebar{
     display: none; 
 }
 .slideimg{
@@ -115,33 +115,22 @@ img{
 .next {
     right: 0;
 }
-#burger1{
+header #burger1{
     display: none;
 }
-.about{
-    padding-top: 10%;
-}
-.dairy{
-    justify-content: center;
-    text-align: center;
-    background-color: green;
-    width: 95%;
-}
-.container{
-    display: none;
-}
+
 @media screen and (max-width:768px){
-    .burger{
+    header .burger{
         list-style: none;
         margin-left: 2em;
         display: block;
         cursor: pointer;
     
     }
-    .menu{
+    header .menu{
         display: none;
     }
-    .menu-sidebar{
+    header .menu-sidebar{
         display: block;
         top: 0%;
         right: 10%;
@@ -154,11 +143,11 @@ img{
         overflow: hidden;
         top: 10%;
     }
-    .menu-menubar{
+    header .menu-menubar{
         display: flex;
         height: 80%;
     }
-    .menu-list{
+    header .menu-list{
         height: 100%;
         display: flex;
         justify-content:space-around;
@@ -167,25 +156,25 @@ img{
         list-style: none;
         text-decoration: none;
     }
-    .menu-sidebar .close-menu{
+    header .menu-sidebar .close-menu{
         font-size: 1.4em;
         padding-left:70%;
     }
-    .menu-list-item a{
+    header .menu-list-item a{
         text-decoration: none;
         color: #090909;
     }
-    .menu-list-items a{
+    header .menu-list-items a{
         color: #f09d51;
         text-decoration: none;
     }
-    .menu-list-item:hover a{
+    header .menu-list-item:hover a{
         color: #f09d51;
     }
-    .menu-list-items a:hover{
+    header .menu-list-items a:hover{
         color: rgb(33, 33, 117);
     }
-    #burger1{
+    header #burger1{
         display:none;
         top: 0.41em;
         right:3.4em;

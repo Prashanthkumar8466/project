@@ -1,4 +1,4 @@
-.adv{
+.baseproducts .adv{
     width: 90%;
     list-style: none;
     display:flex;
@@ -6,20 +6,20 @@
     overflow-y:hidden;
     overflow-wrap: border;
   }
-  .adv li{
+.baseproducts .adv li{
     border: 1px solid black;
     margin: 10px;
     align-items:center;
   }
-  .adv::-webkit-scrollbar {
+.baseproducts .adv::-webkit-scrollbar {
       width: 0.1px;
   }
   
-  .adv::-webkit-scrollbar-track {
+.baseproducts .adv::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   }
   
-  .adv::-webkit-scrollbar-thumb {
+.baseproducts .adv::-webkit-scrollbar-thumb {
     background-color: red;
     outline: 0.5px solid red;
   }

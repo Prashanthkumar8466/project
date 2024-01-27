@@ -57,10 +57,13 @@
         </ul>
     </div>
 </header>
+<main>
     {% block banner-slider%}{% endblock %}
     {% block information %}{% endblock %}
     {% block main%}{% endblock %}
     {% block paymentlink %}{% endblock %}
+</main>
+<footer>
     <h4 style="text-align: center;background-color: teal;">copyright :2023 || Developed by prashanth</h4>
     <div class="menu-sidebar" id="sidemenubar">
     <div class="menu-menubar">
@@ -78,10 +81,10 @@
                 <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
                 {% endif %}
             </li>
-        
         </ul>
     </div>
 </div>
+</footer>
 <script type="text/javascript" src="{% static 'js/website.js' %}"></script>
 </body>
 </html>
