@@ -10,10 +10,10 @@
     {% if cart_items %}
     {% for product in cart_items %}
         <div class="product">
-        <a href="productdetails/{{product.id}}"><img src="{{product.product_image.url}}" alt="{{product.title}}"></a>
+        <a href="productdetails/{{product.id}}"><img src="{{product.product_image.url}}" alt="{{product.productname}}"></a>
         <p><b>Name:</b>{{product.title}}</p>
-        <p><b>Selling_price:</b>{{product.selling_price}}</p>
-        <p><b>Discounted_price:</b>{{product.discounted_price}}</p>
+        <p><b>Selling_price:</b>{{product.price}}</p>
+        <p><b>Discounted_price:</b>{{product.discount}}</p>
         <div class="my-3">
             <label for="Quantity">Quantity:</label>
             <a class="minus-cart btn" pid={{product.id}}><i class="fas fa-minus-square fa-lag"></i></a>

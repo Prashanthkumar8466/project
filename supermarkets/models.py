@@ -29,16 +29,15 @@ STATUS_CHOICE=[
     ('deliverd','deliverd'),
 ]
 class product(models.Model):
-    title=models.TextField(max_length=100)
-    selling_price=models.FloatField()
-    discounted_price=models.FloatField(default=0)
+    productname=models.TextField(max_length=100)
+    price=models.FloatField()
+    discount=models.FloatField(default=0)
     description=models.TextField()
-    composition=models.TextField(default="")
-    prodapp=models.TextField(default="")
+    specifications=models.TextField(default="")
     category = models.CharField(max_length=2,choices=CATEGORY_CHOICES, default='Ml')
     product_image=models.ImageField(upload_to='product')
     def __str__(self):
-        return self.title
+        return self.productname
 class contact_u(models.Model):
     name=models.CharField(max_length=100)
     email=models.CharField(max_length=50)

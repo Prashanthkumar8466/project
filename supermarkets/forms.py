@@ -1,5 +1,5 @@
 from django import forms
-from .models import customer
+from .models import customer,product
 from django.contrib.auth.forms import PasswordChangeForm
 
 
@@ -8,3 +8,9 @@ class customerform(forms.ModelForm):
     class Meta:
         model =customer 
         fields = ['name', 'locality', 'city','phone','zipcode','state']
+class productform(forms.ModelForm):
+    class Meta:
+        template_name = 'addproduct.html'
+        model =product
+        fields =['productname','price','discount','description','specifications','category']
+        

@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/addproduct.css' %}">
+{% endblock %}
+{% block main %}
+<ul class="product-upload">
+    <h3>ADD-PRODUCT:</h3>
+    <li>
+      <label for="productname">Product Name</label>
+      <input type="text" name="Productname" required>
+    </div>
+    <li>
+      <label for="price">price</label>
+      <input type="number" name="price" required>
+    </li>
+    <li>
+      <label for="discount">Discount</label>
+      <input type="number" name="discount" required>
+    </li>
+    <li>
+      <label for="specifications">Specifications</label>
+      <textarea type="text" name="specifications" required></textarea>
+    </li>
+    <li>
+        <label for="description">Description</label>
+        <textarea type="text" name="description" required></textarea>
+      </li>
+    <li>
+      <label for="image">Image</label>
+      <input type="file" name="specifications" required>
+    </li><br>
+    <button>Submit</button>
+    <br>
+    <br>
+  </ul>
+  {% endblock %}

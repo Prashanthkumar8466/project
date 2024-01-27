@@ -8,10 +8,10 @@
     {% csrf_token %}
     {% for product in products %}
         <div class="product">
-        <img src="{{product.product_image.url}}" alt="{{product.title}}">
-        <p><b>Name:</b>{{product.title}}</p>
-        <p><b>Selling_price:</b>{{product.selling_price}}</p>
-        <p><b>Discounted_price:</b>{{product.discounted_price}}</p>
+        <img src="{{product.product_image.url}}" alt="{{product.productname}}">
+        <p><b>Name:</b>{{product.productname}}</p>
+        <p><b>Selling_price:</b>{{product.price}}</p>
+        <p><b>Discounted_price:</b>{{product.discount}}</p>
         <div class="btns">
         <button type="button" class="btn btn-outline-primary">Buy Now</button>
         <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="btn btn-outline-warning">Add to cart</button></a><br><br>

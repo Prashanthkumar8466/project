@@ -3,7 +3,7 @@ from . models  import Payment, cart_item, order,product,contact_u,customer,wishl
 # Register your models here.
 @admin.register(product)
 class productModelAdmin(admin.ModelAdmin):
-    list_display=["id","title","category","discounted_price","product_image"]
+    list_display=["id","productname","category","discount","product_image"]
 @admin.register(contact_u)
 class contactModelAdmin(admin.ModelAdmin):
     list_display=["id","name","phone","email"]

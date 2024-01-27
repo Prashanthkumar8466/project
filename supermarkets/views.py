@@ -8,7 +8,7 @@ from django.views import View
 from django.contrib.auth import login,logout,authenticate
 from  django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import customerform,PasswordChangeForm
+from .forms import customerform,PasswordChangeForm,productform
 from django.contrib.auth.views import PasswordChangeView
 from .models import wishlist
 import razorpay
@@ -215,3 +215,14 @@ def check_out(request):
 def order_view(request):
     orderslist=order.objects.get(user=request.user)
     return render(request,'orders.html',{'orders':orderslist,'product':orderslist.product.all()})
+#product adding 
+def add_product(request):
+    if request.method=="POST":
+        title=request.get['productname']
+        selling_price=request.get['price']
+        discounted_price=request.get['discount']
+        composition=request.get['specifications']
+        description=request.get['description']
+        form=productform(request.POST)
+    return render(request,'addproduct.html')
+        

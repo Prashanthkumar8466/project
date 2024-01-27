@@ -9,10 +9,10 @@
 <form class="products">
 {% for product in products %}
     <a href="productdetails/{{product.id}}"><div class="product">
-    <img src="{{product.product_image.url}}" alt="{{product.title}}">
+    <img src="{{product.product_image.url}}" alt="{{product.productname}}">
     <p><b>Name:</b>{{product.title}}</p>
-    <p><b>Selling_price:</b>{{product.selling_price}}</p>
-    <p><b>Discounted_price:</b>{{product.discounted_price}}</p>
+    <p><b>Selling_price:</b>{{product.price}}</p>
+    <p><b>Discounted_price:</b>{{product.discount}}</p>
 </div></a>
 {% endfor %}
 </form>
