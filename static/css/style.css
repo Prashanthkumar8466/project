@@ -1,8 +1,4 @@
-*{
-    margin:0;
-    transition: none;
-    width: 100%;
-}
+
 header{
     background-color:rgb(255, 255, 255);
     display: flex;
