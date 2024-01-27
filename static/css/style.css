@@ -99,7 +99,7 @@ color: #f0ad1c;
     animation-name: fade;
     animation-duration: 2s;
 }
-.slideimg .prev,.next{
+.prev,.next{
     top:0;
     width:10%;
     cursor: pointer;
@@ -109,10 +109,10 @@ color: #f0ad1c;
     background-color:rgba(0, 0, 0, 0);
     border: none;
 }
-.slideimg .prev{
+.prev{
     left:0;
 }     
-.slideimg .next {
+.next {
     right: 0;
 }
  #burger1{
@@ -179,7 +179,7 @@ color: #f0ad1c;
         right:3.4em;
     }
     .prev,.next{
-        margin-top: 13%;
+        margin-top:13%;
         height: 20%;
     }
 }
