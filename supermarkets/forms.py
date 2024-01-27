@@ -12,5 +12,5 @@ class productform(forms.ModelForm):
     class Meta:
         template_name = 'addproduct.html'
         model =product
-        fields =['productname','price','discount','description','specifications','category']
-        
+        fields =['productname','price','discount','description','specifications','category','product_image']
+        pass

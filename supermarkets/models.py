@@ -12,7 +12,7 @@ CATEGORY_CHOICES = [
     ('pa', 'paneer'),
     ('ch', 'cheese'),
     ('Ic','Ice-Cream'),
-    ('kl','kulfi')
+    ('kl','kulfi'),
 ]
 STATE_CHOICE=[
     ('andhraPradesh','andhraPradesh'),
