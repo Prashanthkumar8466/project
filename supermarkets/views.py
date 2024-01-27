@@ -214,4 +214,4 @@ def check_out(request):
     return render(request,'checkout.html',locals())
 def order_view(request):
     orderslist=order.objects.get(user=request.user)
-    return render(request,'orders.html',{'orders':orderslist})
+    return render(request,'orders.html',{'orders':orderslist,'product':orderslist.product.all()})

@@ -77,8 +77,8 @@ class Payment(models.Model):
     paid=models.BooleanField(default=False)
 class order(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    customer=models.ForeignKey(customer,on_delete=models.CASCADE)
-    product=models.ForeignKey(product,on_delete=models.CASCADE)
+    customer=models.ManyToManyField(customer)
+    product=models.ManyToManyField(product)
     quality=models.PositiveSmallIntegerField(default=1)
     order_date=models.DateTimeField(auto_now_add=True)
     status=models.CharField(max_length=50,choices=STATUS_CHOICE,default='pending')
