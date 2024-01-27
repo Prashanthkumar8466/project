@@ -31,22 +31,22 @@ header ul li a{
     display: flex;
     color: #fffcfc;
 }
-header .menu {
+.menu {
     list-style: none;
     padding: 0;
     margin: 0;
     transition: background-color 0.3s ease
 }
-header .menu li {
+.menu li {
   display: inline-block;
   position: relative;
   padding: 10px 20px;
   cursor: pointer;
 }
-header .menu li a:hover{
+.menu li a:hover{
 color: #f0ad1c;
 }
-header .submenu {
+.submenu {
     display: none;
     position: absolute;
     top: 100%;
@@ -54,28 +54,28 @@ header .submenu {
     background-color: rgb(94, 93, 91);
     z-index: 1;
 }
-header .menu li:hover .submenu {
+.menu li:hover .submenu {
     display:block;
     transition: 0.9s;
 }
-header .menu li:hover .submenu li {
+.menu li:hover .submenu li {
     display: block;
     padding: 8px 0;
 }
-header .menu li:hover .submenu li a{
+.menu li:hover .submenu li a{
     padding:0;
 }
-header .submenu li:hover {
+.submenu li:hover {
     color: aqua;
 }
-header .burger{
+.burger{
     height:28px;
     width: 32px;
     display: none;
     color: #ececec;
     cursor: pointer;
 }
-header .layer1,.layer2,.layer3{
+.layer1,.layer2,.layer3{
   background: rgb(24, 24, 24);
   height: 4px;
   margin-top: 4px;
@@ -83,7 +83,7 @@ header .layer1,.layer2,.layer3{
   border-radius: 10px;
   position: relative;
 }  
-footer .menu-sidebar{
+.menu-sidebar{
     display: none; 
 }
 .slideimg{
@@ -115,21 +115,21 @@ footer .menu-sidebar{
 .slideimg .next {
     right: 0;
 }
-header #burger1{
+ #burger1{
     display: none;
 }
 @media screen and (max-width:768px){
-    header .burger{
+  .burger{
         list-style: none;
         margin-left: 2em;
         display: block;
         cursor: pointer;
     
     }
-    header .menu{
+    .menu{
         display: none;
     }
-    header .menu-sidebar{
+    .menu-sidebar{
         display: block;
         top: 0%;
         right: 10%;
@@ -142,11 +142,11 @@ header #burger1{
         overflow: hidden;
         top: 10%;
     }
-    header .menu-menubar{
+    .menu-menubar{
         display: flex;
         height: 80%;
     }
-    header .menu-list{
+    .menu-list{
         height: 100%;
         display: flex;
         justify-content:space-around;
@@ -155,25 +155,25 @@ header #burger1{
         list-style: none;
         text-decoration: none;
     }
-    header .menu-sidebar .close-menu{
+    .menu-sidebar .close-menu{
         font-size: 1.4em;
         padding-left:70%;
     }
-    header .menu-list-item a{
+    .menu-list-item a{
         text-decoration: none;
         color: #090909;
     }
-    header .menu-list-items a{
+    .menu-list-items a{
         color: #f09d51;
         text-decoration: none;
     }
     header .menu-list-item:hover a{
         color: #f09d51;
     }
-    header .menu-list-items a:hover{
+    .menu-list-items a:hover{
         color: rgb(33, 33, 117);
     }
-    header #burger1{
+    #burger1{
         display:none;
         top: 0.41em;
         right:3.4em;
