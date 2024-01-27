@@ -23,15 +23,14 @@
 <div class="container">
   <div class="dairy">
     <h1>products</h1>
-    <small class="fs-5">
+    <small>
       In “Diary Milk’ messages and images are unique aimed to influence attitudes and perception of consumers. In this ad, affect and cognition have each been assumed to play a major role in consumers’ reactions to Diary Milk commercial. There are many ways to see this, but one of the most obvious is simply to look at the two historically dominant ways of assessing Diary Milk effectiveness. When customers see the Diary Milk commercial, there are cognitive (especially memory) measures of meaning transfer. These measures are based on the assumption of “the more”, “the better”, although the actual reasons for why this should be the case have never been fully articulated. Clow, K.E. and Baack
     </small>
   </div>
 </div>
 {% endblock %}
 {% block main %}
-<div class="">
-  <h2 class="text-center">Dairy Products</h2>
+  <h2 >Dairy Products</h2>
   <ul class="adv">
     <li>
       <a href="{% url 'ghee' %}">
@@ -51,6 +50,20 @@
     <li>
    <a><img scr="" alt="image"></a>
   </li>
+  <li>
+    <a href="{% url 'curd' %}">
+    <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
+    <p class="item">Curd</p>
+</li>
+<li>
+  <a href="{% url 'curd' %}">
+  <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
+  <p class="item">Curd</p>
+</li>
+<li>
+  <a href="{% url 'curd' %}">
+  <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
+  <p class="item">Curd</p>
+</li>
 </ul>
-</div>
 {% endblock%}

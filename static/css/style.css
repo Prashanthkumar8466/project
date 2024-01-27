@@ -191,7 +191,7 @@ img{
         right:3.4em;
     }
     .prev,.next{
-        top: 20px;
+        margin-top: 13%;
         height: 20%;
     }
 }
