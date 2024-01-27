@@ -1,6 +1,6 @@
 
 header{
-    background-color:rgb(255, 255, 255);
+    background-color:rgb(114, 113, 112);
     display: flex;
     position: fixed;
     justify-content:space-between;
@@ -9,6 +9,10 @@ header{
     width: 100%;
     transition: 0.6s;
     border-bottom: 1px solid black;
+    left: 0%;
+    border-radius: 10PX;
+    border-top-left-radius:0px;
+    border-top-right-radius: 0%;
 }
 header ul{
     list-style-type: none;
@@ -25,7 +29,7 @@ header ul li a{
     text-decoration: none;
     padding: 20px;
     display: flex;
-    color: #090909;
+    color: #fffcfc;
 }
 header .menu {
     list-style: none;
@@ -40,14 +44,14 @@ header .menu li {
   cursor: pointer;
 }
 header .menu li a:hover{
-color: #00ffff;
+color: #f0ad1c;
 }
 header .submenu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(94, 93, 91);
     z-index: 1;
 }
 header .menu li:hover .submenu {
@@ -83,19 +87,19 @@ footer .menu-sidebar{
     display: none; 
 }
 .slideimg{
-    margin: 0 auto; 
+    margin: 0 auto;
 }
-.slide{
+.slideimg .slide{
     display: none;
 }
-img{
+.slideimg img{
     width: 100%;
 }
-.fade{
+.slideimg .fade{
     animation-name: fade;
     animation-duration: 2s;
 }
-.prev,.next{
+.slideimg .prev,.next{
     top:0;
     width:10%;
     cursor: pointer;
@@ -105,16 +109,15 @@ img{
     background-color:rgba(0, 0, 0, 0);
     border: none;
 }
-.prev{
+.slideimg .prev{
     left:0;
 }     
-.next {
+.slideimg .next {
     right: 0;
 }
 header #burger1{
     display: none;
 }
-
 @media screen and (max-width:768px){
     header .burger{
         list-style: none;

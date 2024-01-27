@@ -1,25 +1,24 @@
-.baseproducts .adv{
-    width: 90%;
+.adv{
+    width: 100%;
     list-style: none;
     display:flex;
     overflow-x:scroll;
     overflow-y:hidden;
     overflow-wrap: border;
   }
-.baseproducts .adv li{
+.adv li{
     border: 1px solid black;
     margin: 10px;
     align-items:center;
   }
-.baseproducts .adv::-webkit-scrollbar {
+.adv::-webkit-scrollbar {
       width: 0.1px;
   }
   
-.baseproducts .adv::-webkit-scrollbar-track {
+.adv::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   }
-  
-.baseproducts .adv::-webkit-scrollbar-thumb {
+.adv::-webkit-scrollbar-thumb {
     background-color: red;
     outline: 0.5px solid red;
   }
