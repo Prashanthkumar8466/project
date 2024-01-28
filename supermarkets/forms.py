@@ -8,9 +8,3 @@ class customerform(forms.ModelForm):
     class Meta:
         model =customer 
         fields = ['name', 'locality', 'city','phone','zipcode','state']
-class productform(forms.ModelForm):
-    class Meta:
-        template_name = 'addproduct.html'
-        model =product
-        fields =['productname','price','discount','description','specifications','category','product_image']
-        pass

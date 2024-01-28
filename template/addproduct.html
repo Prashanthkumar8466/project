@@ -4,11 +4,13 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/addproduct.css' %}">
 {% endblock %}
 {% block main %}
+<form class="login-form" method="post" action="/addproduct" >
+  {% csrf_token %}
 <ul class="product-upload">
     <h3>ADD-PRODUCT:</h3>
     <li>
       <label for="productname">Product Name</label>
-      <input type="text" name="Productname" required>
+      <input type="text" name="productname" required>
     </div>
     <li>
       <label for="price">price</label>
@@ -26,12 +28,24 @@
         <label for="description">Description</label>
         <textarea type="text" name="description" required></textarea>
       </li>
+      <li>
+        <label for="category">Category</label>
+        <select name="category">
+          <option value="Milk">Milk</option>
+          <option value="Ice-Cream">Ice-Cream</option>
+          <option value="Kulfi">kulfi</option>
+          <option value="Curd">Curd</option>
+          <option value="Ghee">Ghee</option>
+          <option value="Butter">Butter</option>
+        </select>
+      </li>
     <li style="cursor: pointer;">
-      <label for="image">Image</label>
-      <input type="file" name="specifications" required style="cursor: pointer;">
+      <label for="product_image">Image</label>
+      <input type="file" name="product_image" required style="cursor: pointer;">
     </li><br>
     <button style="cursor:pointer;margin-left:30%">Submit</button>
     <br>
     <br>
   </ul>
+</form>
   {% endblock %}

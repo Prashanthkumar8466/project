@@ -3,16 +3,15 @@ from urllib import request
 from django.conf import settings
 from django.urls import reverse_lazy
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Payment, cart_item, order, product,CATEGORY_CHOICES,contact_u,customer
+from .models import Payment, cart_item, order, product,contact_u,customer
 from django.views import View
 from django.contrib.auth import login,logout,authenticate
 from  django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import customerform,PasswordChangeForm,productform
+from .forms import customerform,PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from .models import wishlist
 import razorpay
-
 # Create your views here.
 def home(request):
     return render(request,"home.html")
@@ -24,10 +23,10 @@ def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
 def category_milk(request):
-    products=product.objects.filter(category='Ml')
+    products=product.objects.filter(category='Milk')
     return render(request,"category.html",{'products':products,'category':'milk'})
 def category_curd(request):
-    products=product.objects.filter(category='cu')
+    products=product.objects.filter(category='Curd')
     return render(request,"category.html",{'products':products,'category':'curd'})
 def category_kulfi(request):
     products=product.objects.filter(category='kl')
@@ -43,7 +42,7 @@ def category_cheese(request):
     return render(request,"category.html",{'products':products,"category":'cheese'})
 
 def category_Icecream(request):
-    products=product.objects.filter(category='Ic')
+    products=product.objects.filter(category='Ice-Cream')
     return render(request,"category.html",{'products':products,"category":'Ice-Cream'})
 
 def product_details(request,product_id):
@@ -218,11 +217,15 @@ def order_view(request):
 #product adding 
 def add_product(request):
     if request.method=="POST":
-        title=request.get['productname']
-        selling_price=request.get['price']
-        discounted_price=request.get['discount']
-        composition=request.get['specifications']
-        description=request.get['description']
-        form=productform(request.POST)
+            productname=request.POST['productname']
+            price=request.POST['price']
+            discount=request.POST['discount']
+            specifications=request.POST['specifications']
+            description=request.POST['description']
+            product_image=request.FILES.get('product_image')
+            category=request.POST['category']
+            add_prdt=product(productname=productname,price=price,discount=discount,specifications=specifications,description=description,product_image=product_image ,category=category)
+            add_prdt.save()
+            return redirect('addproduct')
     return render(request,'addproduct.html')
         

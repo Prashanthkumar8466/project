@@ -4,16 +4,7 @@ from  django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
-CATEGORY_CHOICES = [
-    ('Ml', 'Milk'),
-    ('cu', 'Curd'),
-    ('la', 'lassi'),
-    ('gh', 'ghee'),
-    ('pa', 'paneer'),
-    ('ch', 'cheese'),
-    ('Ic','Ice-Cream'),
-    ('kl','kulfi'),
-]
+
 STATE_CHOICE=[
     ('andhraPradesh','andhraPradesh'),
     ('Telengana','Telengana'),
@@ -34,8 +25,8 @@ class product(models.Model):
     discount=models.FloatField(default=0)
     description=models.TextField()
     specifications=models.TextField(default="")
-    category = models.CharField(max_length=2,choices=CATEGORY_CHOICES, default='Ml')
-    product_image=models.ImageField(upload_to='product')
+    category = models.TextField(max_length=20)
+    product_image=models.ImageField(upload_to='product/')
     def __str__(self):
         return self.productname
 class contact_u(models.Model):
