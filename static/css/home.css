@@ -5,6 +5,7 @@
     overflow-x:scroll;
     overflow-y:hidden;
     overflow-wrap: border;
+    scroll-behavior: smooth;
   }
 .adv li{
     border: 1px solid black;
@@ -22,3 +23,6 @@
     background-color: red;
     outline: 0.5px solid red;
   }
+button{
+  cursor: pointer;
+}
