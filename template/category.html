@@ -3,23 +3,29 @@
 {% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
 {% endblock %}
 {% block main %}
-<div class="about">
 <h1>category:</h1>
 {% if products %}
 <form class="products">
 {% for product in products %}
-    <a href="productdetails/{{product.id}}"><div class="product">
-    <img src="{{product.product_image.url}}" alt="{{product.productname}}">
-    <p><b>Name:</b>{{product.title}}</p>
-    <p><b>Selling_price:</b>{{product.price}}</p>
-    <p><b>Discounted_price:</b>{{product.discount}}</p>
-</div></a>
+<div class="productlist">
+    <a href="productdetails/{{product.id}}" style="text-decoration: none;"><div class="product"><ul class="product-list" style="list-style: none;">
+      <li>
+        <img src="{{product.product_image.url}}" alt="{{product.productname}}" style="position: relative;margin-left: -10px;"</li>
+        <li>
+            <h3>Name:{{product.productname}}</h3>
+          </li>
+      <li>
+        <h3>RS.{{product.price}}</h3>
+      </li>
+      <li>
+        <h5 style="color:rgb(178, 190, 188)">RS.{{product.discount}}</h5>
+      </li>
+    </ul></a>
+    </div>
 {% endfor %}
 </form>
 {% else %}
 <h4>No products</h4>
 {% endif %}
 </div>
-<br>
-<br>
 {% endblock %}

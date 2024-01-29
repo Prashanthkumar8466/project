@@ -12,3 +12,6 @@
     justify-content: center;
     margin-left: 50%;
 }
+.productlist li{
+    text-decoration: none;
+}

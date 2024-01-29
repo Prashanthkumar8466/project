@@ -187,7 +187,7 @@ def check_out(request):
     amount=sum(product.discount for product in cart_items)
     totalamount=amount+40
     razoramount=int(totalamount*100)
-    client = razorpay.Client(auth=('rzp_test_bpqoKmhjwz4F3z','XXiZbRWXsiiYQiD7Ix8Gp8Ky'))
+    client = razorpay.Client(auth=(settings.RAZORPAY_KEY,settings.RAZORPAY_SECRET))
     response_payment=client.order.create(dict(amount=razoramount,currency='INR'))
     order_id=response_payment['id']
     order_status=response_payment['status']
