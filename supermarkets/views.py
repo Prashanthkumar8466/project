@@ -227,8 +227,8 @@ def order_save(request):
     else:
         return render(request,'ordersaved.html',locals())  
 def order_view(request):
-    orderslist=order.objects.get(user=request.user)
-    return render(request,'orders.html',{'orders':orderslist,'product':orderslist.product.all()})
+    orderslist=order.objects.filter(user=request.user)
+    return render(request,'orders.html',{'orders':orderslist})
 #product adding 
 def add_product(request):
     if request.method=="POST":

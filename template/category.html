@@ -21,6 +21,10 @@
         <h5 style="color:rgb(178, 190, 188)">RS.{{product.discount}}</h5>
       </li>
     </ul></a>
+        <button type="button" class="btn btn-outline-primary" style="cursor: pointer;" >Buy Now</button>
+        <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="btn btn-outline-warning" style="cursor: pointer;" >Add to cart</button></a><br><br>
+        <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="btn btn-outline-danger" style="cursor: pointer;" >Add to Wishlist</button></a>
+
     </div>
 {% endfor %}
 </form>

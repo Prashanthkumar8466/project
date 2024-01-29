@@ -1,6 +1,6 @@
 .products{
     position: relative;
-    width: 200px;
+    width: 500px;
     border: 1px solid black;
     justify-content: center;
     align-items: center;
@@ -8,30 +8,28 @@
     border-radius: 10px;
 }
 .product img{
-    width: 100px;
+    width: 400px;
     justify-content: center;
     margin-left: 50%;
 }
 .productlist li{
     text-decoration: none;
 }
-@keyframes tick {
-    0% {
-      transform: scale(0);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
+.product_margin{
+    margin-top: 10%;
+    margin-left: 10%;
+}
 
-  .tick-mark {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #4CAF50; /* Green color */
-    border-radius: 50%;
-    animation: tick 0.6s ease-out;
+@media screen and (max-width:600px){
+    .product_margin{
+        margin-top: 20%;
+        margin-left:20%;
+    }
+    .product img{
+        width: 200px;
+    }
+    .products{
+        position: relative;
+        width: 200px;
+    }
   }
