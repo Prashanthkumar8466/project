@@ -192,15 +192,11 @@ def check_out(request):
     order_id=response_payment['id']
     order_status=response_payment['status']
     custom=customer.objects.get(id=1)
-    for product in cart_items:
-        orders=order.objects.create(
-            user=request.user,
-            product=product,
-            customer= custom,
-        )
-        orders.save()  
-    if order_status=='created': 
-        payment=Payment(
+    return render(request,'checkout.html',locals())
+def order_save(request):
+    if request.method=="POST":
+        if order_status=='created': 
+            payment=Payment(
             user=request.user,
             amount=razoramount,
             razorpay_order_id=order_id,
@@ -208,9 +204,28 @@ def check_out(request):
             paid=True,
         )
         payment.save() 
+        address=customer.objects.filter(user=request.user)
+        cart=cart_item.objects.first()
+        cart_items=cart.cart_items.all()
+        amount=sum(product.discount for product in cart_items)
+        totalamount=amount+40
+        razoramount=int(totalamount*100)
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY,settings.RAZORPAY_SECRET))
+        response_payment=client.order.create(dict(amount=razoramount,currency='INR'))
+        order_id=response_payment['id']
+        order_status=response_payment['status']
+        custom=customer.objects.get(id=1)
+        for product in cart_items:
+            orders=order.objects.create(
+                user=request.user,
+                product=product,
+                customer= custom,
+            )
+            orders.save()  
+        else:
+            return redirect('checkout')
     else:
-        return render(request,'home.html')
-    return render(request,'checkout.html',locals())
+        return render(request,'ordersaved.html',locals())  
 def order_view(request):
     orderslist=order.objects.get(user=request.user)
     return render(request,'orders.html',{'orders':orderslist,'product':orderslist.product.all()})

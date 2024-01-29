@@ -4,7 +4,7 @@
 {% endblock %}
 {% block main %}
 <div class="about">
-<form method="post" >
+<form method="post" action="/ordersave">
     {% csrf_token %}
     <div>
     {% for product in cart_items %}
