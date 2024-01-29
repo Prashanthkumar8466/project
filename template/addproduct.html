@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/addproduct.css' %}">
 {% endblock %}
 {% block main %}
-<form class="login-form" method="post" action="/addproduct" >
+<form class="login-form" method="post" action="/addproduct" enctype="multipart/form-data" >
   {% csrf_token %}
 <ul class="product-upload">
     <h3>ADD-PRODUCT:</h3>

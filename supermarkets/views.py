@@ -166,7 +166,7 @@ def wishlist_view(request,):
 def view_cart(request):
     cart=cart_item.objects.first()
     cart_items=cart.cart_items.all()
-    amount=sum(product.discounted_price for product in cart_items)
+    amount=sum(product.discount for product in cart_items)
     totalamount=amount+40
     return render(request,'cart.html',{'amount':amount,'totalamount':totalamount,'cart_items':cart_items})
 @login_required(login_url='login')
@@ -184,14 +184,14 @@ def check_out(request):
     address=customer.objects.filter(user=request.user)
     cart=cart_item.objects.first()
     cart_items=cart.cart_items.all()
-    amount=sum(product.discounted_price for product in cart_items)
+    amount=sum(product.discount for product in cart_items)
     totalamount=amount+40
     razoramount=int(totalamount*100)
     client = razorpay.Client(auth=('rzp_test_bpqoKmhjwz4F3z','XXiZbRWXsiiYQiD7Ix8Gp8Ky'))
     response_payment=client.order.create(dict(amount=razoramount,currency='INR'))
     order_id=response_payment['id']
     order_status=response_payment['status']
-    custom=customer.objects.get(id=2)
+    custom=customer.objects.get(id=1)
     for product in cart_items:
         orders=order.objects.create(
             user=request.user,
