@@ -1,9 +1,31 @@
 {% extends 'base.html'%}
 {% load static %}
-{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">
 {% endblock %}
 {% block main %}
-<div class="about">
+<!--number of products-->
+<form  method="post"  >
+    {% csrf_token %}
+<h1>category:</h1>
+{% if cart_items %}
+<div class="product-items">
+{% for product in cart_items %}
+<div class="product">
+    <img src="{{product.product_image.url}}" alt="{{product.productname}}">
+  <h3>Name:{{product.productname}}</h3>
+  <p>RS.{{product.price}}<br>
+    RS.{{product.discount}}<br>
+    Quantity:{{product.quantity}} <br>
+
+  </p>
+  <a href="{% url 'remove-from-cart' product_id=product.id %}"><button type="button" class="btn btn-dark">Remove</button></a>
+</div>
+{% endfor %}
+</div>
+{% else %}
+<h4>No Items</h4>
+{% endif %}
+<!--number of products
 <form method="post">
     {% csrf_token%}
 <div class="products">
@@ -24,6 +46,7 @@
     </div>
     {% endfor %}
 </div>
+number of products-->
 <div class="product">
 <div class="products" >
     <h3>The total amount of</h3>
@@ -36,7 +59,6 @@
 <a href="{% url 'checkout' %}"><button type="button" class="btn btn-danger">Place order</button></a>
 </form>
     {% else%}
-    
     no cart_items
     {% endif %}
 </div>

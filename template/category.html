@@ -1,35 +1,25 @@
 {% extends 'base.html'%}
 {% load static %}
-{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">
 {% endblock %}
 {% block main %}
 <h1>category:</h1>
 {% if products %}
-<form class="products">
+<div class="product-items">
 {% for product in products %}
-<div class="productlist">
-    <a href="productdetails/{{product.id}}" style="text-decoration: none;"><div class="product"><ul class="product-list" style="list-style: none;">
-      <li>
-        <img src="{{product.product_image.url}}" alt="{{product.productname}}" style="position: relative;margin-left: -10px;"</li>
-        <li>
-            <h3>Name:{{product.productname}}</h3>
-          </li>
-      <li>
-        <h3>RS.{{product.price}}</h3>
-      </li>
-      <li>
-        <h5 style="color:rgb(178, 190, 188)">RS.{{product.discount}}</h5>
-      </li>
-    </ul></a>
-        <button type="button" class="btn btn-outline-primary" style="cursor: pointer;" >Buy Now</button>
-        <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="btn btn-outline-warning" style="cursor: pointer;" >Add to cart</button></a><br><br>
-        <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="btn btn-outline-danger" style="cursor: pointer;" >Add to Wishlist</button></a>
-
-    </div>
+<div class="product">
+  <img src="{{product.product_image.url}}" alt="{{product.productname}}">
+  <h3>Name:{{product.productname}}</h3>
+  <p>RS.{{product.price}}<br>
+    RS.{{product.discount}}
+  </p>
+  <button type="button" class="btn btn-outline-primary" style="cursor: pointer;" >Buy Now</button>
+  <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="btn btn-outline-warning" style="cursor: pointer;" >Add to cart</button></a><br><br>
+  <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="btn btn-outline-danger" style="cursor: pointer;" >Add to Wishlist</button></a>
+</div>
 {% endfor %}
-</form>
+</div>
 {% else %}
 <h4>No products</h4>
 {% endif %}
-</div>
 {% endblock %}
