@@ -1,34 +1,36 @@
 {% extends 'base.html'%}
 {% load static %}
-{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">{% endblock %}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/addproduct.css' %}">{% endblock %}
 {% block main%}
-<div class="about">
-<div class="contactus">
-<form class="form" method="post" novalidate="novalidate" >
+<div class="contactus" style="display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 150px; margin-top: 5%;" >
+<form method="post" action="/contact" enctype="multipart/form-data" >
     {% csrf_token %}
-    <h1>Contact Us</h1>
-    <div class="form-floating mb-3">
+  <ul class="product-upload">
+      <h3>DROP MESSAGE:</h3>
+      <li>
         <label for="floatingInput">Name</label>
         <input type="text" name='name'class="form-control" id="floatingInput" placeholder="name" required>
-
-    </div>
-    <div class="form-floating mb-3">
+      <li>
         <label for="floatingInput">Email address</label>
- 
         <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-           </div>
-    <div class="form-floating mb-3">
+      </li>
+      <li>
         <label for="floatingInput">Phone</label>
-
         <input type="phone" name="phone" class="form-control" id="floatingInput" placeholder="91XXXXXXX" required>
-    </div>
-    <div class="form-floating mb-3">
+      </li>
+      <li>
         <label for="floatingInput">Message</label>
-        <input type="text" name="message" class="form-control" id="floatingInput" placeholder="" required>
-            </div>
-    <button type="submit" class="btn btn-outline-info">Submit</button>
+        <textarea type="text" name="message" class="form-control" id="floatingInput" placeholder="" required></textarea>
+      </li>
+      <br>
+      <button style="cursor:pointer;margin-left:30%">Submit</button>
+      <br>
+      <br>
+    </ul>
 </form>
-<div class="contactinfo">
+<form style="margin-left: 30%;width: fit-content;">
     <br>
     <br>
     <br>
@@ -39,9 +41,7 @@
  <link>contact@XXXXinfo.com<link>
 <p>+91 XXXXXXX</p>
 <h2 class='message'>{{message}}</h2>
-</div>
-
-</div>
+</form>
 </div>
 {% endblock %}
   
