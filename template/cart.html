@@ -4,9 +4,13 @@
 {% endblock %}
 {% block main %}
 <!--number of products-->
+<br>
+<br>
+<br>
+<br>
+
 <form  method="post"  >
     {% csrf_token %}
-<h1>category:</h1>
 {% if cart_items %}
 <div class="product-items">
 {% for product in cart_items %}
@@ -47,9 +51,24 @@
     {% endfor %}
 </div>
 number of products-->
+<div>
+<h2>TOTAL PAYMENT</h2>
+        <ul class="product" style="list-style-type: none; display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;" >
+            <li ><h4>amount :-<span id="amount">Rs.{{amount}}</span></h4></li>
+            <li><h4>shipping                <span>Rs.40</span><br></h4></li>
+            <li ><h4>Total(including GST)    <span id="totalamount">Rs.{{totalamount}}</span></h4></li>
+            <li style="margin-left: 50%;"><h4><a href="{% url 'checkout' %}"><button type="button" class="btn btn-danger" style="cursor: pointer;">Place order</button></a>
+            </h4></li>
+        </ul>
+          </div>
+</div>
+</form>
+    <!--
 <div class="product">
 <div class="products" >
-    <h3>The total amount of</h3>
+    
     amount                  <span id="amount">Rs.{{amount}}</span><br>
     shipping                <span>Rs.40</span><br>
     Total(including GST)    <span id="totalamount">Rs.{{totalamount}}</span>
@@ -61,5 +80,5 @@ number of products-->
     {% else%}
     no cart_items
     {% endif %}
-</div>
+</div>-->
 {% endblock %}
