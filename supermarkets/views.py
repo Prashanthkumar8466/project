@@ -1,4 +1,4 @@
-
+#source .venv/bin/activate
 from urllib import request
 from django.conf import settings
 from django.urls import reverse_lazy
@@ -227,7 +227,7 @@ def order_save(request):
     else:
         return render(request,'ordersaved.html',locals())  
 def order_view(request):
-    orderslist=order.objects.prefetch_related('orderitem_set__product').all()
+    orderslist=order.objects.prefetch_related().all()
     return render(request,'orders.html',{'orders':orderslist})
 #product adding 
 def add_product(request):
