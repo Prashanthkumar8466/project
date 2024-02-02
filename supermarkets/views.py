@@ -227,7 +227,7 @@ def order_save(request):
     else:
         return render(request,'ordersaved.html',locals())  
 def order_view(request):
-    orderslist=order.objects.prefetch_related().all()
+    orderslist=order.objects.filter(user=request.user)
     return render(request,'orders.html',{'orders':orderslist})
 #product adding 
 def add_product(request):
@@ -243,4 +243,6 @@ def add_product(request):
             add_prdt.save()
             return redirect('addproduct')
     return render(request,'addproduct.html')
-        
+def allorder_view(request):
+    orderslist=order.objects.all()
+    return render(request,'orders.html',{'orders':orderslist})       

@@ -42,6 +42,7 @@ urlpatterns = [
     path('checkout',views.check_out,name='checkout'),
     path('orders',views.order_view,name='orders'),
     path('ordersave',views.order_save,name='ordersave'),
-    #add products
+    #admin/staff
     path('addproduct',views.add_product,name='addproduct'),
+    path('allorders',views.allorder_view,name='allorders'),
     ]
