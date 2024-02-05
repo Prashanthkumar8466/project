@@ -46,7 +46,7 @@
             <span id="Quantity">{{product.quantity}}</span>
             <a class="plus-cart btn" pid={{product.id}}><i class="fas fa-plus-square fa-lag"></i></a>
         </div>
-        <a href="{% url 'remove-from-cart' product_id=product.id %}"><button type="button" class="btn btn-dark">Remove</button></a>
+        <a href="{% url 'remove-from-cart' product_id=product.id %}"><button style="cursor: pointer;" type="button" class="btn btn-dark">Remove</button></a>
     </div>
     {% endfor %}
 </div>
