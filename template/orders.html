@@ -1,14 +1,77 @@
 {% extends "base.html"%}
 {% block main%}
-<div class="about">
-<form class="products">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-        {{orders}}
-        <a href=""><button style="cursor: pointer;" type="button" class="btn btn-outline-danger">Cancel</button></a>
-    </form>
+<br>
+
+<div style="margin-top: 5%;">
+    <style>
+        /* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow: scroll;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+p {
+    color: #555;
+}
+
+    </style>
+    <h1>Orders:</h1>
+    {% if orders %}
+    <table border="1" >
+        <thead>
+            <tr style="cursor: not-allowed;">
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr style="cursor: not-allowed;">
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.customer }}</td>
+                    <a href="#"><td style="cursor: pointer;">{{ order.product }}</td></a>
+                    <td>{{ order.quantity }}</td>
+                    <td>${{ order.product.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No orders available.</p>
+{% endif %}
 </div>
 {% endblock %}

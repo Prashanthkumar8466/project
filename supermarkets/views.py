@@ -244,5 +244,5 @@ def add_product(request):
             return redirect('addproduct')
     return render(request,'addproduct.html')
 def allorder_view(request):
-    orderslist=order.objects.all()
-    return render(request,'orders.html',{'orders':orderslist})       
+    orderslist,created=order.objects.get_or_create(user=request.user)
+    return render(request,'orders.html',{'orders':orderslist.product.all()})       
