@@ -61,13 +61,13 @@ p {
         </thead>
         <tbody>
             {% for order in orders %}
-                <tr style="cursor: not-allowed;">
+                <tr>
                     <td>{{ order.id }}</td>
                     <td>{{ order.customer }}</td>
-                    <a href="#"><td style="cursor: pointer;">{{ order.product }}</td></a>
+                    <td style="cursor: pointer;"><a href="productdetails/{{order.product.id}}">{{ order.product }}</a></td>
                     <td>{{ order.quality }}</td>
                     <td>${{ order.product.price }}</td>
-                    <a href="{% url 'orders' order_id=order.id %}"><td style="cursor: pointer;">{{ order.status }}</td></a>
+                    <a href="#"><td style="cursor: pointer;">{{ order.status }}</td></a>
                 </tr>
             {% endfor %}
         </tbody>

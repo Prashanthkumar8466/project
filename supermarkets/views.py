@@ -189,9 +189,6 @@ def check_out(request):
     razoramount=int(totalamount*100)
     client = razorpay.Client(auth=(settings.RAZORPAY_KEY,settings.RAZORPAY_SECRET))
     response_payment=client.order.create(dict(amount=razoramount,currency='INR'))
-    order_id=response_payment['id']
-    order_status=response_payment['status']
-    custom=customer.objects.get(id=1)
     return render(request,'checkout.html',locals())
 def order_save(request):
     if request.method=="POST":
@@ -217,11 +214,13 @@ def order_save(request):
         custom=customer.objects.get(id=1)
         for product in cart_items:
             orders=order.objects.create(
+                payment=order_id,
                 user=request.user,
                 product=product,
                 customer= custom,
             )
-            orders.save()  
+            orders.save()
+            cart_items.objects.get(user=request.user).delete()  
         else:
             return redirect('checkout')
     else:
@@ -245,4 +244,5 @@ def add_product(request):
     return render(request,'addproduct.html')
 def allorder_view(request):
     orderslist,created=order.objects.get_or_create(user=request.user)
-    return render(request,'orders.html',{'orders':orderslist.product.all()})       
+    return render(request,'orders.html',{'orders':orderslist.product.all()})
+       
