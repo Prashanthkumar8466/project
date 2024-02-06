@@ -192,6 +192,7 @@ def check_out(request):
     return render(request,'checkout.html',locals())
 def order_save(request):
     if request.method=="POST":
+        custid=request.POST.get['custid']
         if order_status=='created': 
             payment=Payment(
             user=request.user,
@@ -211,7 +212,7 @@ def order_save(request):
         response_payment=client.order.create(dict(amount=razoramount,currency='INR'))
         order_id=response_payment['id']
         order_status=response_payment['status']
-        custom=customer.objects.get(id=1)
+        custom=customer.objects.get(id=custid)
         for product in cart_items:
             orders=order.objects.create(
                 payment=order_id,

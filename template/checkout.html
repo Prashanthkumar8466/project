@@ -1,9 +1,9 @@
 {% extends 'base.html'%}
 {% load static %}
-{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">
 {% endblock %}
 {% block main %}
-<div class="about">
+<div class="product-items">
 <form method="post" action="/ordersave">
     {% csrf_token %}
     <div>
