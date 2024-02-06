@@ -56,6 +56,7 @@ p {
                 <th>Product</th>
                 <th>Quantity</th>
                 <th>Total Price</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -64,8 +65,9 @@ p {
                     <td>{{ order.id }}</td>
                     <td>{{ order.customer }}</td>
                     <a href="#"><td style="cursor: pointer;">{{ order.product }}</td></a>
-                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.quality }}</td>
                     <td>${{ order.product.price }}</td>
+                    <a href="{% url 'orders' order_id=order.id %}"><td style="cursor: pointer;">{{ order.status }}</td></a>
                 </tr>
             {% endfor %}
         </tbody>

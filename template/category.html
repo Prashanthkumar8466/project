@@ -5,16 +5,15 @@
 {% block main %}
 <h1>category:</h1>
 {% if products %}
-<div class="product-items"e>
+<div class="product-items">
 {% for product in products %}
 <div class="product">
-  <img src="{{product.product_image.url}}" alt="{{product.productname}}">
+  <a href="productdetails/{{product.id}}"><img src="{{product.product_image.url}}" alt="{{product.productname}}"></a>
   <h3>Name:{{product.productname}}</h3>
   <p>RS.{{product.price}}<br>
     RS.{{product.discount}}
   </p>
-  <button type="button" class="btn btn-outline-primary" style="cursor: pointer;" >Buy Now</button>
-  <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="btn btn-outline-warning" style="cursor: pointer;" >Add to cart</button></a><br><br>
+  <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="btn btn-outline-warning" style="cursor: pointer;" >Add to cart</button></a>
   <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="btn btn-outline-danger" style="cursor: pointer;" >Add to Wishlist</button></a>
 </div>
 {% endfor %}
