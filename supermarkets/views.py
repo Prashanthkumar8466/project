@@ -104,19 +104,15 @@ def signup_view(request):
 @login_required(login_url='login')
 def profile_view(request):
     if request.method=='POST':
-        form=customerform(request.POST)
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = request.user
-            profile.save()
-            return redirect('home')
-        else:
-            form=customerform()
-            message='enter vaild details'
-            return render(request,'profile.html',{'message':message,'form':form})
-    else:
-        form=customerform()
-        return render(request,"profile.html",{'form':form})
+        name=request.POST['name']
+        locality=request.POST['locality']
+        city=request.POST['city']
+        phone=request.POST['phone']
+        state=request.POST['state']
+        pincode=request.POST['pincode']
+        adress=customer(user_id=request.user.id,name=name,locality=locality,city=city,phone=phone,state=state,zipcode=pincode)
+        adress.save()
+    return render(request,"profile.html")
 @login_required(login_url='login')
 def address_view(request):
     address=customer.objects.filter(user=request.user)

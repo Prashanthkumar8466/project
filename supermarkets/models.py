@@ -4,15 +4,6 @@ from  django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
-
-STATE_CHOICE=[
-    ('andhraPradesh','andhraPradesh'),
-    ('Telengana','Telengana'),
-    ('chennai','chennai'),
-    ('thamilNadu','thamilNadu'),
-    ('Delhi','Delhi'),
-    ('madhyaPradesh','madhyaPradesh'),
-]
 STATUS_CHOICE=[
     ('pending','pending'),
     ('on the way','on the way'),
@@ -39,11 +30,11 @@ class contact_u(models.Model):
 class customer(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     name=models.CharField(max_length=100)
-    locality=models.CharField(max_length=50)
+    locality=models.TextField()
     city=models.CharField(max_length=50)
     phone=models.CharField(max_length=12)
     zipcode=models.DecimalField(max_digits=6,decimal_places=0)
-    state=models.TextField(choices=STATE_CHOICE, default='Telangana')
+    state=models.TextField(default='Telangana')
     def __str__(self):
         return self.name
 class wishlist(models.Model):

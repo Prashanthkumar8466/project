@@ -42,7 +42,7 @@
     <li class="d-grid"><a href="{% url 'address'%}" class="btn "><button class="profilebtn">Adress</button></a></li>
 </ul>
 </div>
-<form method="post" action="/" enctype="multipart/form-data" style="margin-top: -15%;" >
+<form method="post" enctype="multipart/form-data" style="margin-top: -15%;" >
   {% csrf_token %}
 <ul class="product-upload">
     <h3>ADD-ADDRESS:</h3>
@@ -51,8 +51,8 @@
       <input type="text" name="name" required>
     </li>
     <li>
-      <label for="landmark">Land-Mark</label>
-      <textarea type="text" name="landmark" required></textarea>
+      <label for="locality">Land-Mark</label>
+      <textarea type="text" name="locality" required></textarea>
     </li>
     <li>
       <label for="city">City</label>
@@ -99,11 +99,7 @@
           <option value="West Bengal">West Bengal</option>
   
         </select>
-      </li>
-    <li style="cursor: pointer;">
-      <label for="product_image">Image</label>
-      <input type="file" name="product_image" required style="cursor: pointer;">
-    </li><br>
+      </li><br>
     <button style="cursor:pointer;margin-left:30%" class="profilebtn">Save Profile</button>
     <br>
     <br>
