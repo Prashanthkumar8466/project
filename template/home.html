@@ -33,41 +33,86 @@
 </div>
 {% endblock %}
 {% block main %}
+<style>
+  .adv li img{
+    width: 200px;
+  }
+  
+.adv li {
+  border: 2px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100px;
+}
+.adv li img{
+  height: 90px;
+}
+.adv h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.adv p {
+  font-size: 14px;
+  color: #555;
+}
+</style>
+<div class="baseproducts"style="overflow: hidden;">
   <h2 >Dairy Products</h2>
-  <div class="baseproducts"style="overflow: hidden;">
-  <ul class="adv">
+  <ul class="adv" >
     <li>
       <a href="{% url 'ghee' %}">
       <img src="{% static 'images/products/dbtoned-milk.png'%}" alt="..." ></a>
-      <p class="adv-item">Kulfi</p>
     </li>
     <li>
       <a href="{% url 'kulfi' %}">
         <img src="{% static 'images/products/kulfi.png'%}" alt="..."></a>
-        <p class="adv-item">Kulfi</p>
     </li> 
     <li>
         <a href="{% url 'curd' %}">
         <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
-        <p class="item">Curd</p>
     </li>
-    <li>
-   <a><img scr="" alt="image"></a>
-  </li>
   <li>
     <a href="{% url 'curd' %}">
     <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
-    <p class="item">Curd</p>
 </li>
 <li>
   <a href="{% url 'curd' %}">
   <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
-  <p class="item">Curd</p>
 </li>
 <li>
   <a href="{% url 'curd' %}">
   <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
-  <p class="item">Curd</p>
+</li>
+</ul>
+</div>
+<div class="baseproducts2"style="overflow: hidden;">
+  <h2 >Dairy Items</h2>
+  <ul class="adv" >
+    <li>
+      <a href="{% url 'ghee' %}">
+      <img src="{% static 'images/products/dbtoned-milk.png'%}" alt="..." ></a>
+    </li>
+    <li>
+      <a href="{% url 'kulfi' %}">
+        <img src="{% static 'images/products/kulfi.png'%}" alt="..."></a>
+    </li> 
+    <li>
+        <a href="{% url 'curd' %}">
+        <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
+    </li>
+  <li>
+    <a href="{% url 'curd' %}">
+    <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
+</li>
+<li>
+  <a href="{% url 'curd' %}">
+  <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
+</li>
+<li>
+  <a href="{% url 'curd' %}">
+  <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
 </li>
 </ul>
 </div>

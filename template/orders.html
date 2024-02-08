@@ -62,11 +62,11 @@ p {
         <tbody>
             {% for order in orders %}
                 <tr>
-                    <td>{{ order.id }}</td>
+                    <td>{{ order.id }}      <img src="{{order.product.product_image.url}}" style="width: 30px;"> </td>
                     <td>{{ order.customer }}</td>
                     <td style="cursor: pointer;"><a href="productdetails/{{order.product.id}}">{{ order.product }}</a></td>
                     <td>{{ order.quality }}</td>
-                    <td>${{ order.product.price }}</td>
+                    <td>₹ {{ order.product.price }}</td>
                     <a href="#"><td style="cursor: pointer;">{{ order.status }}</td></a>
                 </tr>
             {% endfor %}
