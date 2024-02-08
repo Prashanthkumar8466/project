@@ -3,6 +3,34 @@
 {% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">
 {% endblock %}
 {% block main %}
+<style>
+  .addtocart {
+      background-color: #f39e01;
+      color: #ffffff;
+      border: none;
+      padding: 5px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  .addtocart:hover {
+      background-color: #15fc00;
+      border-bottom: 1px solid rgb(255, 136, 0);
+  
+  }
+  .addtowish {
+      background-color: #01f3df;
+      color: #ffffff;
+      border: none;
+      padding: 5px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  .addtowish:hover {
+      background-color: #002efc;
+      border-bottom: 1px solid rgb(255, 136, 0);
+  
+  }
+</style>
 <h1>category:</h1>
 {% if products %}
 <div class="product-items">
@@ -13,8 +41,8 @@
   <p>RS.{{product.price}}<br>
     RS.{{product.discount}}
   </p>
-  <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="btn btn-outline-warning" style="cursor: pointer;" >Add to cart</button></a>
-  <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="btn btn-outline-danger" style="cursor: pointer;" >Add to Wishlist</button></a>
+  <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="addtocart" style="cursor: pointer;" >Add to cart</button></a>
+  <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="addtowish" style="cursor: pointer;" >Add to Wishlist</button></a>
 </div>
 {% endfor %}
 </div>
