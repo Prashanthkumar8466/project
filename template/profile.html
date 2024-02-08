@@ -1,29 +1,112 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block link%}<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">{% endblock%}
-
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/addproduct.css' %}">
+{% endblock %}
 {% block main %}
-<div class="about">
-<a href="{% url 'password_change' %}"><button type="submit" class="btn btn-primary">Change Password</button></a>
-<div class="container my-5" >
-    <div class="row">
-        <h3>welcome <span class="text-captilize">{{request.user}}</span></h3>
-    </div>
-    <div class="col-sm-2 border-end">
-        <ul class="list-unstyled">
-            <li class="d-grid"><a href="{% url 'profile'%}" class="btn btn-primary">Profile</a></li><br>
-            <li class="d-grid"><a href="{% url 'address'%}" class="btn ">Adress</a></li>
-        </ul>
-    </div>
-    <div class="col-sm-8 offset-sm-1">
-        <form method="post" enctype="multipart/form-data" class="profile">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Save Profile</button>
-        </form>
-    </div>
+<style>
+  .profilebtn {
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      padding: 5px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  .profilebtn:hover {
+      background-color: #abd1f8;
+      border-bottom: 1px solid rgb(255, 136, 0);
+  }
+  .adrsbtn {
+      background-color:#0056b3;
+      color: #ffffff;
+      border: none;
+      padding: 5px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  .adrsbtn:hover {
+      background-color: #0056b3;
+      border-bottom: 1px solid red;
+  }
+</style>
+<br>
+<br>
+<br>
+<br>
+<div>
+  <a href="{% url 'password_change' %}"><button type="submit" class="btn btn-primary">Change Password</button></a>
+  <h3>welcome <span class="text-captilize">{{request.user}}</span></h3>
+  <ul class="list-unstyled" style="list-style: none;">
+    <li class="d-grid"><a href="{% url 'profile'%}" class="btn btn-primary"><button class="adrsbtn"> Profile</button></a></li><br>
+    <li class="d-grid"><a href="{% url 'address'%}" class="btn "><button class="profilebtn">Adress</button></a></li>
+</ul>
 </div>
-
-</div>
-</div>
+<form method="post" action="/" enctype="multipart/form-data" style="margin-top: -15%;" >
+  {% csrf_token %}
+<ul class="product-upload">
+    <h3>ADD-ADDRESS:</h3>
+    <li>
+      <label for="name">Name</label>
+      <input type="text" name="name" required>
+    </li>
+    <li>
+      <label for="landmark">Land-Mark</label>
+      <textarea type="text" name="landmark" required></textarea>
+    </li>
+    <li>
+      <label for="city">City</label>
+      <input type="text" name="city" required>
+    </li>
+    <li>
+      <label for="phone">Phone</label>
+      <input type="text" name="phone" required>
+    </li>
+    <li>
+      <label for="pincode">Pin-Code</label>
+      <input type="text" name="pincode" required>
+    </li>
+    <li>
+      <label for="state">State</label>
+        <select name="state" style="cursor: pointer;">
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+          <option value="Assam">Assam</option>
+          <option value="Bihar">Bihar</option>
+          <option value="Chhattisgarh">Chhattisgarh</option>
+          <option value="Goa">Goa</option>
+          <option value="Gujarat">Gujarat</option>
+          <option value="Haryana">Haryana</option>
+          <option value="Himachal Pradesh<">Himachal Pradesh</option>
+          <option value="Jharkhand">Jharkhand</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Manipur">Manipur</option>
+          <option value="Meghalaya">Meghalaya</option>
+          <option value="Mizoram">Mizoram</option>
+          <option value="Nagaland">Nagaland</option>
+          <option value="Odisha">Odisha</option>
+          <option value="Punjab">Punjab</option>
+          <option value="Rajasthan">Rajasthan</option>
+          <option value="Sikkim">Sikkim</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Tripura">Tripura</option>
+          <option value="Uttarakhand">Uttarakhand</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="West Bengal">West Bengal</option>
+  
+        </select>
+      </li>
+    <li style="cursor: pointer;">
+      <label for="product_image">Image</label>
+      <input type="file" name="product_image" required style="cursor: pointer;">
+    </li><br>
+    <button style="cursor:pointer;margin-left:30%" class="profilebtn">Save Profile</button>
+    <br>
+    <br>
+  </ul>
+</form>
 {% endblock %}

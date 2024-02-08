@@ -3,13 +3,15 @@
 {% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">{% endblock%}
 
 {% block main %}
+<style>
+
+</style>
 <div class="about">
     <h3 style="margin-top: 10%;">Wishlist</h3>
 <form class="product-items" method="post">
     {% csrf_token %}
-    <div class="product">
         {% for product in wishlist %}
-        <div class="list-items">
+        <div class="product">
             <div >
                 <a href="productdetails/{{product.id}}"><img src="{{product.product_image.url}}" alt="{{product.productname}}"></a>
             </div>
