@@ -65,12 +65,13 @@ p {
         <tbody>
             {% for order in orders %}
                 <tr>
+                    {{order.product.id}}
                     <td>{{ order.id }}      <img src="{{order.product.product_image.url}}" style="width: 50px;padding-left: 30%;"> </td>
                     <td>{{ order.customer }}</td>
                     <td class="action" style="cursor: pointer;"><a href="productdetails/{{order.product.id}}">{{ order.product }}</a></td>
                     <td>{{ order.quality }}</td>
                     <td>₹ {{ order.product.price }}</td>
-                   <td class="action" style="cursor: pointer;"> <a href="{% url 'orderdetails'%}">{{ order.status }}</a></td>
+                   <td class="action" style="cursor: pointer;"><a href="{% url 'orderdetails' pk=order.id %}">{{ order.status }}</a></td>
                 </tr>
             {% endfor %}
         </tbody>

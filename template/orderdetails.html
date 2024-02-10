@@ -28,11 +28,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 }
-.order {
-  border: 2px solid #ddd;
-  
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.order-details .order {
+    padding: 15px;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
 }
 .order-details ul{
    list-style: none;
@@ -50,27 +49,27 @@ img {
 </style>
 {% for order in orders %}
 <div class="">
-    <a href="#">Home ›</a><a href="#">My Account ›</a>Orders {{order.id}}
+    <p style="margin-left:1.5%;"><a href="#">Home ›</a><a href="#">My Account ›</a>Orders {{order.id}}</p>
     <div class="order-details">
-        <div>
+        <div class="order">
             <h4>Delivery Address</h4>
             <b>{{order.customer.name}}</b>
             <p>{{order.customer.locality}}<br>{{order.customer.city}}-{{order.customer.zipcode}}<br>{{order.customer.state}}</p>
             <b>{{order.customer.phone}}</b>
         </div>
-        <div>
+        <div class="order">
             <h4>Rewards</h4>
             <p>0 SuperCoins Cashback</p>
             <p>Use it to save on your next order</p>
         </div>
-        <div>
+        <div class="order">
             <h4>More Actions</h4>
                 <p style="padding: 15px;">Prefer contactless delivery ?<a style="margin-left: 1.5%;" href="#">Pay Now</a></p>
                 <p style="padding: 15px;">Share order details ?<a style="margin-left: 13.5%;" href ="#">Share order</a></p>
         </div>
     </div>
     <div class="order-details">
-        <div>
+        <div >
             <ul style="list-style: none;display: flex;">
             <li style="width: 100px;margin-top: 10%;"><img src="{{order.product.product_image.url}}"></li>
             <li><p>{{order.product.productname}}</p>
@@ -79,14 +78,14 @@ img {
             <p style="color: green;"> 0 Offers & 0 Coupons Applied</p></li>
         </ul>
         </div>
-        <div>
+        <div >
             <div>
                 <h4>
                 Order status</h4>
             </div>
             <div>{{order.status}}</div>
         </div>
-        <div>
+        <div >
             <ul>
             <li><a href="#"> change Date</a></li>
             <li><a href="#">Cancel</a></li>
