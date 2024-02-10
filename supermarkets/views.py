@@ -242,4 +242,6 @@ def add_product(request):
 def allorder_view(request):
     orderslist,created=order.objects.get_or_create(user=request.user)
     return render(request,'orders.html',{'orders':orderslist.product.all()})
-       
+def order_details(request):
+    order_details=order.objects.filter(user=request.user)
+    return render(request,'orderdetails.html',{'orders':order_details})

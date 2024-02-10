@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/.css' %}">{% endblock %}
+{% block main %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<style>
+.order-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  border: 2px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.order-details a{
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+.order {
+  border: 2px solid #ddd;
+  
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.order-details ul{
+   list-style: none;
+}
+.order-details ul li{
+    padding: 15px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+</style>
+{% for order in orders %}
+<div class="">
+    <a href="#">Home ›</a><a href="#">My Account ›</a>Orders {{order.id}}
+    <div class="order-details">
+        <div>
+            <h4>Delivery Address</h4>
+            <b>{{order.customer.name}}</b>
+            <p>{{order.customer.locality}}<br>{{order.customer.city}}-{{order.customer.zipcode}}<br>{{order.customer.state}}</p>
+            <b>{{order.customer.phone}}</b>
+        </div>
+        <div>
+            <h4>Rewards</h4>
+            <p>0 SuperCoins Cashback</p>
+            <p>Use it to save on your next order</p>
+        </div>
+        <div>
+            <h4>More Actions</h4>
+                <p style="padding: 15px;">Prefer contactless delivery ?<a style="margin-left: 1.5%;" href="#">Pay Now</a></p>
+                <p style="padding: 15px;">Share order details ?<a style="margin-left: 13.5%;" href ="#">Share order</a></p>
+        </div>
+    </div>
+    <div class="order-details">
+        <div>
+            <ul style="list-style: none;display: flex;">
+            <li style="width: 100px;margin-top: 10%;"><img src="{{order.product.product_image.url}}"></li>
+            <li><p>{{order.product.productname}}</p>
+            <p>color:{{order.product.color}}</p>
+            <p>₹ {{order.product.price}}</p>
+            <p style="color: green;"> 0 Offers & 0 Coupons Applied</p></li>
+        </ul>
+        </div>
+        <div>
+            <div>
+                <h4>
+                Order status</h4>
+            </div>
+            <div>{{order.status}}</div>
+        </div>
+        <div>
+            <ul>
+            <li><a href="#"> change Date</a></li>
+            <li><a href="#">Cancel</a></li>
+            <li><a href="#">Need Help ?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="order-details">
+    <div>
+           <p><b>Help India make good choices</b></p>
+           <a href="#"><p>Did you find this page helpful?›</p></a>
+        </div>
+    </div>
+    </div>
+</div>
+    {% endfor %}
+{% endblock %}

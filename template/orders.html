@@ -44,7 +44,10 @@ tbody tr:hover {
 p {
     color: #555;
 }
+.action:hover{
+    background-color: rgb(0, 255, 221);
 
+}
     </style>
     <h1>Orders:</h1>
     {% if orders %}
@@ -64,10 +67,10 @@ p {
                 <tr>
                     <td>{{ order.id }}      <img src="{{order.product.product_image.url}}" style="width: 50px;padding-left: 30%;"> </td>
                     <td>{{ order.customer }}</td>
-                    <td style="cursor: pointer;"><a href="productdetails/{{order.product.id}}">{{ order.product }}</a></td>
+                    <td class="action" style="cursor: pointer;"><a href="productdetails/{{order.product.id}}">{{ order.product }}</a></td>
                     <td>{{ order.quality }}</td>
                     <td>₹ {{ order.product.price }}</td>
-                    <a href="#"><td style="cursor: pointer;">{{ order.status }}</td></a>
+                   <td class="action" style="cursor: pointer;"> <a href="{% url 'orderdetails'%}">{{ order.status }}</a></td>
                 </tr>
             {% endfor %}
         </tbody>
