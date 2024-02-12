@@ -4,7 +4,7 @@ const closeCartmenu =document.querySelector('#burger1')
 const sideMenuBar =document.querySelector('#sidemenubar')
 let cartopen=false;
 openCartmenu.addEventListener ('click',()=>{
-    sideMenuBar.style.width='45%';
+    sideMenuBar.style.width='50%';
     closeCartmenu.style.display='block';
     openCartmenu.style.display='none';
     

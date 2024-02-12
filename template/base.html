@@ -12,13 +12,13 @@
 <main>
     <header>
         <div>
-        <img src="" alt="image" style="height: 40px;width:fit-content;margin-left:10%;cursor:pointer">
-    </div>
+        <img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px;width:100px;margin-left:30%;cursor:pointer">
+        </div>
     <div style="margin-left: 25%;">
         <ul class="menu">
             <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'category' %}">Products</a>
-                <ul class="submenu">
+                <ul class="submenu" style="text-decoration: none;">
                     <li><a href="{% url 'milk' %}">Milk</a></li>
                     <li><a href="{% url 'curd' %}">Curd</a></li>
                     <li><a href="{% url 'kulfi' %}">kulfi</a></li>
@@ -67,15 +67,15 @@
     <h4 style="text-align: center;background-color: teal;width:100%;">copyright :2023 || Developed by prashanth</h4>
     <div class="menu-sidebar" id="sidemenubar">
     <div class="menu-menubar">
-        <ul class="menu-list" id="menulist" >
-            <li class="menu-list-item" style="cursor: pointer;"><a href="{% url 'home' %}">Home</a></li>
-            <li class="menu-list-item" style="cursor: pointer;"><a href="{% url 'about' %}">About</a></li>
-            <li class="menu-list-item" style="cursor: pointer;"><a href="{% url 'category' %}">Products</a></li>
-            <li class="menu-list-item" style="cursor: pointer;"><a href="{% url 'cart'%}">Cart</a></li>
-            <li class="menu-list-item" style="cursor: pointer;"><a href="{% url 'wishlist' %}">Wishlist</a></li>
-            <li class="menu-list-item" style="cursor: pointer;"><a href="{% url 'profile' %}">Profile</a></li>
-            <li class="menu-list-item" style="cursor: pointer;">
-                {% if user.is_authenticated %}
+        <ul class="menu-list" id="menulist" style="align-items: start;" >
+            <li class="menu-list-item" style="cursor: pointer; padding: 20px; margin-left: -10%;" ><a style="width: 100%;" href="{% url 'home' %}">Home</a></li>
+            <li class="menu-list-item" style="cursor: pointer; padding: 20px; margin-left: 0px;" ><a style="width: 100%;" href="{% url 'about' %}">About</a></li>
+            <li class="menu-list-item" style="cursor: pointer; padding: 20px; margin-left: 0px;" ><a style="width: 100%;" href="{% url 'category' %}">Products</a></li>
+            <li class="menu-list-item" style="cursor: pointer; padding: 20px; margin-left: 0px;" ><a style="width: 100%;" href="{% url 'cart'%}">Cart</a></li>
+            <li class="menu-list-item" style="cursor: pointer; padding: 20px; margin-left: 0px;" ><a style="width: 100%;" href="{% url 'wishlist' %}">Wishlist</a></li>
+            <li class="menu-list-item" style="cursor: pointer; padding: 20px; margin-left: 0px;" ><a style="width: 100%;" href="{% url 'profile' %}">Profile</a></li>
+            <li class="menu-list-item" style="cursor: pointer; padding: 20px; margin-left: 0px;" >
+               {% if user.is_authenticated %}
                 <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>
                 {% else %}
                 <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
