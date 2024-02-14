@@ -12,11 +12,10 @@
 <main>
     <header>
         <div>
-        <img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px;width:100px;margin-left:30%;cursor:pointer">
-        </div>
+            <a href="{% url 'home' %}"><img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px;width:100px;margin-left:30%;cursor:pointer">
+            </a></div>
     <div style="margin-left: 25%;">
         <ul class="menu">
-            <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'category' %}">Products</a>
                 <ul class="submenu" style="text-decoration: none;">
                     <li><a href="{% url 'milk' %}">Milk</a></li>
