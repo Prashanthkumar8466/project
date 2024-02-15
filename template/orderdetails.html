@@ -15,11 +15,11 @@
   padding: 20px;
   border: 2px solid #ddd;
   padding: 15px;
-  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 5px;
   margin-left: 10px;
   margin-right: 10px;
+  background-color: white;
 }
 .order-details a{
     text-decoration: none;
@@ -48,9 +48,9 @@ img {
 }
 </style>
 {% for order in orders %}
-<div class="">
+<div class="" >
     <p style="margin-left:1.5%;"><a href="#">Home ›</a><a href="#">My Account ›</a>Orders {{order.id}}</p>
-    <div class="order-details">
+    <div class="order-details" >
         <div class="order">
             <h4>Delivery Address</h4>
             <b>{{order.customer.name}}</b>

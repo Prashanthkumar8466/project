@@ -4,8 +4,6 @@
 
 <div style="margin-top: 5%;">
     <style>
-        /* styles.css */
-
 body {
     font-family: 'Arial', sans-serif;
     margin: 20px;
@@ -48,7 +46,14 @@ p {
     background-color: rgb(0, 255, 221);
 
 }
+.order{
+    border: 2px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
     </style>
+    <div class="order">
     <h1>Orders:</h1>
     {% if orders %}
     <table border="1" >
@@ -78,5 +83,6 @@ p {
 {% else %}
     <p>No orders available.</p>
 {% endif %}
+</div>
 </div>
 {% endblock %}

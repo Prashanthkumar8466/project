@@ -17,24 +17,8 @@
     <div style="margin-left: 25%;">
         <ul class="menu">
                 <li><a href="{% url 'category' %}">Products</a>
-                <ul class="submenu" style="text-decoration: none;">
-                    <li><a href="{% url 'milk' %}">Milk</a></li>
-                    <li><a href="{% url 'curd' %}">Curd</a></li>
-                    <li><a href="{% url 'kulfi' %}">kulfi</a></li>
-                    <li><a href="{% url 'ghee' %}">Ghee</a></li>
-                    <li><a href="{% url 'paneer' %}">Paneer</a></li>
-                    <li><a href="{% url 'Ice-cream' %}">Ice-cream</a></li>
-                    <li><a href="{% url 'cheese' %}">cheese</a></li>
-                  </ul>
             </li>
             <li><a href="{% url 'orders' %}">Orders</a>
-                <ul class="submenu">
-                    <li><a href="{% url 'cart'%}">Cart</a></li>
-                    <li><a class="nav-link text-white" href="{% url 'wishlist' %}">Wishlist</a></li>
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
-                    <li><a href="{% url 'addproduct' %}">Add product</a></li>
-                    <li><a href="{% url 'allorders' %}">orders-list</a></li>
-                  </ul></li>
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'contactus' %}">Contact</a></li>
             <li>{% if user.is_authenticated %}
