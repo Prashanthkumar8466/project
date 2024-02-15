@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from .import views
 from django.contrib.auth import views as auth_views
 from .views import add_to_cart,password_change_done, remove_from_wishlist, view_cart
 from .views import add_to_wishlist

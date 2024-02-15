@@ -103,10 +103,8 @@ color: #f0ad1c;
 }
 .prev,.next{
     margin: 10px;
-    margin-top: -15%;
-    padding: 30px;
+    padding: 10px;
     cursor: pointer;
-    position: absolute;
     color: #ececec;
     height:100px;
     background-color:rgb(180, 199, 184);

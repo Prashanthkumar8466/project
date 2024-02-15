@@ -10,6 +10,7 @@
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   left: 0%;
+  background-color: white;
   }
   .items-display li{
     cursor: pointer;
@@ -120,8 +121,11 @@ color: #f0ad1c;
   </li>
 </ul>
 </div>
+<br>
+<br>
 <div class="slideimg">
-  <div class="slide fade" >
+  <button id="prevBtn" style="display: none;">&#10094;</button>
+  <div class="slide fade">
       <img src="{% static 'images/banner/b1.jpg'%}" alt="Image1">
   </div>
   <div class="slide fade">
@@ -130,15 +134,15 @@ color: #f0ad1c;
   <div class="slide fade">
       <img src="{% static 'images/banner/b3.jpg'%}" alt="Image3">
   </div>
-  <button id="prevBtn" class="prev">&#10094;</button>
-  <button id="nextBtn" class="next">&#10095;</button>
+  <button id="nextBtn" style="display: none;">&#10095;</button>
 </div>
+
 {% endblock%}
 {% block information%}
-<div class="container">
-  <div class="dairy">
-    <h1>products</h1>
-    <p>
+<div >
+  <div class="baseproducts">
+    <h1 style="justify-content: center;margin-left: 30px;">products</h1>
+    <p  style="margin-left: 30px;margin-right: 30px;">
       In “Diary Milk’ messages and images are unique aimed to influence attitudes and perception of consumers. In this ad, affect and cognition have each been assumed to play a major role in consumers’ reactions to Diary Milk commercial. There are many ways to see this, but one of the most obvious is simply to look at the two historically dominant ways of assessing Diary Milk effectiveness. When customers see the Diary Milk commercial, there are cognitive (especially memory) measures of meaning transfer. These measures are based on the assumption of “the more”, “the better”, although the actual reasons for why this should be the case have never been fully articulated. Clow, K.E. and Baack
     </p>
   </div>
@@ -153,10 +157,10 @@ color: #f0ad1c;
 .adv li {
   border: 2px solid #ddd;
   padding: 15px;
-  border-radius: 10px;
+  margin-left:0px ;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   height: 100px;
-  margin-right: 20px;
+  margin-right: 5px;
   margin-bottom: 30px;
 }
 .adv li img{
@@ -171,10 +175,26 @@ color: #f0ad1c;
   font-size: 14px;
   color: #555;
 }
+.baseproducts{
+  border: 2px solid #ddd;
+  margin-left:0px ;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 5px;
+  background-color: white;
+}
+.baseproducts h3{
+  margin-left: 30px;
+}
+.baseproducts h5{
+  margin-right: 30px;
+}
 </style>
 <div class="baseproducts"style="overflow: hidden;">
-  <h2 >Dairy Products</h2>
-  <ul class="adv">
+  <div style="display: flex;justify-content: space-between;">
+    <h3>Dairy Products</h3>
+    <h5><a href="#" style="margin-left: 5px;">  View all</a></h5>
+  </div>
+  <ul class="adv" style="margin-left: 0%;overflow: hidden;">
     <li>
       <a href="{% url 'ghee' %}">
       <img src="{% static 'images/products/dbtoned-milk.png'%}" alt="..." ></a>
@@ -201,9 +221,11 @@ color: #f0ad1c;
 </li>
 </ul>
 </div>
-<div class="baseproducts2"style="overflow: hidden;">
-  <h2 >Dairy Items</h2>
-  <ul class="adv" >
+<div class="baseproducts"style="overflow: hidden;">
+  <div style="display: flex;justify-content: space-between;">
+    <h3>Dairy Items</h3>
+    <h5><a href="#" style="margin-left: 5px;">  View all</a></h5>  </div>
+  <ul class="adv" style="overflow: hidden;" >
     <li>
       <a href="{% url 'ghee' %}">
       <img src="{% static 'images/products/dbtoned-milk.png'%}" alt="..." ></a>
