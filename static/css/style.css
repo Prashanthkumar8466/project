@@ -32,43 +32,6 @@ header ul li a{
 p{
     text-align:justify;
 }
-.menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    transition: background-color 0.3s ease
-}
-.menu li {
-  display: inline-block;
-  position: relative;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-.menu li a:hover{
-color: #f0ad1c;
-}
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    border: 2px solid #ddd;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ececec;
-    z-index: 1;
-}
-.menu li:hover .submenu {
-    display:block;
-    transition: 0.9s;
-}
-.menu li:hover .submenu li {
-    display: block;
-    padding: 8px 0;
-}
-.menu li:hover .submenu li a{
-    padding:0;
-}
 .burger{
     height:28px;
     width: 32px;
