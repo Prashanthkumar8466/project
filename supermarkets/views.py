@@ -23,27 +23,27 @@ def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
 def category_milk(request):
-    products=product.objects.filter(category='Milk')
-    return render(request,"category.html",{'products':products,'category':'milk'})
+    products=product.objects.filter(category='Grocery')
+    return render(request,"category.html",{'products':products,'category':'Grocery'})
 def category_curd(request):
-    products=product.objects.filter(category='Curd')
-    return render(request,"category.html",{'products':products,'category':'curd'})
+    products=product.objects.filter(category='Mobiles')
+    return render(request,"category.html",{'products':products,'category':'Mobiles'})
 def category_kulfi(request):
-    products=product.objects.filter(category='kl')
-    return render(request,"category.html",{'products':products,"category":'kulfi'})
+    products=product.objects.filter(category='Fashion')
+    return render(request,"category.html",{'products':products,"category":'Fashion'})
 def category_paneer(request):
-    products=product.objects.filter(category='pa')
-    return render(request,"category.html",{'products':products,"category":'paneer'})
+    products=product.objects.filter(category='Electronics')
+    return render(request,"category.html",{'products':products,"category":'Electronics'})
 def category_ghee(request):
-    products=product.objects.filter(category='gh')
-    return render(request,"category.html",{'products':products,"category":'ghee'})
+    products=product.objects.filter(category='Home & Furnitures')
+    return render(request,"category.html",{'products':products,"category":'Home & Furnitures'})
 def category_cheese(request):
-    products=product.objects.filter(category='ch')
-    return render(request,"category.html",{'products':products,"category":'cheese'})
+    products=product.objects.filter(category='Travel')
+    return render(request,"category.html",{'products':products,"category":'Travel'})
 
 def category_Icecream(request):
-    products=product.objects.filter(category='Ice-Cream')
-    return render(request,"category.html",{'products':products,"category":'Ice-Cream'})
+    products=product.objects.filter(category='Beauty, Toys & More')
+    return render(request,"category.html",{'products':products,"category":'Beauty, Toys & More'})
 
 def product_details(request,product_id):
     products=product.objects.filter(pk=product_id)
