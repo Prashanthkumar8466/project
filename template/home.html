@@ -37,16 +37,6 @@
 .items-display li a:hover{
 color: #f0ad1c;
 }
-.submenu {
-    display: none;
-    top: 100%;
-    left: 0;
-    border: 2px solid #ddd;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ececec;
-    z-index: 1;
-}
 .items-display li:hover .submenu {
     display:block;
     transition: 0.9s;
@@ -61,13 +51,13 @@ color: #f0ad1c;
 </style>
 <div style="margin-top:8%;">
 </div>
-<ul style="display: none;list-style: none;justify-content: space-between;padding-right: 20px;" class="items-display">
+<ul style="list-style: none;justify-content: space-between;" class="items-display">
   <li>
-    <a href="{% url 'Grocery'%}">
+    <a href="{% url 'Groceries'%}">
       <img src="{% static 'images/banner/grocery.webp'%}">
-      <h5>Grocery</h5>
+      <h5>Grocery<span class="rotate-text-180" style="margin-left:3px">⇪</span></h5>
     </a>
-    <ul class="submenu" style="text-decoration: none;">
+    <ul class="submenu" style="text-decoration: none;display:none">
       <li><a href="">Milk</a></li>
       <li><a href="">Curd</a></li>
       <li><a href="">kulfi</a></li>

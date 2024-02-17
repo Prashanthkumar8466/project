@@ -4,20 +4,13 @@ const closeCartmenu =document.querySelector('#burger1')
 const sideMenuBar =document.querySelector('#sidemenubar')
 let cartopen=false;
 openCartmenu.addEventListener ('click',()=>{
-    sideMenuBar.style.width='50%';
-    closeCartmenu.style.display='block';
-    openCartmenu.style.display='none';
-    
+    sideMenuBar.style.width='75%';    
 })
 closeCartmenu.addEventListener("click",()=>{
     sideMenuBar.style.width='0%';
-    openCartmenu.style.display='block';
-    closeCartmenu.style.display='none';
-
 })
 // slide image
 let slideIndex=0;
-
 const slides = document.querySelectorAll('.slide');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');

@@ -7,7 +7,7 @@ urlpatterns = [
     path('home', views.home,name="home"),
     #products
     path('category/', views.category,name="category"),
-    path('Grocery', views.category_curd,name="Grocery"),
+    path('Groceries', views.category_curd,name="Groceries"),
     path('Mobiles', views.category_kulfi,name="Mobiles"),
     path('Fashion', views.category_milk,name="Fashion"),
     path('Electronics', views.category_cheese,name="Electronics"),
