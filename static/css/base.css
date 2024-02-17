@@ -95,13 +95,13 @@ main header ul li a{
     position: absolute;
     background-color:white;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(129, 127, 127, 0.2);
+    box-shadow: 0 4px 8px rgba(109, 106, 106, 0.2);
     justify-content: start;
     width: fit-content;
     transition: transform 3s ease;
 }
 .username:hover .submenu li:hover{
-    background-color:rgba(141, 136, 136, 0.1);
+    background-color:rgba(95, 88, 88, 0.1);
 }
 .username .submenu li{
     align-items: start;

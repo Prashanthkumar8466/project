@@ -6,11 +6,15 @@
 {% endblock %}
 {% block banner-slider %}
 <style>
+  .top{
+    margin-top:6%;
+  }
   .items-display{
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   left: 0%;
   background-color: white;
+  justify-content: space-between;"
   }
   .items-display li{
     cursor: pointer;
@@ -27,7 +31,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    transition: background-color 0.3s ease
+    transition: background-color 0.3s ease;
 }
 .items-display li {
   display: inline-block;
@@ -48,10 +52,12 @@ color: #f0ad1c;
 .items-display li:hover .submenu li a{
     padding:0;
 }
+@media screen and (max-width:800px){
+}
 </style>
-<div style="margin-top:8%;">
+<div class="top">
 </div>
-<ul style="list-style: none;justify-content: space-between;" class="items-display">
+<ul style="list-style: none;" class="items-display">
   <li>
     <a href="{% url 'Groceries'%}">
       <img src="{% static 'images/banner/grocery.webp'%}">
