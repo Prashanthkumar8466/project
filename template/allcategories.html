@@ -1,0 +1,132 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block banner-slider %}
+<style>
+  .top{
+    margin-top:6%;
+    margin-bottom:3%;
+  }
+  .items-display{
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  left: 0%;
+  background-color: white;
+  overflow:hidden;
+  }
+  .items-display li{
+    cursor: pointer;
+  }
+  .items-display a{
+    text-align: center;
+    text-decoration: none;
+  }
+  p{
+    text-align:justify;
+   font-family: 'Times New Roman', Times, serif;
+}
+.items-display {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s ease;
+}
+.items-display li {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.items-display li a:hover{
+color: #f0ad1c;
+}
+.items-display li:hover .submenu {
+    display:block;
+    transition: 0.9s;
+}
+.items-display li:hover .submenu li {
+    display: block;
+    padding: 8px 0;
+}
+.items-display li:hover .submenu li a{
+    padding:0;
+}
+@media screen and (max-width:800px){
+  .top{
+    margin-top:13%;
+    margin-bottom:3%;
+  }
+  .items-display{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(20px, 1fr));
+    gap: 20px;
+  }
+  .items-display li{
+    width:30%;
+  }
+}
+</style>
+<div class="top">
+</div>
+<ul style="list-style: none;" class="items-display">
+  <li>
+    <a href="{% url 'Groceries'%}">
+      <img src="{% static 'images/banner/grocery.webp'%}">
+      <h5>Grocery<span class="rotate-text-180" style="margin-left:3px">⇪</span></h5>
+    </a>
+    <ul class="submenu" style="text-decoration: none;display:none">
+      <li><a href="">Milk</a></li>
+      <li><a href="">Curd</a></li>
+      <li><a href="">kulfi</a></li>
+      <li><a href="">Ghee</a></li>
+      <li><a href="">Paneer</a></li>
+      <li><a href="">Ice-cream</a></li>
+      <li><a href="">x`heese</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="{% url 'Mobiles' %}">
+      <img src="{% static 'images/banner/mobiles.webp'%}">
+      <h5>Mobiles</h5>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'Fashion' %}">
+      <img src="{% static 'images/banner/Fashion.webp'%}">
+      <h5>Fashion</h5>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'Electronics' %}">
+      <img src="{% static 'images/banner/electronics.webp'%}">
+      <h5>Electronics</h5>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'Home & Furnitures' %}">
+      <img src="{% static 'images/banner/home&furnitures.webp'%}">
+      <h5>Home & Furnitures</h5>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'Appliances' %}">
+      <img src="{% static 'images/banner/appliances.webp'%}">
+      <h5>Appliances</h5>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'Travel' %}">
+      <img src="{% static 'images/banner/travel.webp'%}">
+      <h5>Travel</h5>
+    </a>
+  </li>
+  <li>
+    <a href="">
+      <img src="{% static 'images/banner/toys.webp'%}">
+      <h5>Beauty, Toys & More</h5>
+    </a>
+  </li>
+</ul>
+</div>
+{% endblock%}

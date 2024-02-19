@@ -6,6 +6,7 @@ from .views import add_to_wishlist
 urlpatterns = [
     path('home', views.home,name="home"),
     #products
+    path('categories/', views.all_categories,name="categories"),
     path('category/', views.category,name="category"),
     path('Groceries', views.category_curd,name="Groceries"),
     path('Mobiles', views.category_kulfi,name="Mobiles"),

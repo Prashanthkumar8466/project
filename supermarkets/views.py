@@ -245,3 +245,5 @@ def allorder_view(request):
 def order_details(request,pk):
     order_details=order.objects.filter(user=request.user,id=pk)
     return render(request,'orderdetails.html',{'orders':order_details,'pk':pk})
+def all_categories(request):
+    return render(request,'allcategories.html')

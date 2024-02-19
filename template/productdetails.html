@@ -4,39 +4,39 @@
 {% endblock %}
 {% block main %}
 <style>
-  .addtocart {
-      background-color: #f39e01;
-      color: #ffffff;
-      border: none;
-      padding: 5px 20px;
-      border-radius: 5px;
-      cursor: pointer;
+  @media screen and (max-width:800px){
+  .button{
+    position:fixed;
+    bottom:0%;
+    background-color: white;
+    width:105%;
+    overflow:hidden;
   }
-  .addtocart:hover {
-      background-color: #15fc00;
-      border-bottom: 1px solid rgb(255, 136, 0);
-  
+  .button button{
+    height:65px;
+    width:203px;
+    border:none;
+    font-size:20px;
   }
-  .addtowish {
-      background-color: #01f3df;
-      color: #ffffff;
-      border: none;
-      padding: 5px 20px;
-      border-radius: 5px;
-      cursor: pointer;
+  .product_margin{
+    margin-top:10%;
   }
-  .addtowish:hover {
-      background-color: #002efc;
-      border-bottom: 1px solid rgb(255, 136, 0);
-  
+  .baseproducts{
+    border: 2px solid #ddd;
+    margin-top:150%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
   }
+  .baseproducts img{
+    width:200px;
+  }
+}
 </style>
-<div class="product_margin" style="margin-top: 10%;">
-<form class="products" method="post">
+<form class="" method="post">
     {% csrf_token %}
-    <div class="product-items">
+    <div class="baseproducts">
         {% for product in products %}
-        <div class="product">
+        <div class="produc">
           <img src="{{product.product_image.url}}" alt="{{product.productname}}">
           <h3>Name:{{product.productname}}</h3>
           <p>RS.{{product.price}}<br>
@@ -44,11 +44,13 @@
             {{product.description }}<br>
             {{product.specifications}}
           </p>
-          <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="addtocart" style="cursor: pointer;" >Add to cart</button></a>
-          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="addtowish" style="cursor: pointer;" >Add to Wishlist</button></a>
+          <div class="button">
+          <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(253, 253, 253);" >Add to cart</button></a>
+         <!-- <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="addtowish" style="cursor: pointer;" >Add to Wishlist</button></a>-->
+         <a href=""><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Buy Now</button></a>
+        </div>
         </div>
         {% endfor %}
         </div>
 </form>
-</div>
 {% endblock %}
