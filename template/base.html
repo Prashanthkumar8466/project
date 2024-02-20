@@ -41,7 +41,7 @@
                 <a class="nav-link text-white" href=""><img src="{% static 'images/banner/appinstall.svg'%}"></a>  
                 {% endif %}
                 <a class="nav-link text-white" href="{% url 'orders' %}"><img src="{% static 'images/banner/cart.svg'%}"></a>     
-                <a class="nav-link text-white" href="{% url 'logout' %}"><img src="{% static 'images/banner/profile.svg'%}" ></a>     
+                <a class="nav-link text-white" href="{% url 'profile' %}"><img src="{% static 'images/banner/profile.svg'%}" ></a>     
             </div>
             <!--end phone sidebar button-->
             <div class="main-bar">
@@ -66,13 +66,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="nav-link text-white" href="{% url 'logout' %}"><img src="{% static 'images/banner/cart.svg'%}" >Cart</a>
+                        <a class="nav-link text-white" href="{% url 'cart' %}"><img src="{% static 'images/banner/cart.svg'%}" >Cart</a>
                     </li>
                     <li>
-                        <a class="nav-link text-white" href="{% url 'logout' %}"><img src="{% static 'images/banner/seller.svg'%}" >Become a Seller</a>
+                        <a class="nav-link text-white" href=""><img src="{% static 'images/banner/seller.svg'%}" >Become a Seller</a>
                     </li>
                     <li>
-                        <a class="nav-link text-white" href="{% url 'logout' %}"><img src="{% static 'images/banner/dots3.svg'%}"></a>
+                        <a class="nav-link text-white" href=""><img src="{% static 'images/banner/dots3.svg'%}"></a>
                     </li>
                     <!--
                     <li><a href="{% url 'category' %}">Products</a></li>

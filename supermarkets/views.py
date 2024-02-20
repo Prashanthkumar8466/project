@@ -23,8 +23,8 @@ def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
 def category_milk(request):
-    products=product.objects.filter(category='Groceries')
-    return render(request,"category.html",{'products':products,'category':'Groceries'})
+    products=product.objects.all()
+    return render(request,"category.html",{'products':products,'category':'groceries'})
 def category_curd(request):
     products=product.objects.filter(category='Mobiles')
     return render(request,"category.html",{'products':products,'category':'Mobiles'})

@@ -1,9 +1,35 @@
 {% extends 'base.html'%}
 {% load static %}
-{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">
+{% block link %}<link rel="stylesheet" type="text/css" href="">
 {% endblock %}
 {% block main %}
 <style>
+  .product-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid #ddd;
+    padding: 15px;
+    }
+    .space{
+      margin-top:5%;
+    }
+    .product {
+      border: 1px solid #ddd;
+      padding: 15px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .product img {
+      height: auto;
+      width:280px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .product img:hover{
+      width:281px;
+    }
   @media screen and (max-width:800px){
   .button{
     position:fixed;
@@ -11,6 +37,8 @@
     background-color: white;
     width:105%;
     overflow:hidden;
+    display:flex;
+    margin-left:-6px;
   }
   .button button{
     height:65px;
@@ -23,7 +51,7 @@
   }
   .baseproducts{
     border: 2px solid #ddd;
-    margin-top:150%;
+    margin-top:15%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
   }
@@ -32,11 +60,11 @@
   }
 }
 </style>
-<form class="" method="post">
+<form class="product-items" method="post">
     {% csrf_token %}
     <div class="baseproducts">
         {% for product in products %}
-        <div class="produc">
+        <div class="product">
           <img src="{{product.product_image.url}}" alt="{{product.productname}}">
           <h3>Name:{{product.productname}}</h3>
           <p>RS.{{product.price}}<br>
