@@ -9,7 +9,7 @@
     <div>
     {% for product in cart_items %}
         <div class="product">
-        <img src="{{product.product_image.url}}" alt="{{product.productname}}">
+        <img style='width:100px'src="{{product.product_image.url}}" alt="{{product.productname}}">
         <p><b>Name:</b>{{product.title}}</p>
         <p><b>Selling_price:</b>{{product.price}}</p>
         <p><b>Discounted_price:</b>{{product.discount}}</p>

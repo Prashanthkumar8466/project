@@ -4,11 +4,14 @@
 {% endblock %}
 {% block main %}
 <style>
+  a{
+    text-decoration: none;
+  }
   .product-items {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap:0px;
+  padding: 10px;
   border: 2px solid #ddd;
   padding: 15px;
   }
@@ -20,6 +23,7 @@
     padding: 15px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor:pointer;
   }
   .product img {
     height: auto;
@@ -32,7 +36,13 @@
   }
   @media screen and (max-width:800px){
   .space{
-    margin-top:15%;
+    margin-top:10.7%;
+  }
+  .product-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3px;
+    padding: 20px;
   }
   .product img {
     height: auto;
@@ -40,25 +50,24 @@
     border-radius: 8px;
     margin-bottom: 10px;
   }
-  .product {
-    width:300px;
-}
+  .product:hover{
+    width:281px;
+  }
   }
 </style>
 <div class='space'>
   {% if products %}
   <div class="product-items">
     {% for product in products %}
-    <div class="product">
-      <a href="productdetails/{{product.id}}"><img src="{{product.product_image.url}}" alt="{{product.productname}}"></a>
+    <a style='display:flex' href="productdetails/{{product.id}}"><div class="product">
+      <img src="{{product.product_image.url}}" alt="{{product.productname}}">
       <h3>Name:{{product.productname}}</h3>
       <div style='display:flex'>
         <h1 style='margin-right:7px;color:green'>- %Off</h1>
         <p><span style='margin-right:7px'>₹</span>{{product.price}}<br>
-        <span >₹ {{product.discount}}</span></p>
-      
+        <span style='color:rgb(150, 150, 177);' >₹ {{product.discount}}</span></p>
       </div>
-    </div>
+    </div></a>
     {% endfor %}
   </div> 
   {% endif %}

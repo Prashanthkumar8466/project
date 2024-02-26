@@ -1,18 +1,15 @@
 {% extends "base.html"%}
 {% block main%}
 <br>
-
-<div style="margin-top: 5%;">
     <style>
 h1 {
     color: #333;
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    overflow: scroll;
+
 }
 
 table, th, td {
@@ -45,7 +42,45 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
 }
-    </style>
+.phoneview{
+    display:none;
+}
+@media screen and (max-width:800px){  
+    .phoneview{
+        display:block;
+    }
+    .order{
+        display:none;
+    }
+    .product {
+        margin-left:-40px;
+      }
+      .product a{
+        border: 1px solid #ddd;
+        padding: 15px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display:flex;
+        list-style:none;
+        justify-content:space-around;
+        align-items:center;
+        text-decoration:none;
+      }
+}
+</style>
+<div class='phoneview' style='margin-top:-20px'>
+    <h1>Orders:</h1>
+    {% if orders %}
+    {% for order in orders %}
+    <ul class='product'>
+        <a href="{% url 'orderdetails' pk=order.id %}" style='align-items:none'> 
+        <li><img src="{{order.product.product_image.url}}" style="width: 50px;"></li>
+        <li><h4>{{ order.product }}</h4></li>
+        <li><h4>›</h4></li></a>
+    </ul>
+    {% endfor %}
+    {% endif %}
+</div>
     <div class="order">
     <h1>Orders:</h1>
     {% if orders %}
@@ -63,7 +98,7 @@ p {
         <tbody>
             {% for order in orders %}
                 <tr>
-                    <td>{{ order.id }}      <img src="{{order.product.product_image.url}}" style="width: 50px;padding-left: 30%;"> </td>
+                    <td>{{ order.id }}<img src="{{order.product.product_image.url}}" style="width: 50px;padding-left: 30%;"> </td>
                     <td>{{ order.customer }}</td>
                     <td class="action" style="cursor: pointer;"><a href="productdetails/{{order.product.id}}">{{ order.product }}</a></td>
                     <td>{{ order.quality }}</td>

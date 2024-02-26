@@ -22,13 +22,13 @@ def home(request):
 def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
-def category_milk(request):
-    products=product.objects.all()
-    return render(request,"category.html",{'products':products,'category':'groceries'})
-def category_curd(request):
+def category_mobiles(request):
     products=product.objects.filter(category='Mobiles')
-    return render(request,"category.html",{'products':products,'category':'Mobiles'})
-def category_kulfi(request):
+    return render(request,"category.html",{'products':products,"category":'Mobiles'})
+def category_curd(request):
+    products=product.objects.filter(category='groceries')
+    return render(request,"category.html",{'products':products,'category':'groceries'})
+def category_fashion(request):
     products=product.objects.filter(category='Fashion')
     return render(request,"category.html",{'products':products,"category":'Fashion'})
 def category_paneer(request):
@@ -160,9 +160,9 @@ def wishlist_view(request,):
     return render(request,'wishlist.html',{'wishlist':wishlistitems.wish_item.all()})
 @login_required(login_url='login')
 def view_cart(request):
-    cart=cart_item.objects.first()
+    cart,created=cart_item.objects.get_or_create(user=request.user)
     cart_items=cart.cart_items.all()
-    amount=sum(product.discount for product in cart_items)
+    amount=sum(product.price for product in cart_items)
     totalamount=amount+40
     return render(request,'cart.html',{'amount':amount,'totalamount':totalamount,'cart_items':cart_items})
 @login_required(login_url='login')

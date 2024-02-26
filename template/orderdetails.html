@@ -2,11 +2,7 @@
 {% load static %}
 {% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/.css' %}">{% endblock %}
 {% block main %}
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <style>
 .order-details {
   display: grid;
@@ -39,18 +35,38 @@
 .order-details ul li{
     padding: 15px;
 }
-img {
+.order-details .product-Offers img {
   max-width: 100%;
   height: auto;
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-bottom: 10px;
 }
+@media screen and (max-width:800px){
+    .order-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 20px;
+        padding: 20px;    
+    }
+    .order{
+      width:300px;
+    }
+    .order .pay{
+    }
+    .order-details .product-Offers{
+        margin-left:-60px;
+    }
+    .order-details .product-Offers img{
+
+    }
+}
 </style>
+<div style='margin-top:6%'>
 {% for order in orders %}
 <div class="" >
     <p style="margin-left:1.5%;"><a href="#">Home ›</a><a href="#">My Account ›</a>Orders {{order.id}}</p>
-    <div class="order-details" >
+<div class="order-details" >
         <div class="order">
             <h4>Delivery Address</h4>
             <b>{{order.customer.name}}</b>
@@ -64,12 +80,12 @@ img {
         </div>
         <div class="order">
             <h4>More Actions</h4>
-                <p style="padding: 15px;">Prefer contactless delivery ?<a style="margin-left: 1.5%;" href="#">Pay Now</a></p>
-                <p style="padding: 15px;">Share order details ?<a style="margin-left: 13.5%;" href ="#">Share order</a></p>
+                <p  style="padding: 15px;">Prefer contactless delivery ?<a class="pay" style="margin-left: 1.5%;" href="#">Pay_Now</a></p>
+                <p  style="padding: 15px;">Share order details ?<a class="pay" style="margin-left: 13.5%;" href ="#">Share_order</a></p>
         </div>
     </div>
     <div class="order-details">
-        <div >
+        <div class="product-Offers">
             <ul style="list-style: none;display: flex;">
             <li style="width: 100px;margin-top: 10%;"><img src="{{order.product.product_image.url}}"></li>
             <li><p>{{order.product.productname}}</p>
@@ -102,4 +118,5 @@ img {
     </div>
 </div>
     {% endfor %}
+</div>
 {% endblock %}

@@ -1,34 +1,92 @@
 {% extends 'base.html'%}
 {% load static %}
-{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/categoy.css' %}">
 {% endblock %}
-{% block main %}
-<!--number of products-->
-<br>
-<br>
-<br>
-<br>
+{% block main %} 
 <style>
+    .space{
+        margin-top:5%;
+      }
     .Remove {
         background-color: #151616;
         color: #ffffff;
         border: none;
         padding: 5px 20px;
-        border-radius: 5px;
         cursor: pointer;
     }
     .Remove:hover {
         background-color: #fc0000;
         border-bottom: 1px solid rgb(255, 136, 0);
     }
+    .product-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        border: 2px solid #ddd;
+        padding: 15px;
+    }
+    .product img{
+        width:280px;
+        height:200px;
+    }
+    .product {
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .payment{
+        margin-bottom:10px;
+    }
+    .button button{
+        height:50px;
+        width:210px;
+        border:none;
+        font-size:20px;
+      }
+      .empty {
+        color: #555;
+
+    }
+    @media screen and (max-width:800px){
+    .space{
+      margin-top:10.7%;
+    }
+    .product-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 3px;
+      padding: 20px;
+    }
+    .product img {
+      height: auto;
+      width:280px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .product img:hover{
+      width:281px;
+    }
+    .button{
+        position:fixed;
+        bottom:0%;
+        background-color: white;
+        width:100%;
+        overflow:hidden;
+        display:flex;
+        margin-left:-4.7%;
+      }
+    }
 </style>
-<form  method="post"  >
+<!--old
+<form  method="post" style="width:300px">
     {% csrf_token %}
 {% if cart_items %}
 <div class="product-items">
 {% for product in cart_items %}
 <div class="product">
-    <img src="{{product.product_image.url}}" alt="{{product.productname}}">
+    <img style='width:100px' src="{{product.product_image.url}}" alt="{{product.productname}}">
   <h3>Name:{{product.productname}}</h3>
   <p>RS.{{product.price}}<br>
     RS.{{product.discount}}<br>
@@ -42,7 +100,7 @@
 {% else %}
 <h4>No Items</h4>
 {% endif %}
-<!--number of products
+number of products
 <form method="post">
     {% csrf_token%}
 <div class="products">
@@ -63,7 +121,7 @@
     </div>
     {% endfor %}
 </div>
-number of products-->
+number of products
 <div>
 <h2>TOTAL PAYMENT</h2>
         <ul class="product" style="list-style-type: none; display: grid;
@@ -78,7 +136,6 @@ number of products-->
           </div>
 </div>
 </form>
-    <!--
 <div class="product">
 <div class="products" >
     
@@ -93,5 +150,47 @@ number of products-->
     {% else%}
     no cart_items
     {% endif %}
-</div>-->
+</div>
+old-->
+<form class='space'>
+    {% csrf_token %}
+    {% if cart_items %}
+    <div class='product-items'>
+        {% for product in cart_items %}
+        <div class="product">
+        <img src="{{product.product_image.url}}" alt="{{product.productname}}">
+        <h3>Name:{{product.productname}}</h3>
+        <p>RS.{{product.price}}<br>
+            RS.{{product.discount}}<br>
+            Quantity:{{product.quantity}} <br></p>
+          <a href="{% url 'remove-from-cart' product_id=product.id %}"><button type="button" class="Remove">Remove</button></a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class =payment>
+        <h2 style="margin-left:20px">TOTAL PAYMENT</h2>
+        <ul class="product" style="list-style-type: none; display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;" >
+            <li ><h4>amount :-<span id="amount">{{amount}}</span></h4></li>
+            <li><h4>shipping                <span>Rs.40</span><br></h4></li>
+            <li ><h4>Total(including GST)    <span id="totalamount">Rs.{{totalamount}}</span></h4></li>
+            <li>
+                <div class="button" style='justify-content:center;'>
+                    <a><button type="button" class="addtocart" style="background-color:rgb(253, 253, 253);" >Total:₹ {{totalamount}}</button></a>
+                    <a href="{% url 'checkout' %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(255, 136, 0)" >PAYMENT</button></a>
+                  </div>
+            </li>
+        </ul>
+        <br>
+    </div>
+    {% else %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class=empty>Empty Cart<p>
+    {% endif %}
+</form>
 {% endblock %}

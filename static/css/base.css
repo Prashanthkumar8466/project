@@ -7,10 +7,11 @@ body{
 }
 a{
     color: black;
+    text-decoration: none;
 }
 main header{
     border: 1px solid #ddd;
-    background-color:white;
+    background-color:rgb(255, 255, 255);
     display: flex;
     position: fixed;
     justify-content:space-between;
@@ -95,7 +96,6 @@ main header ul li a{
     position: absolute;
     background-color:white;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(109, 106, 106, 0.2);
     justify-content: start;
     width: fit-content;
     transition: transform 3s ease;
@@ -114,9 +114,16 @@ main header ul li a{
     display: none;
 }
 .menu-sidebar{
-    display: none; 
-}
+    display: none;
+    }
 @media screen and (max-width:800px){
+    main header{
+        height:50px;
+        background-color:rgb(248, 149, 0);
+    }
+    main header ul li a{
+        padding: 10px;
+    }
     .burger{
         list-style: none;
         display: block;
@@ -138,8 +145,7 @@ main header ul li a{
         height: 100%;
         width:-0%;
         z-index: 11;
-        background-color: #ececec;
-        border: 2px solid #ddd;
+        background-color:white;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: 0.3s linear;
         overflow: hidden;
@@ -163,7 +169,6 @@ main header ul li a{
     .menu-list a{
         text-decoration: none;
         color: #090909;
-        margin-left: -30px;
         padding: 10px;
         padding-left: 0px;
     }
@@ -185,4 +190,4 @@ main header ul li a{
     footer h4{
         display: none;
     }
-}
+    }

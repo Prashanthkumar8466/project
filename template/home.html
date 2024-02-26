@@ -2,7 +2,6 @@
 {% load static %}
 {% block link %}
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 {% endblock %}
 {% block banner-slider %}
 <style>
@@ -66,18 +65,20 @@ color: #f0ad1c;
     overflow:scroll;
     justify-content:start;
     overflow-y:hidden;
+    height:77px;
+    margin-bottom:-10px;
   }
   ::-webkit-scrollbar {
     width: 1px;
   }
   .items-display img{
-    width:75px;
-    margin-bottom:-35px;
+    width:45px;
+    margin-bottom:-30px
   }
   .items-display li{
-    width:30%;
+    width:20%;
     padding: 10px;
-    margin-bottom:-20px;
+    padding-top:3px;
   }
   .items-display .all{
     display:block;
@@ -87,9 +88,7 @@ color: #f0ad1c;
   }
 }
 @media screen and (max-width:600px){
-  .items-display{
-    margin-bottom:-10%;
-  }
+  
 }
 </style>
 <div class="top">
@@ -98,13 +97,13 @@ color: #f0ad1c;
   <li class="all">
     <a href="{% url 'categories' %}">
       <img src="{% static 'images/banner/mobiles.webp'%}">
-      <h5>all categories</h5>
+      <h6>categories</h6>
     </a>
   </li>
   <li>
     <a href="{% url 'Groceries'%}">
       <img src="{% static 'images/banner/grocery.webp'%}">
-      <h5>Grocery</h5>
+      <h6>Grocery</h6>
     </a>
     <ul class="submenu" style="text-decoration: none;display:none">
       <li><a href="">Milk</a></li>
@@ -119,43 +118,43 @@ color: #f0ad1c;
   <li>
     <a href="{% url 'Mobiles' %}">
       <img src="{% static 'images/banner/mobiles.webp'%}">
-      <h5>Mobiles</h5>
+      <h6>Mobiles</h6>
     </a>
   </li>
   <li>
     <a href="{% url 'Fashion' %}" >
       <img src="{% static 'images/banner/Fashion.webp'%}">
-      <h5>Fashion</h5>
+      <h6>Fashion</h6>
     </a>
   </li>
   <li>
     <a href="{% url 'Electronics' %}">
       <img src="{% static 'images/banner/electronics.webp'%}">
-      <h5>Electronics</h5>
+      <h6>Electronics</h6>
     </a>
   </li>
   <li>
     <a href="{% url 'Home & Furnitures' %}">
       <img src="{% static 'images/banner/home&furnitures.webp'%}">
-      <h5>Furnitures</h5>
+      <h6>Furnitures</h6>
     </a>
   </li>
   <li>
     <a href="{% url 'Appliances' %}">
       <img src="{% static 'images/banner/appliances.webp'%}">
-      <h5>Appliances</h5>
+      <h6>Appliances</h6>
     </a>
   </li>
   <li>
     <a href="{% url 'Travel' %}">
       <img src="{% static 'images/banner/travel.webp'%}">
-      <h5>Travel</h5>
+      <h6>Travel</h6>
     </a>
   </li>
   <li>
     <a href="">
       <img src="{% static 'images/banner/toys.webp'%}">
-      <h5>Beauty, Toys & More</h5>
+      <h6>Beauty&Toys</h6>
     </a>
   </li>
 </ul>
@@ -173,83 +172,117 @@ color: #f0ad1c;
   </div>
   <button id="nextBtn" style="display: none;">&#10095;</button>
 </div>
+<script>
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
 
+  function slideshow(n) {
+      if (n >= slides.length) {
+          slideIndex = 0;
+      } else if (n < 0) {
+          slideIndex = slides.length - 1;
+      }
+
+      slides.forEach((slide) => {
+          slide.style.display = 'none';
+      });
+
+      slides[slideIndex].style.display = 'block';
+  }
+
+  function nextSlide() {
+      slideIndex++;
+      slideshow(slideIndex);
+  }
+
+  prevBtn.addEventListener('click', () => {
+      slideIndex--;
+      slideshow(slideIndex);
+  });
+
+  nextBtn.addEventListener('click', nextSlide);
+
+  function autoSlide() {
+      nextSlide();
+      setTimeout(autoSlide, 3000);
+  }
+
+  autoSlide();
+  slideshow(slideIndex);
+</script>
 {% endblock%}
 {% block information%}
 {% endblock %}
 {% block main %}
 <style>
+  .baseproducts{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+  .adv{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3px;
+    padding: 20px;
+  }
+  .adv li {
+    border-radius:3px;
+    border: 2px solid #ddd;
+    padding-top:0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 5px;
+  }
+  .adv li img{
+    height:60px
+  }
+  @media screen and (max-width:800px){
   .adv{
     width: 100%;
+    height:120px; 
     list-style: none;
     display:flex;
     overflow:hidden;
     overflow-wrap: border;
     scroll-behavior: smooth;
+    padding-left:5px;
+    justify-content:space-around;
   }
   .adv li img{
-    width:100px;
+    height:60px
   }
-  
+  a{
+    text-decoration:none;
+  }
+  .adv li a p{
+    text-align:center;
+  }
 .adv li {
+  border-radius:3px;
   border: 2px solid #ddd;
-  padding:15px;
+  padding-top:0px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 100px;
   margin-right: 5px;
-  margin-bottom: 30px;
-}
-.adv li img{
-  height: 90px;
-}
-.adv h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.adv p {
-  font-size: 14px;
-  color: #555;
 }
 .baseproducts{
-  border: 2px solid #ddd;
-  margin-left:0px ;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-right: 5px;
   background-color: white;
 }
-.baseproducts h3{
-  margin-left: 30px;
-}
-.baseproducts h5{
-  margin-right: 30px;
-}
+  }
 </style>
 <div class="baseproducts"style="overflow: hidden;">
-  <div style="display: flex;justify-content: space-between;">
-    <h3>Dairy Products</h3>
-    <h5><a href="#" style="margin-left: 5px;">  View all</a></h5>
-  </div>
-  <ul class="adv" style="margin-left: 0%;overflow: hidden;">
-    <li>
-      <a href="">
-      <img src="{% static 'images/products/dbtoned-milk.png'%}" alt="..." ></a>
-    </li>
-    <li>
-      <a href="">
-        <img src="{% static 'images/products/kulfi.png'%}" alt="..."></a>
-    </li> 
+  <ul class="adv"> 
     <li>
         <a href="">
-        <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
+        <img src="{% static 'images/products/curd-total.png'%}" alt="...">
+        <p>Booking<br>online ticket</p>
+      </a>
+        
     </li>
   <li>
     <a href="">
     <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
-</li>
-<li>
-  <a href="">
-  <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
 </li>
 <li>
   <a href="">
@@ -258,29 +291,17 @@ color: #f0ad1c;
 </ul>
 </div>
 <div class="baseproducts"style="overflow: hidden;">
-  <div style="display: flex;justify-content: space-between;">
-    <h3>Dairy Items</h3>
-    <h5><a href="#" style="margin-left: 5px;">  View all</a></h5>  </div>
-  <ul class="adv" style="overflow: hidden;" >
-    <li>
-      <a href="">
-      <img src="{% static 'images/products/dbtoned-milk.png'%}" alt="..." ></a>
-    </li>
-    <li>
-      <a href="">
-        <img src="{% static 'images/products/kulfi.png'%}" alt="..."></a>
-    </li> 
+  <ul class="adv"> 
     <li>
         <a href="">
-        <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
+        <img src="{% static 'images/products/curd-total.png'%}" alt="...">
+        <p>Booking<br>online ticket</p>
+      </a>
+        
     </li>
   <li>
     <a href="">
     <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
-</li>
-<li>
-  <a href="">
-  <img src="{% static 'images/products/curd-total.png'%}" alt="..."></a>
 </li>
 <li>
   <a href="">

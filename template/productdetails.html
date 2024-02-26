@@ -5,21 +5,17 @@
 {% block main %}
 <style>
   .product-items {
+    margin-top:6%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    border: 2px solid #ddd;
-    padding: 15px;
-    }
-    .space{
-      margin-top:5%;
-    }
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 10px;
+  }
     .product {
       border: 1px solid #ddd;
       padding: 15px;
       background-color: #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     
     }
     .product img {
       height: auto;
@@ -30,7 +26,30 @@
     .product img:hover{
       width:281px;
     }
+    .button{
+      bottom:0%;
+      background-color: white;
+      width:105%;
+      overflow:hidden;
+      display:flex;
+      margin-left:-34px;
+    }
+    .button button{
+      height:65px;
+      width:203px;
+      border:none;
+      font-size:20px;
+    }
+    .product .change{
+      margin-left:50px;
+    }
   @media screen and (max-width:800px){
+    .product-items {
+      margin-top:2%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 10px;
+    }
   .button{
     position:fixed;
     bottom:0%;
@@ -38,7 +57,7 @@
     width:105%;
     overflow:hidden;
     display:flex;
-    margin-left:-6px;
+    margin-left:-34px;
   }
   .button button{
     height:65px;
@@ -56,22 +75,24 @@
     background-color: white;
   }
   .baseproducts img{
-    width:200px;
+    width:350px;
   }
 }
 </style>
 <form class="product-items" method="post">
     {% csrf_token %}
-    <div class="baseproducts">
+    <div class="baseproducts" >
         {% for product in products %}
         <div class="product">
+          <div class='change' style='margin-left:-5px;'>
           <img src="{{product.product_image.url}}" alt="{{product.productname}}">
           <h3>Name:{{product.productname}}</h3>
-          <p>RS.{{product.price}}<br>
-            RS.{{product.discount}}<br>
+          <p>₹ {{product.price}}<br>
+           <span style='color:rgb(150, 150, 177);'> ₹ {{product.discount}}</span><br>
             {{product.description }}<br>
             {{product.specifications}}
           </p>
+        </div>
           <div class="button">
           <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(253, 253, 253);" >Add to cart</button></a>
          <!-- <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="addtowish" style="cursor: pointer;" >Add to Wishlist</button></a>-->
