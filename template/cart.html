@@ -79,79 +79,6 @@
       }
     }
 </style>
-<!--old
-<form  method="post" style="width:300px">
-    {% csrf_token %}
-{% if cart_items %}
-<div class="product-items">
-{% for product in cart_items %}
-<div class="product">
-    <img style='width:100px' src="{{product.product_image.url}}" alt="{{product.productname}}">
-  <h3>Name:{{product.productname}}</h3>
-  <p>RS.{{product.price}}<br>
-    RS.{{product.discount}}<br>
-    Quantity:{{product.quantity}} <br>
-
-  </p>
-  <a href="{% url 'remove-from-cart' product_id=product.id %}"><button type="button" class="Remove">Remove</button></a>
-</div>
-{% endfor %}
-</div>
-{% else %}
-<h4>No Items</h4>
-{% endif %}
-number of products
-<form method="post">
-    {% csrf_token%}
-<div class="products">
-    {% if cart_items %}
-    {% for product in cart_items %}
-        <div class="product">
-        <a href="productdetails/{{product.id}}"><img src="{{product.product_image.url}}" alt="{{product.productname}}"></a>
-        <p><b>Name:</b>{{product.title}}</p>
-        <p><b>Selling_price:</b>{{product.price}}</p>
-        <p><b>Discounted_price:</b>{{product.discount}}</p>
-        <div class="my-3">
-            <label for="Quantity">Quantity:</label>
-            <a class="minus-cart btn" pid={{product.id}}><i class="fas fa-minus-square fa-lag"></i></a>
-            <span id="Quantity">{{product.quantity}}</span>
-            <a class="plus-cart btn" pid={{product.id}}><i class="fas fa-plus-square fa-lag"></i></a>
-        </div>
-        <a href="{% url 'remove-from-cart' product_id=product.id %}"><button style="cursor: pointer;" type="button" class="btn btn-dark">Remove</button></a>
-    </div>
-    {% endfor %}
-</div>
-number of products
-<div>
-<h2>TOTAL PAYMENT</h2>
-        <ul class="product" style="list-style-type: none; display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;" >
-            <li ><h4>amount :-<span id="amount">Rs.{{amount}}</span></h4></li>
-            <li><h4>shipping                <span>Rs.40</span><br></h4></li>
-            <li ><h4>Total(including GST)    <span id="totalamount">Rs.{{totalamount}}</span></h4></li>
-            <li style="margin-left: 50%;"><h4><a href="{% url 'checkout' %}"><button type="button" class="btn btn-danger" style="cursor: pointer;">Place order</button></a>
-            </h4></li>
-        </ul>
-          </div>
-</div>
-</form>
-<div class="product">
-<div class="products" >
-    
-    amount                  <span id="amount">Rs.{{amount}}</span><br>
-    shipping                <span>Rs.40</span><br>
-    Total(including GST)    <span id="totalamount">Rs.{{totalamount}}</span>
-</div>
-</div>
-<br>
-<a href="{% url 'checkout' %}"><button type="button" class="btn btn-danger">Place order</button></a>
-</form>
-    {% else%}
-    no cart_items
-    {% endif %}
-</div>
-old-->
 <form class='space'>
     {% csrf_token %}
     {% if cart_items %}
@@ -160,8 +87,8 @@ old-->
         <div class="product">
         <img src="{{product.product_image.url}}" alt="{{product.productname}}">
         <h3>Name:{{product.productname}}</h3>
-        <p>RS.{{product.price}}<br>
-            RS.{{product.discount}}<br>
+        <p>₹{{product.price}}<br>
+          ₹{{product.discount}}<br>
             Quantity:{{product.quantity}} <br></p>
           <a href="{% url 'remove-from-cart' product_id=product.id %}"><button type="button" class="Remove">Remove</button></a>
         </div>

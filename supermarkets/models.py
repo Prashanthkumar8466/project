@@ -64,4 +64,15 @@ class order(models.Model):
     order_date=models.DateTimeField(auto_now_add=True)
     status=models.CharField(max_length=50,choices=STATUS_CHOICE,default='pending')
     #payment=models.ForeignKey(Payment,on_delete=models.CASCADE)
+class mobile_ad(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    image_1=models.ImageField(upload_to='modiles/',blank=True)
+    image_2=models.ImageField(upload_to='modiles/',blank=True)
+    image_3=models.ImageField(upload_to='modiles/',blank=True)
+    image_4=models.ImageField(upload_to='modiles/',blank=True)
+class mobile_ad3(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    image_1=models.ImageField(upload_to='modiles/',blank=True)
+    image_2=models.ImageField(upload_to='modiles/',blank=True)
+    image_3=models.ImageField(upload_to='modiles/',blank=True)
     

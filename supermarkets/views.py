@@ -10,7 +10,7 @@ from  django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import customerform,PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
-from .models import wishlist
+from .models import wishlist,mobile_ad,mobile_ad3
 import razorpay
 # Create your views here.
 def home(request):
@@ -24,7 +24,9 @@ def category(request):
     return render(request,"category.html",{'products':products})
 def category_mobiles(request):
     products=product.objects.filter(category='Mobiles')
-    return render(request,"category.html",{'products':products,"category":'Mobiles'})
+    mobile=mobile_ad.objects.all()
+    mobile3=mobile_ad3.objects.all()
+    return render(request,"mobiles.html",{'products':products,"category":'Mobiles','mobile':mobile,'mobile3':mobile3})
 def category_curd(request):
     products=product.objects.filter(category='groceries')
     return render(request,"category.html",{'products':products,'category':'groceries'})

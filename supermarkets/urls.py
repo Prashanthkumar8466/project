@@ -5,7 +5,7 @@ from .views import add_to_cart,password_change_done, remove_from_wishlist, view_
 from .views import add_to_wishlist
 urlpatterns = [
     path('home', views.home,name="home"),
-    #products
+    #products 
     path('categories/', views.all_categories,name="categories"),
     path('category/', views.category,name="category"),
     path('Groceries', views.category_curd,name="Groceries"),
