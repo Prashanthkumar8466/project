@@ -10,7 +10,7 @@ from  django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import customerform,PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
-from .models import wishlist,mobile_ad,mobile_ad3
+from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification
 import razorpay
 # Create your views here.
 def home(request):
@@ -23,10 +23,11 @@ def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
 def category_mobiles(request):
-    products=product.objects.filter(category='Mobiles')
+    Realme=product.objects.filter(Brand='Realme')
+    Samsung=product.objects.filter(Brand='Samsung')
     mobile=mobile_ad.objects.all()
     mobile3=mobile_ad3.objects.all()
-    return render(request,"mobiles.html",{'products':products,"category":'Mobiles','mobile':mobile,'mobile3':mobile3})
+    return render(request,"mobiles.html",{'Realme':Realme,'Samsung':Samsung,"Brand":'Realme','mobile':mobile,'mobile3':mobile3})
 def category_curd(request):
     products=product.objects.filter(category='groceries')
     return render(request,"category.html",{'products':products,'category':'groceries'})
@@ -227,6 +228,7 @@ def order_save(request):
 def order_view(request):
     orderslist=order.objects.filter(user=request.user)
     return render(request,'orders.html',{'orders':orderslist})
+# adding products page functions
 #product adding 
 def add_product(request):
     if request.method=="POST":
@@ -241,6 +243,21 @@ def add_product(request):
             add_prdt.save()
             return redirect('addproduct')
     return render(request,'addproduct.html')
+#mobile adding
+def add_Mobile(request):
+    if request.method=="POST":
+            productname=request.POST['productname']
+            price=request.POST['price']
+            discount=request.POST['discount']
+            description=request.POST['description']
+            product_image=request.FILES.get('product_image')
+            Brand=request.POST['Brand']
+            product.objects.create(productname=productname,price=price,discount=discount,description=description,product_image=product_image ,Brand=Brand,user=request.user)
+    return render(request,'addmobile.html')
+def view_last_add(request):
+    products=product.objects.order_by('-id')[:3]
+    return render(request,'addmobile.html',{'products':products})
+#end add product functions 
 def allorder_view(request):
     orderslist,created=order.objects.get_or_create(user=request.user)
     return render(request,'orders.html',{'orders':orderslist.product.all()})

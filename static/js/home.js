@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeCartMenu = document.querySelector('#burger1');
     const sideMenuBar = document.querySelector('#sidemenubar');
     let cartOpen = false;
-
     openCartMenu.addEventListener('click', () => {
         sideMenuBar.style.width = '75%';
 

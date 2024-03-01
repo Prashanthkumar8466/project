@@ -7,7 +7,7 @@
 
 </style>
 <div class="about">
-    <h3 style="margin-top: 10%;">Wishlist</h3>
+    <h3 style="margin-top: 7%;">Wishlist</h3>
 <form class="product-items" method="post">
     {% csrf_token %}
         {% for product in wishlist %}
@@ -19,6 +19,7 @@
                 <p><b>Name:</b>{{product.productname}}</p>
                 <p>{{product.description}}</p>
                 <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="btn btn-warning">Add to Cart</button></a>
+                <a href="{% url 'remove-from-wishlist' product_id=product.id %}"><button type="button" class="btn btn-warning">remove-from-wishlist</button></a>
             </div>
         </div>
         {% endfor %}

@@ -47,9 +47,11 @@
             <!--end phone sidebar button-->
             <div class="main-bar">
                 {% if user.is_staff %}
+                <a href=""><img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px; margin-top: 3px;margin-left:100%;"></a>
+                {% elif user.is_authenticated %}
                 <a href="{% url 'home' %}"><img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px; margin-top: 3px;margin-left:100%;"></a>
                 {% else %}
-                <a href=""><img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px; margin-top: 3px;margin-left:100%;"></a>
+                <a href="{% url 'home' %}"><img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px; margin-top: 3px;margin-left:100%;"></a>
                 {% endif %}
             </div>
             <div class="main-bar">
@@ -63,6 +65,7 @@
                         <ul class="submenu" style="width:100px">
                             {% if user.is_staff %}
                             <li><a href="{% url 'addproduct' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add product</a></li>
+                            <li><a href="{% url 'addmobile' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add Mobile</a></li>
                             <li><a href="{% url 'logout' %}"><img src="{% static 'images/banner/logout.svg'%}" style=" height=-5px;margin-top: -2px;">Logout</a></li>
                             {% elif user.is_authenticated %}
                             <li><a href="{% url 'address' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">My Profile</a></li>
@@ -95,17 +98,13 @@
                 </ul>
             </div>
 </header>
-<!--Use for other Html page attachment -->
-{% if user.is_staff %}
-<p style='margin-top:200px'> Admin portal is under construction</P>
- {% else %}       
+<!--Use for other Html page attachment -->      
 <section>
     {% block banner-slider%}{% endblock %}
     {% block information %}{% endblock %}
     {% block main%}{% endblock %}
     {% block paymentlink %}{% endblock %}
 </section>
-{% endif %}
     <!--Close Html page attachment -->
 <footer>
     <!--copyRight of the company-->

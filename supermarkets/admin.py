@@ -1,9 +1,20 @@
 from django.contrib import admin
-from . models  import Payment, cart_item, order,product,contact_u,customer,wishlist,mobile_ad,mobile_ad3
+from . models  import Payment, cart_item, order,product,contact_u,customer,wishlist,mobile_ad,mobile_ad3,mobile_specification
 # Register your models here.
 @admin.register(product)
 class productModelAdmin(admin.ModelAdmin):
     list_display=["id","productname","category","discount","product_image"]
+#mobile-related models
+@admin.register(mobile_specification)
+class mobile_specificationModelAdmin(admin.ModelAdmin):
+    list_display=["id","user"]
+@admin.register(mobile_ad)
+class mobileadModelAdmin(admin.ModelAdmin):
+    list_display=["id","user"]
+@admin.register(mobile_ad3)
+class mobilead3ModelAdmin(admin.ModelAdmin):
+    list_display=["id","user"]
+#end mobile-related models
 @admin.register(contact_u)
 class contactModelAdmin(admin.ModelAdmin):
     list_display=["id","name","phone","email"]
@@ -20,9 +31,3 @@ class cartitemsModelAdmin(admin.ModelAdmin):
 class orderplacedModelAdmin(admin.ModelAdmin):
    list_display=['id']
 admin.site.register(Payment)
-@admin.register(mobile_ad)
-class mobileadModelAdmin(admin.ModelAdmin):
-    list_display=["id","user"]
-@admin.register(mobile_ad3)
-class mobilead3ModelAdmin(admin.ModelAdmin):
-    list_display=["id","user"]

@@ -15,16 +15,13 @@
       padding: 15px;
       background-color: #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-     
+      position:fixed;
     }
     .product img {
       height: auto;
-      width:280px;
+      width:250px;
       border-radius: 8px;
       margin-bottom: 10px;
-    }
-    .product img:hover{
-      width:281px;
     }
     .button{
       bottom:0%;
@@ -42,6 +39,14 @@
     }
     .product .change{
       margin-left:50px;
+    }
+    .rating{
+      padding:4px;
+      width:25px;
+      border-radius:2px;
+      background-color:green;
+      color: #ddd;
+      margin-left:10%;
     }
   @media screen and (max-width:800px){
     .product-items {
@@ -86,12 +91,17 @@
         <div class="product">
           <div class='change' style='margin-left:-5px;'>
           <img src="{{product.product_image.url}}" alt="{{product.productname}}">
-          <h3>Name:{{product.productname}}</h3>
-          <p>₹ {{product.price}}<br>
-           <span style='color:rgb(150, 150, 177);'> ₹ {{product.discount}}</span><br>
-            {{product.description }}<br>
-            {{product.specifications}}
-          </p>
+          <div>
+            <p class='name'>{{product.productname}}</p>
+            <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+            <p><span style='margin-right:7px'>₹</span >{{product.price}}
+              <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+                <script>
+                  var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                  document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+              </script>
+              <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+          </div>
         </div>
           <div class="button">
           <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(253, 253, 253);" >Add to cart</button></a>
@@ -100,6 +110,11 @@
         </div>
         </div>
         {% endfor %}
+        </div>
+        {% for product in products %}
+        <p>{{product.specifications}}</p>
+        {% endfor %}
+        <div>
         </div>
 </form>
 {% endblock %}

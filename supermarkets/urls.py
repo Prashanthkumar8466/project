@@ -2,7 +2,7 @@ from django.urls import path
 from .import views
 from django.contrib.auth import views as auth_views
 from .views import add_to_cart,password_change_done, remove_from_wishlist, view_cart
-from .views import add_to_wishlist
+from .views import add_to_wishlist,view_last_add
 urlpatterns = [
     path('home', views.home,name="home"),
     #products 
@@ -47,5 +47,7 @@ urlpatterns = [
     path('orderdetails/<int:pk>/', views.order_details, name='orderdetails'),
     #admin/staff
     path('addproduct',views.add_product,name='addproduct'),
+    path('addmobile',views.add_Mobile,name='addmobile'),
     path('allorders',views.allorder_view,name='allorders'),
+    path('view_last_three', views.view_last_add,name="view_last_three"),
     ]
