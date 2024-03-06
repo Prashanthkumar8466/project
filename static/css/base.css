@@ -5,6 +5,9 @@ body{
     height: 100%;
     padding: 0px;
 }
+p{
+    text-align:justify
+}
 a{
     color: black;
     text-decoration: none;

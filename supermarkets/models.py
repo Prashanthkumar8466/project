@@ -12,6 +12,7 @@ STATUS_CHOICE=[
 ]
 #categories
 class product(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
     productname=models.TextField(max_length=100)
     price=models.FloatField()
     discount=models.FloatField(default=0)
@@ -24,7 +25,7 @@ class product(models.Model):
 #mobiles
 class mobile_specification(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    product=models.ForeignKey(product,on_delete=models.CASCADE)
+    product=models.OneToOneField(product,on_delete=models.CASCADE)
     In_the_Box=models.TextField(blank=True)
     Model_Number=models.TextField(blank=True)
     Model_Name=models.TextField(blank=True)
@@ -110,8 +111,6 @@ class mobile_specification(models.Model):
     Weight=models.TextField(blank=True)
     Warranty_Summary=models.TextField(blank=True)
     Domestic_Warranty=models.TextField(blank=True)
-    def __str__(self):
-        return self.productname
 class contact_u(models.Model):
     name=models.CharField(max_length=100)
     email=models.CharField(max_length=50)
@@ -158,13 +157,12 @@ class order(models.Model):
     #payment=models.ForeignKey(Payment,on_delete=models.CASCADE)
 class mobile_ad(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    image_1=models.ImageField(upload_to='modiles/',blank=True)
-    image_2=models.ImageField(upload_to='modiles/',blank=True)
-    image_3=models.ImageField(upload_to='modiles/',blank=True)
-    image_4=models.ImageField(upload_to='modiles/',blank=True)
+    image_1=models.ImageField(upload_to='mobiles/',blank=True)
+    image_2=models.ImageField(upload_to='mobiles/',blank=True)
+    image_3=models.ImageField(upload_to='mobiles/',blank=True)
+    image_4=models.ImageField(upload_to='mobiles/',blank=True)
 class mobile_ad3(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    image_1=models.ImageField(upload_to='modiles/',blank=True)
-    image_2=models.ImageField(upload_to='modiles/',blank=True)
-    image_3=models.ImageField(upload_to='modiles/',blank=True)
-    
+    image_1=models.ImageField(upload_to='mobiles/',blank=True)
+    image_2=models.ImageField(upload_to='mobiles/',blank=True)
+    image_3=models.ImageField(upload_to='mobiles/',blank=True)

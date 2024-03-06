@@ -64,8 +64,10 @@
                         {% endif %}
                         <ul class="submenu" style="width:100px">
                             {% if user.is_staff %}
-                            <li><a href="{% url 'addproduct' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add product</a></li>
+                            <li><a href="{% url 'addproduct' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add grocery</a></li>
                             <li><a href="{% url 'addmobile' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add Mobile</a></li>
+                            <li><a href="{% url 'addfashion' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add Fashion</a></li>
+
                             <li><a href="{% url 'logout' %}"><img src="{% static 'images/banner/logout.svg'%}" style=" height=-5px;margin-top: -2px;">Logout</a></li>
                             {% elif user.is_authenticated %}
                             <li><a href="{% url 'address' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">My Profile</a></li>
@@ -98,19 +100,23 @@
                 </ul>
             </div>
 </header>
-<!--Use for other Html page attachment -->      
+<!--Use for other Html page attachment -->  
+{% if user.is_staff%} 
+{% block admin%}{% endblock %}
+{% else %}
 <section>
     {% block banner-slider%}{% endblock %}
     {% block information %}{% endblock %}
     {% block main%}{% endblock %}
     {% block paymentlink %}{% endblock %}
 </section>
+{% endif %}
     <!--Close Html page attachment -->
 <footer>
     <!--copyRight of the company-->
     <h4 style="text-align: center;background-color: teal;width:100%;">copyright :2023 || Developed by prashanth</h4>
     <!--Side bar for phone view-->
-    <style>
+    <style> 
         .menu-sidebar{
             width:0px;
             left:-2px;

@@ -50,7 +50,8 @@ def category_Icecream(request):
 
 def product_details(request,product_id):
     products=product.objects.filter(pk=product_id)
-    return render(request,"productdetails.html",{'products':products})
+    product_specifications=mobile_specification.objects.filter(pk=product_id)
+    return render(request,"productdetails.html",{'products':products,'product_specifications':product_specifications})
 def about(request):
     return render(request,"about.html")
 def contactus(request):
@@ -243,6 +244,12 @@ def add_product(request):
             add_prdt.save()
             return redirect('addproduct')
     return render(request,'addproduct.html')
+#fashion adding 
+def add_fashion(request):
+    return render(request,'addfashion.html')
+def view_last_fashion(request):
+    products=product.objects.filter(category='Fashion').order_by('-id')[:3]
+    return render(request,'addfashion.html',{'products':products})
 #mobile adding
 def add_Mobile(request):
     if request.method=="POST":
@@ -250,12 +257,17 @@ def add_Mobile(request):
             price=request.POST['price']
             discount=request.POST['discount']
             description=request.POST['description']
+            category=request.POST['category']
             product_image=request.FILES.get('product_image')
             Brand=request.POST['Brand']
-            product.objects.create(productname=productname,price=price,discount=discount,description=description,product_image=product_image ,Brand=Brand,user=request.user)
+            Product=product.objects.create(productname=productname,price=price,discount=discount,description=description,category=category,product_image=product_image ,Brand=Brand,user=request.user)
+            products=product.objects.filter(user=request.user).order_by('-id')[:1]
+            In_the_Box=request.POST['In_the_Box']
+            Model_Number=request.POST['Model_Number']
+            mobile_specification.objects.create(In_the_Box= In_the_Box,Model_Number=Model_Number,user=request.user,product=Product)
     return render(request,'addmobile.html')
 def view_last_add(request):
-    products=product.objects.order_by('-id')[:3]
+    products=product.objects.filter(category='Mobiles').order_by('-id')[:3]
     return render(request,'addmobile.html',{'products':products})
 #end add product functions 
 def allorder_view(request):

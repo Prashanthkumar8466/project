@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block link %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/addproduct.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
 {% endblock %}
 {% block main %}
 <style>
@@ -30,9 +30,6 @@
       border-bottom: 1px solid red;
   }
 </style>
-<br>
-<br>
-<br>
 <br>
 <div>
   <a href="{% url 'password_change' %}"><button type="submit" class="btn btn-primary">Change Password</button></a>

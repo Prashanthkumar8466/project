@@ -88,8 +88,8 @@
         <img src="{{product.product_image.url}}" alt="{{product.productname}}">
         <h3>Name:{{product.productname}}</h3>
         <p>₹{{product.price}}<br>
-          ₹{{product.discount}}<br>
-            Quantity:{{product.quantity}} <br></p>
+         {{product.discount}}% discount<br>
+            Quantity:{{product.quantity}}<br></p> 
           <a href="{% url 'remove-from-cart' product_id=product.id %}"><button type="button" class="Remove">Remove</button></a>
         </div>
         {% endfor %}

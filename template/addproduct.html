@@ -3,7 +3,7 @@
 {% block link %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/addproduct.css' %}">
 {% endblock %}
-{% block main %}
+{% block admin %}
 <form method="post" action="/addproduct" enctype="multipart/form-data" >
   {% csrf_token %}
 <ul class="product-upload">
@@ -39,7 +39,6 @@
           <option value="Appliances">Appliances</option>
           <option value="Travel">Travel</option>
           <option value="Beauty, Toys & More">Beauty, Toys & More</option>
-
         </select>
       </li>
     <li style="cursor: pointer;">

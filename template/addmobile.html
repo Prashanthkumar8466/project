@@ -3,7 +3,7 @@
 {% block link %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
 {% endblock %}
-{% block main %}
+{% block admin %}
 <style>
   .product-items {
     display: flex;
@@ -77,6 +77,12 @@
         <textarea type="text" name="description" required></textarea>
       </li>
       <li>
+        <label  class='select' for="category">Category</label><br>
+        <select  class='select' name="category">
+          <option class='option' value="Mobiles">Mobiles</option>
+        </select>
+      </li>
+      <li>
         <label class='select' for="Brand">Brand</label><br>
         <select class='select' name="Brand">
           <option class='option'value="Realme">Realme</option>
@@ -97,6 +103,493 @@
     </li><br>
     <br>
     <br>
+  </ul>
+  <h3 style='margin-left:70px'>Specifications</h3>
+  <h4 style='margin-left:70px'>General</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="IntheBox">In the Box</label><br>
+      <input type="text" name="In_the_Box" required>
+    </li>
+    <li>
+      <label for="Model Number">Model Number</label>
+      <input type="text" name="Model_Number" required>
+    </li>
+    <li>
+      <label for="Model Name">Model Name</label>
+      <input type="text" name="Model_Name" required>
+    </li>
+    <li>
+      <label for="Color">Color</label><br>
+      <input type="text" name="Color" required>
+    </li>
+    <li>
+      <label for="Browse Type">Browse Type</label><br>
+      <input type="text" name="Browse_Type" required>  
+    </li>
+    <li>
+      <label for="SIM Type">SIM Type</label><br>
+      <input type="text" name="SIM_Type" required>  
+    </li>
+    <li>
+      <label class='select' for="Hybrid Sim Slot">Hybrid Sim Slot</label><br>
+      <select class='select' name="Hybrid_Sim_Slot">
+        <option class='option'value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </li>
+    <li>
+      <label for="SIM Type">SIM Type</label><br>
+      <input type="text" name="SIM_Type" required>  
+    </li>
+    <li>
+      <label class='select' for="Touchscreen">Touchscreen</label><br>
+      <select class='select' name="Touchscreen">
+        <option class='option'value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </li>
+    <li>
+      <label class='select' for="OTG_Compatible">OTG Compatible</label><br>
+      <select class='select' name="OTG_Compatible">
+        <option class='option'value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </li>
+    <li>
+      <label class='select' for="Quick_Charging">Quick Charging</label><br>
+      <select class='select' name="Quick_Charging">
+        <option class='option'value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </li>
+    <br>
+    <br>
+    <br>
+  </ul>
+  <h4 style='margin-left:70px'>Display Features</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="Display Size">Display Size</label><br>
+      <input type="text" name="Display_Size" required>
+    </div>
+    <li>
+      <label for="Resolution">Resolution</label>
+      <input type="text" name="Resolution" required>
+    </li>
+    <li>
+      <label for="Resolution Type">Resolution Type</label>
+      <input type="text" name="Resolution_Type" required>
+    </li>
+    <li>
+      <label for="GPU">GPU</label><br>
+      <input type="text" name="GPU" required>
+    </li>
+    <li>
+      <label for="Display Type">Display Type</label><br>
+      <input type="text" name="Display_Type" required>  
+    </li>
+    <li>
+      <label for="Display Colors">Display Colors</label><br>
+      <input type="text" name="Display_Colors" required>  
+    </li>
+    <li>
+      <label for="Other Display Features">Other Display Features</label><br>
+      <textarea type="text" name="Other_Display_Features" required></textarea>  
+    </li>
+    <li>
+      <label for="SIM Type">SIM Type</label><br>
+      <input type="text" name="SIM_Type" required>  
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Os & Processor Features</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="Operating System">Operating System</label><br>
+      <input type="text" name="Operating_System" required>
+    </div>
+    <li>
+      <label for="Processor Brand">Processor Brand</label>
+      <input type="text" name="Processor_Brand" required>
+    </li>
+    <li>
+      <label for="Processor Type">Processor Type</label>
+      <input type="text" name="Processor_Type" required>
+    </li>
+    <li>
+      <label for="Processor Core">Processor Core</label><br>
+      <input type="text" name="Processor_Core" required>
+    </li>
+    <li>
+      <label for="Primary_Clock_Speed">Primary Clock Speed</label><br>
+      <input type="text" name="Primary_Clock_Speed" required>  
+    </li>
+    <li>
+      <label for="Secondary Clock Speed">Secondary Clock Speed</label><br>
+      <input type="text" name="Secondary_Clock_Speed" required>  
+    </li>
+    <li>
+      <label for="Operating Frequency">Operating Frequency</label><br>
+      <textarea type="text" name="Operating_Frequency" required></textarea>  
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Memory & Storage Features</h4>
+  <ul class="product-upload">
+    <li>
+      <label class='select' for="Internal Storage">Internal Storage</label><br>
+      <select class='select' name="Internal_Storage">
+        <option class='option'value="32 GB">32 GB</option>
+        <option class='option'value="48 GB">48 GB</option>
+        <option class='option'value="64 GB">64 GB</option>
+        <option class='option' value="128 GB">128 GB</option>
+        <option class='option' value="256 GB">256 GB</option>
+        <option class='option' value="412 GB">412 GB</option>
+      </select>
+    </div>
+    <li>
+      <label class='select' for="RAM">RAM</label><br>
+      <select class='select' name="RAM">
+        <option class='option'value="4 GB">4 GB</option>
+        <option class='option' value="6 GB">6 GB</option>
+        <option class='option' value="8 GB">8 GB</option>
+        <option class='option' value="12 GB">12 GB</option>
+      </select>
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Camera Features</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="Primary Camera Available">Primary Camera Available</label><br>
+      <input type="text" name="Primary_Camera_Available" required>
+    </div>
+    <li>
+      <label for="Primary Camera">Primary Camera</label>
+      <input type="text" name="Primary_Camera" required>
+    </li>
+    <li>
+      <label for="Primary Camera Features">Primary Camera Features</label>
+      <textarea type="text" name="Primary_Camera_Features" required></textarea>
+    </li>
+    <li>
+      <label for="Optical Zoom">Optical Zoom</label><br>
+      <select class='select' name="Optical_Zoom">
+        <option class='option'value="Yes">Yes</option>
+        <option class='option' value="No">No</option>
+      </select>
+    </li>
+    <li>
+      <label for="Secondary Camera Available">Secondary Camera Available</label><br>
+      <select class='select' name="Secondary_Camera_Available">
+        <option class='option'value="Yes">Yes</option>
+        <option class='option' value="No">No</option>
+      </select>
+    </li>
+    <li>
+      <label for="Secondary Camera">Secondary Camera</label><br>
+      <input type="text" name="Secondary_Camera" required>  
+    </li>
+    <li>
+      <label for="Secondary Camera Features">Secondary Camera Features</label><br>
+      <textarea type="text" name="Secondary_Camera_Features" required></textarea>  
+    </li>Flash
+    <li>
+      <label for="Flash">Flash</label><br>
+      <textarea type="text" name="Flash" required></textarea>  
+    </li>
+    <li>
+    <label for="HD Recording">HD Recording</label><br>
+      <select class='select' name="HD_Recording">
+        <option class='option'value="Yes">Yes</option>
+        <option class='option' value="No">No</option>
+      </select>
+    </li>
+    <li>
+      <label for="Full HD Recording">Full HD Recording</label><br>
+        <select class='select' name="Full_HD_Recording">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+      </li>
+      <li>
+        <label for="Video Recording">Video Recording</label><br>
+          <select class='select' name="Video_Recording">
+            <option class='option'value="Yes">Yes</option>
+            <option class='option' value="No">No</option>
+          </select>
+        </li>
+    <li>
+      <label for="Video Recording Resolution">Video Recording Resolution</label><br>
+      <textarea type="text" name="Video_Recording_Resolution" required></textarea>  
+    </li>
+    <li>
+      <label for="Digital Zoom">Digital Zoom</label><br>
+      <input type="text" name="Digital_Zoom" required> 
+    </li>
+    <li>
+      <label for="Frame Rate">Frame Rate</label><br>
+      <input type="text" name="Frame_Rate" required>
+    </li>
+    <li>
+      <label for="Dual Camera Lens">Dual Camera Lens</label><br>
+      <input type="text" name="Dual_Camera_Lens" required> 
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Call Features</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="Video Call Support">Video Call Support</label><br>
+        <select class='select' name="Video_Call_Support">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="Speaker Phone">Speaker Phone</label><br>
+        <select class='select' name="Speaker_Phone">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="Call Records">Call Records</label><br>
+        <select class='select' name="Call_Records">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Connectivity Features</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="Network Type">Network Type</label><br>
+      <input type="text" name="Network_Type" required>
+    </div>
+    <li>
+      <label for="Supported Networks">Supported Networks</label>
+      <input type="text" name="Supported_Networks" required>
+    </li>
+    <li>
+      <label for="Internet Connectivity">Internet Connectivity</label>
+      <input type="text" name="Internet_Connectivity" required>
+    </li>
+    <li>
+      <label for="3G">3G</label><br>
+        <select class='select' name="ThreeG">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="GPRS">GPRS</label><br>
+        <select class='select' name="GPRS">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="Micro USB Version">Micro USB Version</label><br>
+      <input type="text" name="Micro_USB_Version" required>
+    </li>
+    <li>
+      <label for="Bluetooth Support">Bluetooth Support</label><br>
+        <select class='select' name="Bluetooth_Support">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="Bluetooth Version">Bluetooth Version</label><br>
+      <input type="text" name="Bluetooth_Version" required>  
+    </li>
+    <li>
+      <label for="Wi-Fi">Wi-Fi</label><br>
+        <select class='select' name="Wi_Fi">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="Wi-Fi Version">Wi-Fi Version</label><br>
+      <textarea type="text" name="Wi_Fi_Version" required></textarea>  
+    </li>
+    <li>
+      <label for="Wi-Fi Hotspot">Wi-Fi Hotspot</label><br>
+        <select class='select' name="Wi_Fi_Hotspot">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="NFC">NFC</label><br>
+        <select class='select' name="NFC">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="Infrared">Infrared</label><br>
+        <select class='select' name="Infrared">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="USB Connectivity">USB Connectivity</label><br>
+        <select class='select' name="USB_Connectivity">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="EDGE">EDGE</label><br>
+        <select class='select' name="EDGE">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="Audio Jack">Audio Jack</label><br>
+      <input type="text" name="Audio_Jack" required>  
+    </li>
+    <li>
+      <label for="Map Support">Map Support</label><br>
+      <input type="text" name="Map_Support" required> 
+    </li>
+    <li>
+      <label for="GPS Support">GPS Support</label><br>
+        <select class='select' name="GPS_Support">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Other Details</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="Smartphone">Smartphone</label><br>
+      <select class='select' name="Smartphone">
+        <option class='option'value="Yes">Yes</option>
+        <option class='option' value="No">No</option>
+      </select>
+    <li>
+      <label for="Touchscreen Type">Touchscreen Type</label>
+      <input type="text" name="Touchscreen_Type" required>
+    </li>
+    <li>
+      <label for="SIM Size">SIM Size</label>
+      <input type="text" name="SIM_Size" required>
+    </li>
+    <li>
+      <label for="User Interface">User Interface</label><br>
+      <input type="text" name="User_Interface" required>
+    </li>
+    <li>
+      <label for="SMS">SMS</label><br>
+        <select class='select' name="SMS">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="Graphics PPI">Graphics PPI</label><br>
+      <input type="text" name="Graphics_PPI" required>  
+    </li>
+    <li>
+      <label for="Sensors">Sensors</label><br>
+      <textarea type="text" name="Sensors" required></textarea>  
+    </li>
+    <li>
+      <label for="Ringtones Format">Ringtones Format</label><br>
+      <input type="text" name="Ringtones_Format" required>  
+    </li>
+    <li>
+      <label for="Other Features">Other Features</label><br>
+      <textarea type="text" name="Other_Features" required> </textarea>
+    </li>
+    <li>
+      <label for="GPS Type">GPS Type</label><br>
+      <input type="text" name="GPS_Type" required> 
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Multimedia Features</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="FM Radio">FM Radio</label><br>
+        <select class='select' name="FM_Radio">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="DLNA Support">DLNA Support</label><br>
+        <select class='select' name="DLNA_Support">
+          <option class='option'value="Yes">Yes</option>
+          <option class='option' value="No">No</option>
+        </select>
+    </li>
+    <li>
+      <label for="Audio_Formats">Audio Formats</label><br>
+      <input type="text" name="Audio_Formats" required> 
+    </li>
+    <li>
+      <label for="Video Formats">Video Formats</label><br>
+      <input type="text" name="Video_Formats" required> 
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Battery & Power Features</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="Battery Capacity">Battery Capacity</label><br>
+        <select class='select' name="Battery_Capacity">
+          <option class='option'value="4000 mAh">4000 mAh</option>
+          <option class='option' value="5000 mAh">5000 mAh</option>
+          <option class='option' value="6000 mAh">6000 mAh</option>
+          <option class='option' value="7000 mAh">7000 mAh</option>
+          <option class='option' value="8000 mAh">8000 mAh</option>
+        </select>
+    </li>
+    <li>
+      <label for="Battery Type">Battery Type</label><br>
+      <input type="text" name="Battery_Type" required> 
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Dimensions</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="Width">Width</label><br>
+      <input type="text" name="Width" required> 
+    </li>
+    <li>
+      <label for="Height">Height</label><br>
+      <input type="text" name="Height" required> 
+    </li>
+    <li>
+      <label for="Depth">Depth</label><br>
+      <input type="text" name="Depth" required> 
+    </li>
+    <li>
+      <label for="Weight">Weight</label><br>
+      <input type="text" name="Weight" required> 
+    </li>
+  </ul>
+  <h4 style='margin-left:70px'>Warranty</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="Warranty Summary">Warranty Summary</label><br>
+      <input type="text" name="Warranty_Summary" required> 
+    </li>
+    <li>
+      <label for="Domestic Warranty">Domestic Warranty</label><br>
+        <select class='select' name="Domestic_Warranty">
+          <option class='option'value="1 Year">1 Year</option>
+          <option class='option' value="2 Year">2 Year</option>
+          <option class='option' value="3 Year">3 Year</option>
+          <option class='option' value="4 Year">4 Year</option>
+          <option class='option' value="5 Year">5 Year</option>
+          <option class='option' value="6 months">6 months</option>
+          <option class='option' value="3 months">3 months</option>
+        </select>
+    </li>
   </ul>
   <button style="cursor:pointer;margin-left:40%;background-color:rgb(255, 136, 0);height:50px;width:203px;border-radius:10px;color:#ddd;border:none;font-size:20px;">Submit</button>
 </form>
@@ -119,7 +612,7 @@
           </script>
           <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
       </div>
-      <a href=""><button style="cursor:pointer;margin-left:15%;background-color:rgb(255, 136, 0);height:20px;width:120px;color:#ddd;border:none;">add Specif-</button></a>
+      <a href=""><button style="cursor:pointer;margin-left:15%;background-color:rgb(255, 136, 0);height:20px;width:120px;color:#ddd;border:none;">update Specif-</button></a>
     </div>
     {% endfor %}
   </ul>
