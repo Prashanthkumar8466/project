@@ -10,8 +10,11 @@
   .space h3{
     font-family: 'Times New Roman', Times, serif;
   }
+  .mob-content{
+    background
+  }
   .space .mob-content p{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
     font-size:14px;
     color:rgb(80, 73, 73);
     align-items:center;
@@ -101,7 +104,7 @@
   }
   @media screen and (max-width:800px){
   .space{
-    margin-top:10.7%;
+    margin-top:13%;
   }
   .product-items {
    display:flex;
@@ -122,7 +125,7 @@
 <!-- ads start-->
 <div class='space'>
     <div class='mob-content'>
-        <h3>Mobile Phones Month End Fest Feb 2024</h3>
+        <h3>Mobile Phones</h3>
         <p >Mobile phones are no more merely a part of our lives. Whether it's to stay connected with friends and family or to keep abreast of important developments around the world, mobiles are no longer for sending a text or making a call. From budget to state-of-the-art smartphones; indigenous names to global big-wigs - a whole universe of mobiles await you on Flipkart. Whether you’re looking for waterdrop notch screens, a high screen to body ratio, AI-powered sensational cameras, high storage capacity, blazing quick processing engines or reflective glass designs, rest assured you won’t have to venture anywhere else for your smartphone needs. The information you are reading has been last updated on 27-Feb-24.<br><a href=''>iPhone 15</a>|<a href=''> iPhone 15 Plus </a>|<a href=''> iPhone 15 Pro </a>|<a href=''> iPhone 15 Pro Max </a>|<a href=''> Vivo x 100 </a>|<a href=''> OPPO Reno 11 </a>|<a href=''> OPPO Reno 11 pro </a>|<a href=''> Infinix Smart 8  </a>|<a href=''> Pixel 7a </a>|<a href=''> Moto Edge 40 </a>|<a href=''> POCO C55 </a>| <a href=''>Samsung Galaxy S24 5G</a></p>
     </div>
     {% for mobile in mobile %}
@@ -148,7 +151,7 @@
 <!-- Products-->
     <div class='phone-brand-tittle'>
         <h3>Realme smartphone</h3>
-        <h5><a href='#'>view all</a></h5>
+        <a href="{% url 'mobiles' brand_name='Realme' %}"><h5>view all</h5></a>
     </div>
     <div class="product-items" style='margin-bottom:2px'>
         {% for product in Realme %}
@@ -173,7 +176,7 @@
       </div> 
       <div class='phone-brand-tittle'>
         <h3>Samsung smartphone</h3>
-        <h5><a href='#'>view all</a></h5>
+        <a href="{% url 'mobiles' brand_name='Samsung' %}"><h5>view all</h5></a>
       </div>
     <div class="product-items">
       {% if products %}
@@ -202,7 +205,7 @@
     </div> 
     <div class='phone-brand-tittle'>
       <h3>POCO smartphone</h3>
-      <h5><a href='#'>view all</a></h5>
+      <a href="{% url 'mobiles' brand_name='POCO' %}"><h5>view all</h5></a>
     </div>
     <div class="product-items">
         {% if products %}

@@ -27,7 +27,7 @@ def category_mobiles(request):
     Samsung=product.objects.filter(Brand='Samsung')
     mobile=mobile_ad.objects.all()
     mobile3=mobile_ad3.objects.all()
-    return render(request,"mobiles.html",{'Realme':Realme,'Samsung':Samsung,"Brand":'Realme','mobile':mobile,'mobile3':mobile3})
+    return render(request,"mobiles.html",{'Realme':Realme,'Samsung':Samsung,"Brand":'Realme','mobile':mobile,'mobile3':mobile3,})
 def category_curd(request):
     products=product.objects.filter(category='groceries')
     return render(request,"category.html",{'products':products,'category':'groceries'})
@@ -265,7 +265,10 @@ def add_Mobile(request):
             In_the_Box=request.POST['In_the_Box']
             Model_Number=request.POST['Model_Number']
             mobile_specification.objects.create(In_the_Box= In_the_Box,Model_Number=Model_Number,user=request.user,product=Product)
-    return render(request,'addmobile.html')
+    return render(request,'mobileadd.html')
+def viewall_Mobile(request, brand_name):
+    products = product.objects.filter(Brand=brand_name)
+    return render(request,'mobilesview.html',{'Realme':products,'brand_name': brand_name})
 def view_last_add(request):
     products=product.objects.filter(category='Mobiles').order_by('-id')[:3]
     return render(request,'addmobile.html',{'products':products})
