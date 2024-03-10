@@ -15,10 +15,6 @@ import razorpay
 # Create your views here.
 def home(request):
     return render(request,"home.html")
-'''class category(View):
-    def get(self,request,val):
-        products=product.objects.get(category=val)
-        return render(request,'category.html',{"products":products},locals())'''
 def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
@@ -51,7 +47,7 @@ def category_Icecream(request):
 def product_details(request,product_id):
     products=product.objects.filter(pk=product_id)
     product_specifications=mobile_specification.objects.filter(pk=product_id)
-    return render(request,"productdetails.html",{'products':products,'product_specifications':product_specifications})
+    return render(request,"productdetails.html",{'products':products,'product_specifications':product_specifications,'product_id':product_id})
 def about(request):
     return render(request,"about.html")
 def contactus(request):
@@ -266,7 +262,7 @@ def add_Mobile(request):
             Model_Number=request.POST['Model_Number']
             mobile_specification.objects.create(In_the_Box= In_the_Box,Model_Number=Model_Number,user=request.user,product=Product)
     return render(request,'mobileadd.html')
-def viewall_Mobile(request, brand_name):
+def viewall_Mobile(request,brand_name):
     products = product.objects.filter(Brand=brand_name)
     return render(request,'mobilesview.html',{'Realme':products,'brand_name': brand_name})
 def view_last_add(request):

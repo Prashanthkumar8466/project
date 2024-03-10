@@ -106,7 +106,7 @@
   .space{
     margin-top:13%;
   }
-  .product-items {
+    .product-items {
    display:flex;
    overflow:hidden;
    padding-left:40%;
@@ -122,9 +122,10 @@
   }
   }
 </style>
-<div class="product-items" style='margin-bottom:2px'>
+<div class=space>
+<div class="product-item" style='margin-bottom:2px'>
     {% for product in Realme %}
-    <a style='display:flex' href="productdetails/{{product.id}}"><div class=mobiles>
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}"><div class=mobiles>
       <div style='display:flex'>
       <img style='margin-left:14%;' src="{{product.product_image.url}}" alt="{{product.productname}}">
       <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:15px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
@@ -143,4 +144,5 @@
     </div></a>
     {% endfor %}
   </div> 
+</div>
 {% endblock %}

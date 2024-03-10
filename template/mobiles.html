@@ -102,6 +102,9 @@
   .phone-brand-tittle h5 a{
     color:white;
   }
+  a{
+    color:white;
+  }
   @media screen and (max-width:800px){
   .space{
     margin-top:13%;
@@ -158,7 +161,7 @@
         <a style='display:flex' href="productdetails/{{product.id}}"><div class=mobiles>
           <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}" alt="{{product.productname}}">
-          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:15px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
           </div>
           <p class='name'>{{product.productname}}</p>
           <div>
