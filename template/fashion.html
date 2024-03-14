@@ -123,15 +123,12 @@
   .product:hover{
     width:281px;
   }
-  .mobile-ads,.mobile-3ads{
-    display:none;
-  }
   }
 </style>
 <!-- ads start-->
 <div class='space'>
     <div class='mob-content'>
-        <h3>Mobile Phones</h3>
+        <h3>FASHION</h3>
     </div>
     {% for mobile in mobile %}
     <div class='mobile-ads'>
@@ -153,12 +150,13 @@
     </div>
     {% endfor %} 
     <!-- ads end-->
-    <!-- Products-->
+<!-- Products-->
     <div class='phone-brand-tittle'>
-        <h3>Realme smartphone</h3>
+        <h3>Men's wear</h3>
         <a href="{% url 'mobiles' brand_name='Realme' %}"><h5>view all</h5></a>
     </div>
     <div class="product-items" style='margin-bottom:2px'>
+        {% if products %}
         {% for product in Realme %}
         <a style='display:flex' href="productdetails/{{product.id}}"><div class=mobiles>
           <div style='display:flex'>
@@ -178,9 +176,12 @@
           </div>
         </div></a>
         {% endfor %}
+        {% else %}
+        <p>no items</p>
+        {% endif %}
       </div> 
       <div class='phone-brand-tittle'>
-        <h3>Samsung smartphone</h3>
+        <h3>women's wear</h3>
         <a href="{% url 'mobiles' brand_name='Samsung' %}"><h5>view all</h5></a>
       </div>
     <div class="product-items">
@@ -205,11 +206,11 @@
         </div></a>
         {% endfor %}
         {% else %}
-        <p>no products</p>
+        <p>no items</p>
         {% endif %}
     </div> 
     <div class='phone-brand-tittle'>
-      <h3>POCO smartphone</h3>
+      <h3>Kid's wear</h3>
       <a href="{% url 'mobiles' brand_name='POCO' %}"><h5>view all</h5></a>
     </div>
     <div class="product-items">
@@ -234,11 +235,11 @@
           </div></a>
           {% endfor %}
           {% else %}
-          <p>no products</p>
+          <p>no items</p>
           {% endif %}
     </div>
     <div class='phone-brand-tittle'>
-      <h3>Vivo smartphone</h3>
+      <h3>women's Footwear</h3>
       <h5><a href='#'>view all</a></h5>
     </div>
     <div class="product-items">
@@ -263,11 +264,11 @@
         </div></a>
         {% endfor %}
         {% else %}
-        <p>no products</p>
+        <p>no items</p>
         {% endif %}
     </div>
     <div class='phone-brand-tittle'>
-      <h3>Apple smartphone</h3>
+      <h3>Men's Footwear</h3>
       <h5><a href='#'>view all</a></h5>
     </div>
     <div class="product-items">
@@ -292,7 +293,7 @@
         </div></a>
         {% endfor %}
         {% else %}
-        <p>no products</p>
+        <p>no items</p>
         {% endif %}
     </div>     
 </div>

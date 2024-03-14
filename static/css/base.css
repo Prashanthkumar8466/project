@@ -77,6 +77,7 @@ main header ul li a{
 .slideimg .fade{
     animation-name: fade;
     animation-duration: 2s;
+    
 }
 .prev,.next{
     margin: 10px;

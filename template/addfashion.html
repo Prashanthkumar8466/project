@@ -5,56 +5,56 @@
 {% endblock %}
 {% block admin %}
 <style>
-  .product-items {
-    display: flex;
-    justify-content:center;
-    margin-top:2px;
-    margin-bottom:2px;
-    padding-top:20px;
-    overflow:hidden;
-  }
-  .mobiles{
-    width:360px;
-    padding-left:10px;
-    cursor:pointer;
-  }
-  .mobiles p{
-    font-size:20px;
-  }
-  .mobiles:hover .name{
-    color: rgb(33, 33, 117);
-  }
-  .mobiles img {
-    height: auto;
-    width:200px;
-    height:250px;
-    margin-bottom:8px;
-  }
-  .mobiles .rating{
-    padding:4px;
-    width:25px;
-    border-radius:2px;
-    background-color:green;
-    color: #ddd;
-    margin-left:10%;
-  }
-  .phone-brand-tittle{
-    margin-top:0px;
-    display:flex;
-    justify-content:space-between;
-    background-color:white;
-  }
-  .phone-brand-tittle h3{
-    margin-left:30px;
-  }
-  .phone-brand-tittle h5{
-    margin-right:30px;
-    padding:7px;
-    background-color:rgb(50, 50, 211) ;
-  }
-  .phone-brand-tittle h5 a{
-    color:white;
-  }   
+.product-items {
+  display: flex;
+  justify-content:center;
+  margin-top:2px;
+  margin-bottom:2px;
+  padding-top:20px;
+  overflow:hidden;
+}
+.mobiles{
+  width:360px;
+  padding-left:10px;
+  cursor:pointer;
+}
+.mobiles p{
+  font-size:20px;
+}
+.mobiles:hover .name{
+  color: rgb(33, 33, 117);
+}
+.mobiles img {
+  height: auto;
+  width:200px;
+  height:250px;
+  margin-bottom:8px;
+}
+.mobiles .rating{
+  padding:4px;
+  width:25px;
+  border-radius:2px;
+  background-color:green;
+  color: #ddd;
+  margin-left:10%;
+}
+.phone-brand-tittle{
+  margin-top:0px;
+  display:flex;
+  justify-content:space-between;
+  background-color:white;
+}
+.phone-brand-tittle h3{
+  margin-left:30px;
+}
+.phone-brand-tittle h5{
+  margin-right:30px;
+  padding:7px;
+  background-color:rgb(50, 50, 211) ;
+}
+.phone-brand-tittle h5 a{
+  color:white;
+}   
 </style>
 <form method="post" action="/addmobile" enctype="multipart/form-data" >
   {% csrf_token %}
@@ -70,30 +70,113 @@
     </li>
     <li>
       <label for="discount">Discount Percentage</label>
-      <input type="number" name="discount" required>
+      <input type="number" name="discount" required> 
     </li>
     <li>
         <label for="description">Description</label><br>
         <textarea type="text" name="description" required></textarea>
       </li>
-      <li>
+      <li style='display:none'>
         <label  class='select' for="category">Category</label><br>
         <select  class='select' name="category">
             <option value="Fashion">Fashion</option>
         </select>
       </li>
       <li>
+        <label class='select' for="Brand">Appliance</label><br>
+        <select id='Appliance' class='select' name="Appliance">
+          <option class='option' value="Kitchen">Kitchen</option>
+          <option value="hall">Hall</option>
+          <option value="Bed Room">Bed Room</option>
+          <option value="Dinning">Dinning</option>
+          <option value="Garden">Garden</option>
+          <option value="Electrical">Electrical</option>
+        </select>
+      </li>
+      <li>
+        <label class='select' for="Brand">Appliance</label><br>
+        <select id='subAppliance' class='select' name="subAppliance">
+          <option class='option' value="">subAppliance</option>
+        </select>
+        <script>
+          function populatesubappliances(){
+            var Appliance = document.getElementById('Appliance');
+            var subAppliance =document.getElementById('subAppliance');
+            var Appliances=Appliance.value;
+            Appliances.innerHTMl='';
+            if (Appliances==='Kitchen'){
+              var subAppliance =['Refrigerator','Grinders','dishwasher','Rice Cooker','Dishes','Egg Boiler']
+            }
+            else if(Appliances==='hall'){
+              var subAppliance =['Telivision','Hometheaters','Speakers','decoration items']
+            }
+            subAppliance.forEach(function(subApp){
+              var option = document.getElementById('option');
+              option.text=subApp;
+              option.value=subApp;
+              Appliances.add(option);
+            });
+          }
+        </script>
+      </li>
+      <li>
+        <label class='select' for="Brand">Appliance Type</label><br>
+        <select class='select' id="countrySelect" onchange="populateStates()">
+          <option class='option' value="">Select</option>
+          <option class='option' value="Kitchen">Kitchen</option>
+          <option value="Hall">Hall</option>
+          <option value="Bed Room">Bed Room</option>
+          <option value="Dinning">Dinning</option>
+          <option value="Garden">Garden</option>
+          <option value="Electrical">Electrical</option>
+          <option value="Other">Other</option>
+          <!-- Add more countries as needed -->
+        </select>
+      </li>
+      <li>
+        <!-- State dropdown -->
+        <label class='select' for="Brand">Sub Appliance Type</label>
+        <select class='select' id="stateSelect">
+          <option value="">Select option</option>
+        </select>
+        
+        <script>
+        function populateStates() {
+          var countrySelect = document.getElementById("countrySelect");
+          var stateSelect = document.getElementById("stateSelect");
+          var selectedCountry = countrySelect.value;
+          
+          // Clear existing options
+          stateSelect.innerHTML = "";
+          
+          // Populate states based on selected country
+          if (selectedCountry === "Kitchen") {
+            var states = ['Refrigerator','Grinders','dishwasher','Rice Cooker','Dishes','Egg Boiler'];
+          } else if (selectedCountry === "Hall") {
+            var states = ['Telivision','Hometheaters','Speakers','decoration items'];
+          } 
+          // Add options to state dropdown
+          states.forEach(function(state) {
+            var option = document.createElement("option");
+            option.text = state;
+            option.value = state;
+            stateSelect.add(option);
+          });
+        }
+        </script>
+      </li>
+      <li>
         <label class='select' for="Brand">Brand</label><br>
         <select class='select' name="Brand">
-          <option class='option'value="Realme">Realme</option>
-          <option value="Poco">Poco</option>
-          <option value="Samsung">Samsung</option>
-          <option value="Vivo">Vivo</option>
-          <option value="Apple">Apple</option>
-          <option value="Motorola">Motorola</option>
-          <option value="Redmi">Redmi</option>
-          <option value="Google">Google</option>
-          <option value="Oppo">Oppo</option>
+          <option class='option'value="Samsung">Samsung</option>
+          <option value="LG">LG</option>
+          <option value="Blue Star">Blue Star</option>
+          <option value="Goorej">Goorej</option>
+          <option value="Whirlpool">Whirlpool</option>
+          <option value="haier">Haier</option>
+          <option value="Hitachi">Hitachi</option>
+          <option value="Panasonic">Panasonic</option>
+          <option value="Bosch">Bosch</option>
           <option value="Other">Other</option>
         </select>
       </li>
@@ -103,6 +186,66 @@
     </li><br>
     <br>
     <br>
+  </ul>
+  <h3 style='margin-left:70px'>Specifications</h3>
+  <h4 style='margin-left:70px'>General</h4>
+  <ul class="product-upload">
+    <li>
+      <label for="IntheBox">In the Box</label><br>
+      <input type="text" name="In_the_Box" required>
+    </li>
+    <li>
+      <label for="Model Number">Model Number</label>
+      <input type="text" name="Model_Number" required>
+    </li>
+    <li>
+      <label for="Model Name">Model Name</label>
+      <input type="text" name="Model_Name" required>
+    </li>
+    <li>
+      <label for="Color">Color</label><br>
+      <input type="text" name="Color" required>
+    </li>
+    <li>
+      <label for="Browse Type">Browse Type</label><br>
+      <input type="text" name="Browse_Type" required>  
+    </li>
+    <li>
+      <label for="SIM Type">SIM Type</label><br>
+      <input type="text" name="SIM_Type" required>  
+    </li>
+    <li>
+      <label class='select' for="Hybrid Sim Slot">Hybrid Sim Slot</label><br>
+      <select class='select' name="Hybrid_Sim_Slot">
+        <option class='option'value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </li>
+    <li>
+      <label for="SIM Type">SIM Type</label><br>
+      <input type="text" name="SIM_Type" required>  
+    </li>
+    <li>
+      <label class='select' for="Touchscreen">Touchscreen</label><br>
+      <select class='select' name="Touchscreen">
+        <option class='option'value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </li>
+    <li>
+      <label class='select' for="OTG_Compatible">OTG Compatible</label><br>
+      <select class='select' name="OTG_Compatible">
+        <option class='option'value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </li>
+    <li>
+      <label class='select' for="Quick_Charging">Quick Charging</label><br>
+      <select class='select' name="Quick_Charging">
+        <option class='option'value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </li>
   </ul>
   <button style="cursor:pointer;margin-left:40%;background-color:rgb(255, 136, 0);height:50px;width:203px;border-radius:10px;color:#ddd;border:none;font-size:20px;">Submit</button>
 </form>

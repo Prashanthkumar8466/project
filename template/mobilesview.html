@@ -41,6 +41,7 @@
     cursor:pointer;
   }
   .product-items{
+    display:flex;
     justify-content:center;
     margin-top:2px;
     margin-bottom:2px;
@@ -106,10 +107,7 @@
   .space{
     margin-top:13%;
   }
-    .product-items {
-   display:flex;
-   overflow:hidden;
-   padding-left:40%;
+  .product-items {
   }
   .mobiles img {
     height: auto;
@@ -123,7 +121,7 @@
   }
 </style>
 <div class=space>
-<div class="product-item" style='margin-bottom:2px'>
+<div class="product-item" style='margin-bottom:2px:display:flex'>
     {% for product in Realme %}
     <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}"><div class=mobiles>
       <div style='display:flex'>

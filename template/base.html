@@ -7,10 +7,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     {% block link %}{% endblock %}
     <title>Supermarket-Home</title>
+    <link rel="website icon" type="text/css" href="{% static 'images/banner/profile.svg'%}">
 </head>
 <style>
 </style>
-<body >
+<body>
     <main>
         <header>
             <!--phone sidebar button-->
@@ -62,7 +63,7 @@
                         {% else %}
                         <a class="nav-link text-white" ><img src="{% static 'images/banner/profile.svg'%}" style=" margin-top: -2px;">welcome <span class="rotate-text-180" style="margin-left:3px">⇪</span></a>
                         {% endif %}
-                        <ul class="submenu" style="width:100px">
+                        <ul class="submenu" style="width:110px">
                             {% if user.is_staff %}
                             <li><a href="{% url 'addproduct' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add grocery</a></li>
                             <li><a href="{% url 'addmobile' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add Mobile</a></li>
@@ -89,7 +90,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="nav-link text-white" href="{% url 'cart' %}"><img src="{% static 'images/banner/cart.svg'%}" >Cart</a>
+                        <a style='color:black' class="nav-link text-white" href="{% url 'cart' %}"><img src="{% static 'images/banner/cart.svg'%}" >Cart</a>
                     </li>
                     <li>
                         <a class="nav-link text-white" style='color:black' href=""><img src="{% static 'images/banner/seller.svg'%}" >Become a Seller</a>
@@ -151,16 +152,19 @@
         </ul>
         </div>
         <ul class="menu-list" id="menulist" style="align-items: start;" >
+            {% if user.is_staff %}
+            <a href="{% url 'addmobile' %}"><li  class="menu-list-item" ><img src="{% static 'images/banner/orders.svg'%}" style="">Add Mobile</li></a>
+            <a href="{% url 'addfashion' %}"><li  class="menu-list-item" ><img src="{% static 'images/banner/orders.svg'%}" style="">Add Fashion</li></a>
+            {% else %}
             <a href=""><li><img src="{% static 'images/banner/supercoin.svg'%}" style="">Lucky coin</li></a>
             <a  href="{% url 'about' %}"><li class="menu-list-item" ><img src="{% static 'images/banner/supercoin.svg'%}" style="">About</li></a>
-            {% if user.is_staff %}
-            <a  href="{% url 'addproduct' %}"><li class="menu-list-item" ><img src="{% static 'images/banner/supercoin.svg'%}" style=""></li>add product</a> 
-            {% else %}
             <a  href=""><li class="menu-list-item" ><img src="{% static 'images/banner/supercoin.svg'%}" style=""></li>.</a>    
-            {% endif %}
             <a  href="{% url 'cart'%}"><li class="menu-list-item" ><img src="{% static 'images/banner/cart.svg'%}" style="">Cart</li></a>
             <a  href="{% url 'wishlist' %}"><li class="menu-list-item" ><img src="{% static 'images/banner/wishlist.svg'%}" style="">Wishlist</li></a>
+            <a href="{% url 'orders' %}"><li  class="menu-list-item" ><img src="{% static 'images/banner/orders.svg'%}" style="">Orders</li></a>
             <a  href="{% url 'address'%}"><li class="menu-list-item" ><img src="{% static 'images/banner/profile.svg'%}" style="">Profile</li></a>
+
+            {% endif %}
                 {% if user.is_authenticated %}
                 <a class="nav-link text-white" href="{% url 'logout' %}"><li class="menu-list-item" ><img src="{% static 'images/banner/logout.svg'%}">Logout</li></a>
                 {% else %}

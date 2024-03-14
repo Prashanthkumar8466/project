@@ -47,15 +47,17 @@ p {
 }
 @media screen and (max-width:800px){  
     .phoneview{
+        margin-top:50px;
         display:block;
     }
     .order{
         display:none;
     }
     .product {
+        margin-top:-20px;
         margin-left:-40px;
-      }
-      .product a{
+    }
+    .product a{
         border: 1px solid #ddd;
         padding: 15px;
         background-color: #fff;
@@ -65,11 +67,15 @@ p {
         justify-content:space-around;
         align-items:center;
         text-decoration:none;
-      }
+    }
+    .phoneview h1{
+        margin-bottom:30px;
+    }
+    
 }
 </style>
-<div class='phoneview' style='margin-top:-20px'>
-    <h1>Orders:</h1>
+<div class='phoneview'>
+    <h1 >Orders:</h1>
     {% if orders %}
     {% for order in orders %}
     <ul class='product'>
@@ -79,6 +85,8 @@ p {
         <li><h4>›</h4></li></a>
     </ul>
     {% endfor %}
+    {% else %}
+    <p>No orders available.</p>
     {% endif %}
 </div>
     <div class="order">
@@ -88,7 +96,7 @@ p {
         <thead>
             <tr style="cursor: not-allowed;">
                 <th>Order ID</th>
-                <th>Customer Name</th>
+                <th>Delivery Address</th>
                 <th>Product</th>
                 <th>Quantity</th>
                 <th>Total Price</th>

@@ -29,7 +29,7 @@ def category_curd(request):
     return render(request,"category.html",{'products':products,'category':'groceries'})
 def category_fashion(request):
     products=product.objects.filter(category='Fashion')
-    return render(request,"category.html",{'products':products,"category":'Fashion'})
+    return render(request,"fashion.html",{'products':products,"category":'Fashion'})
 def category_paneer(request):
     products=product.objects.filter(category='Electronics')
     return render(request,"category.html",{'products':products,"category":'Electronics'})
@@ -267,7 +267,7 @@ def viewall_Mobile(request,brand_name):
     return render(request,'mobilesview.html',{'Realme':products,'brand_name': brand_name})
 def view_last_add(request):
     products=product.objects.filter(category='Mobiles').order_by('-id')[:3]
-    return render(request,'addmobile.html',{'products':products})
+    return render(request,'mobileadd.html',{'products':products})
 #end add product functions 
 def allorder_view(request):
     orderslist,created=order.objects.get_or_create(user=request.user)

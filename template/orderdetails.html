@@ -2,7 +2,6 @@
 {% load static %}
 {% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/.css' %}">{% endblock %}
 {% block main %}
-
 <style>
 .order-details {
   display: grid;
@@ -36,11 +35,17 @@
     padding: 15px;
 }
 .order-details .product-Offers img {
-  max-width: 100%;
-  height: auto;
+  width: 120px;
+  height:140px;
+  padding:10px;
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-bottom: 10px;
+  margin-top:-50px;
+  margin-left:-30px;
+}
+.links a{
+    color: rgb(43, 43, 211);
 }
 @media screen and (max-width:800px){
     .order-details {
@@ -64,8 +69,8 @@
 </style>
 <div style='margin-top:6%'>
 {% for order in orders %}
-<div class="" >
-    <p style="margin-left:1.5%;"><a href="#">Home ›</a><a href="#">My Account ›</a>Orders {{order.id}}</p>
+<div class='links'  >
+    <p style="margin-left:1.5%;"><a style="margin-left:1.5%;" href="{% url 'home' %}">Home ›</a><a href="#">My Account ›</a>Orders {{order.id}}</p>
 <div class="order-details" >
         <div class="order">
             <h4>Delivery Address</h4>
@@ -103,7 +108,6 @@
         </div>
         <div >
             <ul>
-            <li><a href="#"> change Date</a></li>
             <li><a href="#">Cancel</a></li>
             <li><a href="#">Need Help ?</a></li>
             </ul>
