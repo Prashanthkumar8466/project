@@ -275,6 +275,12 @@ def view_last_add(request):
     products=product.objects.filter(category='Mobiles').order_by('-id')[:3]
     return render(request,'mobileadd.html',{'products':products})
 #end add product functions 
+#appliances
+def view_appliances(request):
+    return render(request,'appliances.html')
+def view_all_appliances(request,brand_name):
+    products = product.objects.filter(Brand=brand_name)
+    return render(request,'mobilesview.html',{'Realme':products,'brand_name': brand_name})
 def allorder_view(request):
     orderslist,created=order.objects.get_or_create(user=request.user)
     return render(request,'orders.html',{'orders':orderslist.product.all()})

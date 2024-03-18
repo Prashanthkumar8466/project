@@ -16,6 +16,9 @@ urlpatterns = [
     path('productdetails/<int:product_id>/', views.product_details,name="productdetails"),
     path('about', views.about,name="about"),
     path('contactus', views.contactus,name="contactus"),
+    #appliances
+     path('Appliances', views.view_appliances,name="Appliances"),
+     path('Appliances/<str:brand_name>',views.view_all_appliances, name='Appliances'),
     #mobiles
     path('Mobiles', views.category_mobiles,name="Mobiles"),
     path('mobiles/<str:brand_name>',views.viewall_Mobile, name='mobiles'),
