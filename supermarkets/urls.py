@@ -12,7 +12,6 @@ urlpatterns = [
     path('Fashion', views.category_fashion,name="Fashion"),
     path('Electronics', views.category_cheese,name="Electronics"),
     path('Home & Furnitures', views.category_paneer,name="Home & Furnitures"),
-    path('Appliances', views.category_ghee,name="Appliances"),
     path('Travel', views.category_Icecream,name="Travel"),
     path('productdetails/<int:product_id>/', views.product_details,name="productdetails"),
     path('about', views.about,name="about"),

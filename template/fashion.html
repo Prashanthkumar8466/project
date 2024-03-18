@@ -123,12 +123,15 @@
   .product:hover{
     width:281px;
   }
+  .mobile-ads,.mobile-3ads{
+    display:none;
+  }
   }
 </style>
 <!-- ads start-->
 <div class='space'>
     <div class='mob-content'>
-        <h3>FASHION</h3>
+        <h3>Fashion Store</h3>
     </div>
     {% for mobile in mobile %}
     <div class='mobile-ads'>
@@ -150,152 +153,472 @@
     </div>
     {% endfor %} 
     <!-- ads end-->
-<!-- Products-->
-    <div class='phone-brand-tittle'>
-        <h3>Men's wear</h3>
-        <a href="{% url 'mobiles' brand_name='Realme' %}"><h5>view all</h5></a>
-    </div>
-    <div class="product-items" style='margin-bottom:2px'>
-        {% if products %}
-        {% for product in Realme %}
-        <a style='display:flex' href="productdetails/{{product.id}}"><div class=mobiles>
-          <div style='display:flex'>
-          <img style='margin-left:14%;' src="{{product.product_image.url}}" alt="{{product.productname}}">
+    <!-- Products-->
+  
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Men's Wear</h3>
+    <a href="{% url 'mobiles' brand_name='Realme' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Realme %}
+    {% for product in Realme %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
           <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
-          </div>
-          <p class='name'>{{product.productname}}</p>
-          <div>
-            <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
-            <p><span style='margin-right:7px'>₹</span >{{product.price}}
-              <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
-                <script>
-                  var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
-                  document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
-              </script>
-              <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
-          </div>
-        </div></a>
-        {% endfor %}
-        {% else %}
-        <p>no items</p>
-        {% endif %}
-      </div> 
-      <div class='phone-brand-tittle'>
-        <h3>women's wear</h3>
-        <a href="{% url 'mobiles' brand_name='Samsung' %}"><h5>view all</h5></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
       </div>
-    <div class="product-items">
-      {% if products %}
-        {% for product in Samsung %}
-        <a style='display:flex' href="productdetails/{{product.id}}"><div class=mobiles>
-          <div style='display:flex'>
-          <img style='margin-left:14%;' src="{{product.product_image.url}}" alt="{{product.productname}}">
-          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:15px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
-          </div>
-          <p class='name'>{{product.productname}}</p>
-          <div>
-            <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
-            <p><span style='margin-right:7px'>₹</span >{{product.price}}
-              <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
-                <script>
-                  var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
-                  document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
-              </script>
-              <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
-          </div>
-        </div></a>
-        {% endfor %}
-        {% else %}
-        <p>no items</p>
-        {% endif %}
-    </div> 
-    <div class='phone-brand-tittle'>
-      <h3>Kid's wear</h3>
-      <a href="{% url 'mobiles' brand_name='POCO' %}"><h5>view all</h5></a>
-    </div>
-    <div class="product-items">
-        {% if products %}
-          {% for product in Poco %}
-          <a style='display:flex' href="productdetails/{{product.id}}"><div class=mobiles>
-            <div style='display:flex'>
-            <img style='margin-left:14%;' src="{{product.product_image.url}}" alt="{{product.productname}}">
-            <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:15px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
-            </div>
-            <p class='name'>{{product.productname}}</p>
-            <div>
-              <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
-              <p><span style='margin-right:7px'>₹</span >{{product.price}}
-                <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
-                  <script>
-                    var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
-                    document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
-                </script>
-                <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
-            </div>
-          </div></a>
-          {% endfor %}
-          {% else %}
-          <p>no items</p>
-          {% endif %}
-    </div>
-    <div class='phone-brand-tittle'>
-      <h3>women's Footwear</h3>
-      <h5><a href='#'>view all</a></h5>
-    </div>
-    <div class="product-items">
-      {% if products %}
-        {% for product in Vivo %}
-        <a style='display:flex' href="productdetails/{{product.id}}"><div class=mobiles>
-          <div style='display:flex'>
-          <img style='margin-left:14%;' src="{{product.product_image.url}}" alt="{{product.productname}}">
-          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:15px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
-          </div>
-          <p class='name'>{{product.productname}}</p>
-          <div>
-            <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
-            <p><span style='margin-right:7px'>₹</span >{{product.price}}
-              <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
-                <script>
-                  var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
-                  document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
-              </script>
-              <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
-          </div>
-        </div></a>
-        {% endfor %}
-        {% else %}
-        <p>no items</p>
-        {% endif %}
-    </div>
-    <div class='phone-brand-tittle'>
-      <h3>Men's Footwear</h3>
-      <h5><a href='#'>view all</a></h5>
-    </div>
-    <div class="product-items">
-      {% if products %}
-        {% for product in Apple%}
-        <a style='display:flex' href="productdetails/{{product.id}}"><div class=mobiles>
-          <div style='display:flex'>
-          <img style='margin-left:14%;' src="{{product.product_image.url}}" alt="{{product.productname}}">
-          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:15px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
-          </div>
-          <p class='name'>{{product.productname}}</p>
-          <div>
-            <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
-            <p><span style='margin-right:7px'>₹</span >{{product.price}}
-              <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
-                <script>
-                  var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
-                  document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
-              </script>
-              <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
-          </div>
-        </div></a>
-        {% endfor %}
-        {% else %}
-        <p>no items</p>
-        {% endif %}
-    </div>     
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Women's Wear</h3>
+    <a href="{% url 'mobiles' brand_name='Realme' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Poco %}
+    {% for product in Poco %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Kids Wear</h3>
+    <a href="{% url 'mobiles' brand_name='Realme' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Samsung %}
+    {% for product in Samsung %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Men's Footwear</h3>
+    <a href="{% url 'mobiles' brand_name='Vivo' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Vivo %}
+    {% for product in Vivo %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Women's Footwear</h3>
+    <a href="{% url 'mobiles' brand_name='Apple' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Apple %}
+    {% for product in Apple %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Kid's Footwear</h3>
+    <a href="{% url 'mobiles' brand_name='Motorola' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Motorola %}
+    {% for product in Motorola %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Women's Cosmotics</h3>
+    <a href="{% url 'mobiles' brand_name='Redmi' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Redmi %}
+    {% for product in Redmi %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Casual Wear</h3>
+    <a href="{% url 'mobiles' brand_name='Google' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Google %}
+    {% for product in Google %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<!--
+<div>
+  <div class='phone-brand-tittle'>
+    <h3></h3>
+    <a href="{% url 'mobiles' brand_name='Oppo' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Oppo %}
+    {% for product in Oppo %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Infinix smartphone</h3>
+    <a href="{% url 'mobiles' brand_name='Infinix' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Infinix %}
+    {% for product in Infinix %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Other smartphone</h3>
+    <a href="{% url 'mobiles' brand_name='Other' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Other %}
+    {% for product in Other %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Realme smartphone</h3>
+    <a href="{% url 'mobiles' brand_name='Realme' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Realme %}
+    {% for product in Realme %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Realme smartphone</h3>
+    <a href="{% url 'mobiles' brand_name='Realme' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Realme %}
+    {% for product in Realme %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class='phone-brand-tittle'>
+    <h3>Realme smartphone</h3>
+    <a href="{% url 'mobiles' brand_name='Realme' %}"><h5>view all</h5></a>
+  </div>
+  <div class="product-items" style='margin-bottom:2px'>
+    {% if Realme %}
+    {% for product in Realme %}
+    <a style='display:flex' href="productdetails/{{product.id}}">
+      <div class=mobiles>
+        <div style='display:flex'>
+          <img style='margin-left:14%;' src="{{product.product_image.url}}">
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+        </div>
+        <p class='name'>{{product.productname}}</p>
+        <div>
+          <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
+          <p><span style='margin-right:7px'>₹</span >{{product.price}}
+            <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
+              <script>
+                var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
+                document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
+            </script>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No Products</p>
+    {% endif %}
+  </div>
+</div>-->
 </div>
 </div>
 {% endblock %}

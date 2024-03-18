@@ -18,6 +18,7 @@ class product(models.Model):
     discount=models.FloatField(default=0)
     description=models.TextField()
     category = models.TextField(max_length=20)
+    sub_category= models.TextField(max_length=20,blank=True)
     Brand = models.TextField(max_length=20,blank=True)
     product_image=models.ImageField(upload_to='product/')
     def __str__(self):

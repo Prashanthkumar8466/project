@@ -21,9 +21,18 @@ def category(request):
 def category_mobiles(request):
     Realme=product.objects.filter(Brand='Realme')
     Samsung=product.objects.filter(Brand='Samsung')
+    Poco=product.objects.filter(Brand='Poco')
+    Vivo=product.objects.filter(Brand='Vivo')
+    Apple=product.objects.filter(Brand='Apple')
+    Motorola=product.objects.filter(Brand='Motorola')
+    Redmi=product.objects.filter(Brand='Redmi')
+    Google=product.objects.filter(Brand='Google')
+    Oppo=product.objects.filter(Brand='Oppo')
+    Infinix=product.objects.filter(Brand='Infinix')
+    Other=product.objects.filter(Brand='Other')
     mobile=mobile_ad.objects.all()
     mobile3=mobile_ad3.objects.all()
-    return render(request,"mobiles.html",{'Realme':Realme,'Samsung':Samsung,"Brand":'Realme','mobile':mobile,'mobile3':mobile3,})
+    return render(request,"mobiles.html",{'Realme':Realme,'Samsung':Samsung,'Poco':Poco,'Vivo':Vivo,'Apple':Apple,'Motorola':Motorola,'Redmi':Redmi,'Google':Google,'Oppo':Oppo,'Infinix':Infinix,'Other':Other,"Brand":'Realme','mobile':mobile,'mobile3':mobile3,})
 def category_curd(request):
     products=product.objects.filter(category='groceries')
     return render(request,"category.html",{'products':products,'category':'groceries'})
@@ -33,9 +42,6 @@ def category_fashion(request):
 def category_paneer(request):
     products=product.objects.filter(category='Electronics')
     return render(request,"category.html",{'products':products,"category":'Electronics'})
-def category_ghee(request):
-    products=product.objects.filter(category='Home & Furnitures')
-    return render(request,"category.html",{'products':products,"category":'Home & Furnitures'})
 def category_cheese(request):
     products=product.objects.filter(category='Travel')
     return render(request,"category.html",{'products':products,"category":'Travel'})
