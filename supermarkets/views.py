@@ -10,11 +10,11 @@ from  django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import customerform,PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
-from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification
+from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification,Fashion_ad,Fashion_ad3,home_spldeal
 import razorpay
 # Create your views here.
 def home(request):
-    return render(request,"home.html")
+    return render(request,'Home.html',)
 def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
@@ -36,15 +36,12 @@ def category_mobiles(request):
 def category_curd(request):
     products=product.objects.filter(category='groceries')
     return render(request,"category.html",{'products':products,'category':'groceries'})
-def category_fashion(request):
-    products=product.objects.filter(category='Fashion')
-    return render(request,"fashion.html",{'products':products,"category":'Fashion'})
 def category_paneer(request):
-    products=product.objects.filter(category='Electronics')
-    return render(request,"category.html",{'products':products,"category":'Electronics'})
+    products=product.objects.filter(category='Furnitures')
+    return render(request,"furnitures.html",{'products':products,"category":'Electronics'})
 def category_cheese(request):
-    products=product.objects.filter(category='Travel')
-    return render(request,"category.html",{'products':products,"category":'Travel'})
+    products=product.objects.filter(category='Electronics')
+    return render(request,"electronics.html",{'products':products,"category":'Travel'})
 
 def category_Icecream(request):
     products=product.objects.filter(category='Beauty, Toys & More')
@@ -252,6 +249,11 @@ def add_fashion(request):
 def view_last_fashion(request):
     products=product.objects.filter(category='Fashion').order_by('-id')[:3]
     return render(request,'addfashion.html',{'products':products})
+def category_fashion(request):
+    mobile=Fashion_ad.objects.all()
+    mobile3=Fashion_ad3.objects.all()
+    products=product.objects.filter(category='Fashion')
+    return render(request,"fashion.html",{'products':products,"category":'Fashion','mobile':mobile,'mobile3':mobile3}) 
 #mobile adding
 def add_Mobile(request):
     if request.method=="POST":
@@ -276,10 +278,12 @@ def view_last_add(request):
     return render(request,'mobileadd.html',{'products':products})
 #end add product functions 
 #appliances
+def add_appliances(request):
+    return render(request,'addappliances.html')
 def view_appliances(request):
     return render(request,'appliances.html')
 def view_all_appliances(request,brand_name):
-    products = product.objects.filter(Brand=brand_name)
+    products = product.objects.filter(sub_category=brand_name)
     return render(request,'mobilesview.html',{'Realme':products,'brand_name': brand_name})
 def allorder_view(request):
     orderslist,created=order.objects.get_or_create(user=request.user)

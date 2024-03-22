@@ -4,18 +4,16 @@
 {% endblock %}
 {% block main %}
 <style>
-  .product-items {
-    margin-top:6%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 10px;
-  }
+    .product-items {
+     margin-top:6%; 
+     display:flex;
+     width:100%;
+    }
     .product {
       border: 1px solid #ddd;
       padding: 15px;
       background-color: #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      position:fixed;
     }
     .product img {
       height: auto;
@@ -30,7 +28,15 @@
       overflow:hidden;
       display:flex;
       margin-left:-0px;
-      border:1px solid black;
+    }
+    .baseproducts{
+      width:40%;
+    }
+    .baseproducts-Specifications{
+      background:white;
+      width:100%;
+      overflow-y:scroll;
+      height:1000px;
     }
     .button button{
       height:50px;
@@ -40,9 +46,11 @@
     }
     .product .change{
       margin-left:50px;
+      overflow:hidden;
     }
     .product .change{
       margin-left:50px;
+      overflow:hidden;
     }
     .rating{
       padding:4px;
@@ -51,18 +59,32 @@
       background-color:green;
       color: #ddd;
       margin-left:10%;
+      overflow:hidden;
     }
     .Specifications{
+      margin-top:-14.78%;
       background-color:white;
       width:100%;
-      height:500px;
+      height:1000px;
+      overflow-y:scroll;
     }
-  @media screen and (max-width:800px){
-    .product-items{
-      margin-top:2%;
+    .baseproducts{
+      margin-left:2px;
     }
+    @media screen and (min-width:800px){
+      *{
+        overflow:hidden;
+      }
+     }
+@media screen and (max-width:800px){ 
+  .product-items{
+    margin-top:2%;
+    display:block;
+    overflow:scroll;
+  }
   .baseproducts{
     width:99%;
+    margin-left:0px;
   }
   .product {
     position: static;
@@ -78,8 +100,8 @@
     border:none;
   }
   .button button{
-    height:65px;
-    width:225px;
+    height:50px;
+    width:205px;
     border:none;
     font-size:20px;
   }
@@ -95,20 +117,20 @@
   .baseproducts img{
     width:350px;
   }
-  .Specifications{
-    margin-top:-10px;
+  .baseproducts-Specifications{
+    overflow:hidden;
   }
 }
 </style>
 <form class="product-items" method="post">
-    {% csrf_token %}
-    <div class="baseproducts" >
-        {% for product in products %}
-        <div class="product">
-          <div class='change' style='margin-left:-5px;'>
-          <img src="{{product.product_image.url}}" alt="{{product.productname}}">
-          <div>
-            <p class='name'>{{product.productname}}</p>
+  {% csrf_token %}
+  <div class="baseproducts">
+    {% for product in products %}
+    <div class="product">
+      <div class='change' style='margin-left:-5px;'>
+        <img src="{{product.product_image.url}}" alt="{{product.productname}}">
+      </div>
+      <p class='name'>{{product.productname}}</p>
             <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
             <p><span style='margin-right:7px'>₹</span >{{product.price}}
               <span style='color:rgb(150, 150, 177);text-decoration:line-through;' id='percentage-{{product.id}}'></span>
@@ -116,24 +138,126 @@
                   var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
                   document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
               </script>
-              <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
-          </div>
-        </div>
-          <div class="button">
-          <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(253, 253, 253);" >Add to cart</button></a>
-         <!-- <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="addtowish" style="cursor: pointer;" >Add to Wishlist</button></a>-->
-         <a href=""><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Buy Now</button></a>
-        </div>
-        </div>
-        {% endfor %}
-        </div>
-        {% for product in product_specifications %}
-        <div class="product-items Specifications">
-        <p>{{product.In_the_Box}}<p>
-        
-        </div>
-        {% endfor %}
-        <div>
-        </div>
+              <span style='color:green;margin-left:7px'>{{product.discount}}%</span>
+            </p>
+            <div class="button">
+              <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(253, 253, 253);" >Add to cart</button></a>
+             <!-- <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="addtowish" style="cursor: pointer;" >Add to Wishlist</button></a>-->
+             <a href=""><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Buy Now</button></a>
+            </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="baseproducts-Specifications">
+    {% for product in product_specifications %}
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p><p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p><p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p><p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+
+
+      <p>{{product.In_the_Box}}</p>
+
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <p>{{product.In_the_Box}}</p><p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+      <p>{{product.In_the_Box}}</p>
+
+      <p>{{product.In_the_Box}}</p>
+
+
+    {% endfor %}
+  </div>
 </form>
 {% endblock %}

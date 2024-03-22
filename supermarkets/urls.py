@@ -11,13 +11,14 @@ urlpatterns = [
     path('Groceries', views.category_curd,name="Groceries"),
     path('Fashion', views.category_fashion,name="Fashion"),
     path('Electronics', views.category_cheese,name="Electronics"),
-    path('Home & Furnitures', views.category_paneer,name="Home & Furnitures"),
+    path('Furnitures', views.category_paneer,name="Furnitures"),
     path('Travel', views.category_Icecream,name="Travel"),
     path('productdetails/<int:product_id>/', views.product_details,name="productdetails"),
     path('about', views.about,name="about"),
     path('contactus', views.contactus,name="contactus"),
     #appliances
      path('Appliances', views.view_appliances,name="Appliances"),
+     path('addappliances', views.add_appliances,name="addappliances"),
      path('Appliances/<str:brand_name>',views.view_all_appliances, name='Appliances'),
     #mobiles
     path('Mobiles', views.category_mobiles,name="Mobiles"),
