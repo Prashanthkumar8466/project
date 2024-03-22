@@ -13,8 +13,11 @@ from django.contrib.auth.views import PasswordChangeView
 from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification,Fashion_ad,Fashion_ad3,home_spldeal
 import razorpay
 # Create your views here.
+
 def home(request):
-    return render(request,'Home.html',)
+    orderlst=order.objects.all()
+    orderslist=home_spldeal.objects.all()
+    return render(request,'Home.html',{'orders':orderslist})
 def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})

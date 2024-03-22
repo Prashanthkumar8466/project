@@ -300,7 +300,9 @@ color: #f0ad1c;
   <ul class="adv"> 
     <li>
         <a href="">
-        <img src="{% static 'images/products/curd-total.png'%}" alt="...">
+          {% for order in orders %}
+        <img style='margin-top:-25%;border-radius:5px;' src="{{order.product.product_image.url}}" alt="...">
+        {% endfor %}
         </a>   
     </li>
 </ul>
