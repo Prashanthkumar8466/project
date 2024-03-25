@@ -48,7 +48,7 @@
             <!--end phone sidebar button-->
             <div class="main-bar">
                 {% if user.is_staff %}
-                <a href=""><img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px; margin-top: 3px;margin-left:100%;"></a>
+                <a href="{% url 'home' %}"><img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px; margin-top: 3px;margin-left:100%;"></a>
                 {% elif user.is_authenticated %}
                 <a href="{% url 'home' %}"><img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px; margin-top: 3px;margin-left:100%;"></a>
                 {% else %}

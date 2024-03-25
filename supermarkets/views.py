@@ -13,11 +13,30 @@ from django.contrib.auth.views import PasswordChangeView
 from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification,Fashion_ad,Fashion_ad3,home_spldeal
 import razorpay
 # Create your views here.
-
 def home(request):
     orderlst=order.objects.all()
     orderslist=home_spldeal.objects.all()
-    return render(request,'Home.html',{'orders':orderslist})
+    Total=User.objects.all().count()
+    active=User.objects.filter(is_active=True).count()
+    Deactive=User.objects.filter(is_active=False).count()
+    staff=User.objects.filter(is_staff=True).count()
+    Admin=User.objects.filter(is_superuser=True).count()
+    Totalorders=order.objects.all().count()
+    Pendingorders=order.objects.filter(status='Pending').count()
+    Deliveredorders=order.objects.filter(status='Delivered').count()
+    OFDorders=order.objects.filter(status='Out For Delivery').count()
+    Returnorders=order.objects.filter(status='Return').count()
+    Cancelorders=order.objects.filter(status='Cancel').count()
+    acceptedorders=order.objects.filter(status='Packing').count()
+    amount_paid=order.objects.all()
+    totalamount=sum(order.amountpaid for order in amount_paid)
+    other_paid=order.objects.all()
+    otheramount=sum(order.othercharges for order in other_paid)
+    amount=totalamount+otheramount
+    refund=order.objects.filter(status='Refund completed')
+    amountrefund=sum(order.amountpaid for order in refund)
+    availableamount=(totalamount+otheramount)-amountrefund
+    return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount})
 def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
@@ -45,7 +64,6 @@ def category_paneer(request):
 def category_cheese(request):
     products=product.objects.filter(category='Electronics')
     return render(request,"electronics.html",{'products':products,"category":'Travel'})
-
 def category_Icecream(request):
     products=product.objects.filter(category='Beauty, Toys & More')
     return render(request,"category.html",{'products':products,"category":'Beauty, Toys & More'})
@@ -75,7 +93,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request,user)
-            return render(request,'home.html')
+            return redirect('home')
         else:
             error_message = 'invalid username or password'
             return render(request,'login.html',{'error_message':error_message})
@@ -186,7 +204,7 @@ def check_out(request):
     address=customer.objects.filter(user=request.user)
     cart=cart_item.objects.first()
     cart_items=cart.cart_items.all()
-    amount=sum(product.discount for product in cart_items)
+    amount=sum(product.price for product in cart_items)
     totalamount=amount+40
     razoramount=int(totalamount*100)
     client = razorpay.Client(auth=(settings.RAZORPAY_KEY,settings.RAZORPAY_SECRET))
@@ -195,6 +213,7 @@ def check_out(request):
 def order_save(request):
     if request.method=="POST":
         custid=request.POST.get['custid']
+        
         if order_status=='created': 
             payment=Payment(
             user=request.user,

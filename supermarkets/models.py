@@ -5,10 +5,13 @@ from django.utils import timezone
 
 # Create your models here.
 STATUS_CHOICE=[
-    ('pending','pending'),
-    ('on the way','on the way'),
-    ('cancel','cancel'),
-    ('deliverd','deliverd'),
+    ('Pending','Pending'),
+   ('Out For Delivery','Out For Delivery'),
+    ('Cancel','Cancel'),
+    ('Deliverd','Deliverd'),
+    ('Return','Return'),
+    ('Refund completed','Refund completed'),
+    ('Packing','Packing')
 ]
 #categories
 class product(models.Model):
@@ -155,6 +158,8 @@ class order(models.Model):
     quality=models.PositiveSmallIntegerField(default=1)
     order_date=models.DateTimeField(auto_now_add=True)
     status=models.CharField(max_length=50,choices=STATUS_CHOICE,default='pending')
+    amountpaid=models.IntegerField(blank=True)
+    othercharges=models.IntegerField(blank=True)
     #payment=models.ForeignKey(Payment,on_delete=models.CASCADE)
 class mobile_ad(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)

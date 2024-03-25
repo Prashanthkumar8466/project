@@ -328,3 +328,277 @@ color: #f0ad1c;
 </ul>
 </div>
 {% endblock%}
+{% if user.is_staff%} 
+{% block admin%}
+<style>
+  .tittle{
+    margin-top:6%;
+    margin-left:2%;
+  }
+  .grid-content{
+    margin-left:1%;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-gap:10px;
+  }
+  .grid-items{
+    background-color:#f0f0f0;
+    padding:20px;
+    text-align:center;
+    border:1px solid #ccc;
+    width:620px;
+    background-color:white;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+p {
+    color: #555;
+}
+.action:hover{
+    background-color: rgb(0, 255, 221);
+
+}
+.order{
+    border: 2px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+.phoneview{
+    display:none;
+}
+td a{
+  color:blue;
+}
+@media screen and (max-width:800px){  
+    .phoneview{
+        margin-top:50px;
+        display:block;
+    }
+    .order{
+        display:none;
+    }
+    .product {
+        margin-top:-20px;
+        margin-left:-40px;
+    }
+    .product a{
+        border: 1px solid #ddd;
+        padding: 15px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display:flex;
+        list-style:none;
+        justify-content:space-around;
+        align-items:center;
+        text-decoration:none;
+    }
+    .phoneview h1{
+        margin-bottom:30px;
+    }
+    .grid-content{
+      margin-top:6%;
+      display:grid;
+      grid-template-columns:repeat(1,1fr);
+      grid-gap:2px;
+      
+    }
+    .grid-items{
+      width:88.3333%;
+      overflow:scroll;
+    }
+}
+</style>
+<h2 class='tittle'>Admin portal</h2>
+<div class='grid-content'>
+  <div class='grid-items'>
+    <h3>Users</h3>
+    <table border="1" >
+      <thead>
+          <tr style="cursor: not-allowed;">
+              <th>Details</th>
+              <th>Total</th>
+              <th>active</th>
+              <th>Deactive</th>
+              <th>Staff</th>
+              <th>Admin</th>
+          </tr>
+      </thead>
+      <tbody>
+              <tr>
+                  <td>Users</td>
+                  <td><a href=''>{{Total}}</a></td>
+                  <td><a href=''>{{ active }}</a></td>
+                  <td><a href=''>{{Deactive }}</a></td>
+                  <td><a href=''>{{ staff }}</a></td>
+                  <td><a href=''>{{ Admin }}</a></td>
+              </tr>
+      </tbody>
+  </table>
+  </div>
+  <div class='grid-items'>
+    <h3>Orders</h3>
+    <table border="1" >
+      <thead>
+          <tr style="cursor: not-allowed;">
+              <th>Details</th>
+              <th>Total</th>
+              <th>Pending</th>
+              <th>packing</th>
+              <th>Out for Delivery</th>
+              <th>Delivered</th>
+              <th>Return</th>
+              <th>Cancel</th>
+          </tr>
+      </thead>
+      <tbody>
+              <tr>
+                  <td>Orders</td>
+                  <td><a href=''>{{Totalorders}}</a></td>
+                  <td><a href=''>{{Pendingorders}}</a></td>
+                  <td><a href=''>{{ acceptedorders }}</a></td>
+                  <td><a href=''>{{ OFDorders }}</a></td>
+                  <td><a href=''>{{ Deliveredorders }}</a></td>
+                  <td><a href=''>{{ Returnorders }}</a></td>
+                  <td><a href=''>{{ Cancelorders }}</a></td>
+              </tr>
+      </tbody>
+  </table>
+  </div>
+  <div class='grid-items'>
+    <table border="1" >
+      <h3>Products Details</h3>
+      <thead>
+          <tr style="cursor: not-allowed;">
+              <th></th>
+              <th>Total</th>
+              <th>active</th>
+              <th>Deactive</th>
+              <th>Staff</th>
+              <th>Admin</th>
+          </tr>
+      </thead>
+      <tbody>
+              <tr>
+                  <td>Users</td>
+                  <td><a href='#'>{{Total}}</a></td>
+                  <td><a href=''>{{ active }}</a></td>
+                  <td><a href=''>{{Deactive }}</a></td>
+                  <td><a href=''>{{ staff }}</a></td>
+                  <td><a href=''>{{ Admin }}</a></td>
+              </tr>
+      </tbody>
+  </table>
+  </div>
+  <div class='grid-items'>
+    <h3>In cart</h3>
+    <table border="1" >
+      <thead>
+          <tr style="cursor: not-allowed;">
+              <th>Order ID</th>
+              <th>Delivery <br>Address</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+              <th>Status</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for order in orders %}
+              <tr>
+                <td><a href='#'>{{Total}}</a></td>
+                <td><a href=''>{{ active }}</a></td>
+                <td><a href=''>{{Deactive }}</a></td>
+                <td><a href=''>{{ staff }}</a></td>
+                <td><a href=''>{{ Admin }}</a></td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  </div>
+  <div class='grid-items'>
+    <h3>Total Balance</h3>
+    <table border="1" >
+      <thead>
+          <tr style="cursor: not-allowed;">
+              <th></th>
+              <th>Total</th>
+              <th>Avilable</th>
+              <th>Other charges</th>
+              <th>Refunded Back</th>
+              <th>Bal Dr</th>
+          </tr>
+      </thead>
+      <tbody>
+              <tr>
+                <td>Balance</td>
+                <td><a href=''>{{ amount }}</a></td>
+                <td><a href=''>{{availableamount}}</a></td>
+                <td><a href=''>{{otheramount }}</a></td>
+                <td><a href=''>{{ amountrefund }}</a></td>
+              </tr>
+      </tbody>
+  </table>
+  </div>
+  <div class='grid-items'>
+    <h3>Balance category wise</h3>
+    <table border="1">
+      <thead>
+          <tr style="cursor: not-allowed;">
+              <th></th>
+              <th>groceries</th>
+              <th>Mobiles</th>
+              <th>Fashion</th>
+              <th>Electronics</th>
+              <th>Furnitures</th>
+              <th>Appliances</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for order in orders %}
+              <tr>
+                <td>Balance</td>
+                <td><a href=''>{{ active }}</a></td>
+                <td><a href=''>{{Deactive }}</a></td>
+                <td><a href=''>{{ staff }}</a></td>
+                <td><a href=''>{{ active }}</a></td>
+                <td><a href=''>{{Deactive }}</a></td>
+                <td><a href=''>{{ staff }}</a></td>
+              </tr>
+          {% endfor %}
+      </tbody>
+      <thead>
+        <tr>
+          <tr>
+            <th></th>
+            <th>Travel</th>
+            <th>Others</th>
+          </tr>
+        </tr>
+      </thead>
+      <tbody>
+        <td>
+          <td>Balance</td>
+           <td><a href=''>{{ active }}</a></td>
+        </td>
+      </tbody>
+  </table>
+  </div>
+
+</div>
+{% endblock %}
+{% else %}
+{% endif %}
