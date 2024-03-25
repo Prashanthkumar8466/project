@@ -1,6 +1,7 @@
 from django.contrib import admin
 from . models  import Payment, cart_item, order,product,contact_u,customer,wishlist,mobile_ad,mobile_ad3,mobile_specification
 from . models  import furniture_ad,furniture_ad3,Appliance_ad,Appliance_ad3,Fashion_ad,Fashion_ad3,Electronics_ad,Electronics_ad3,home_spldeal
+from . models  import Recentsearch,poppularproduct
 # Register your models here.
 @admin.register(product)
 class productModelAdmin(admin.ModelAdmin):
@@ -64,3 +65,9 @@ class cartitemsModelAdmin(admin.ModelAdmin):
 class orderplacedModelAdmin(admin.ModelAdmin):
    list_display=['id']
 admin.site.register(Payment)
+@admin.register(Recentsearch)
+class RecentsearchModelAdmin(admin.ModelAdmin):
+    list_display=["id","user"]
+@admin.register(poppularproduct)
+class poppularproductModelAdmin(admin.ModelAdmin):
+    list_display=["id","user"]

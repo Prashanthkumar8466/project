@@ -221,3 +221,9 @@ class home_spldeal(models.Model):
     product=models.ForeignKey(product,on_delete=models.CASCADE)
     title=models.CharField(max_length=12)
     qutation=models.CharField(max_length=12)
+class Recentsearch(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    recent=models.ManyToManyField('product')
+class poppularproduct(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    product=models.ForeignKey(product,on_delete=models.CASCADE)

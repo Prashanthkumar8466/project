@@ -143,7 +143,7 @@
             <div class="button">
               <a href="{% url 'add-to-cart' product_id=product.id %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(253, 253, 253);" >Add to cart</button></a>
              <!-- <a href="{% url 'add-to-wishlist' product_id=product.id %}"><button type="button" class="addtowish" style="cursor: pointer;" >Add to Wishlist</button></a>-->
-             <a href=""><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Buy Now</button></a>
+             <a href="{% url 'checkout' %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Buy Now</button></a>
             </div>
     </div>
     {% endfor %}

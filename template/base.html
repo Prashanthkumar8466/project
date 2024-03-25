@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/newbase.css' %}">
     {% block link %}{% endblock %}
     <title>Supermarket-Home</title>
     <link rel="website icon" type="text/css" href="{% static 'images/banner/profile.svg'%}">
@@ -63,7 +63,7 @@
                         {% else %}
                         <a class="nav-link text-white" ><img src="{% static 'images/banner/profile.svg'%}" style=" margin-top: -2px;">welcome <span class="rotate-text-180" style="margin-left:3px">⇪</span></a>
                         {% endif %}
-                        <ul class="submenu" style="width:110px">
+                        <ul class="submenu">
                             {% if user.is_staff %}
                             <li><a href="{% url 'addproduct' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add grocery</a></li>
                             <li><a href="{% url 'addmobile' %}"><img src="{% static 'images/banner/profile.svg'%}" style=" height=-5px;margin-top: -2px;">Add Mobile</a></li>

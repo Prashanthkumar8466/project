@@ -10,7 +10,7 @@ from  django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import customerform,PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
-from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification,Fashion_ad,Fashion_ad3,home_spldeal
+from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification,Fashion_ad,Fashion_ad3,home_spldeal,Recentsearch
 import razorpay
 # Create your views here.
 def home(request):
@@ -36,7 +36,8 @@ def home(request):
     refund=order.objects.filter(status='Refund completed')
     amountrefund=sum(order.amountpaid for order in refund)
     availableamount=(totalamount+otheramount)-amountrefund
-    return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount})
+    recentitems,created=Recentsearch.objects.get_or_create(user=request.user)
+    return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'Recent':recentitems.recent.all()})
 def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
@@ -70,6 +71,9 @@ def category_Icecream(request):
 
 def product_details(request,product_id):
     products=product.objects.filter(pk=product_id)
+    Product = get_object_or_404(product,pk=product_id)
+    user_profile,created=Recentsearch.objects.get_or_create(user=request.user)
+    user_profile.recent.add(Product)
     product_specifications=mobile_specification.objects.filter(pk=product_id)
     return render(request,"productdetails.html",{'products':products,'product_specifications':product_specifications,'product_id':product_id})
 def about(request):
@@ -179,7 +183,7 @@ def remove_from_wishlist(request, product_id):
     user_profile.wish_item.remove(Product)
     return redirect('wishlist')
 @login_required(login_url='login')  
-def wishlist_view(request,):
+def wishlist_view(request):
     wishlistitems,created=wishlist.objects.get_or_create(user=request.user)
     return render(request,'wishlist.html',{'wishlist':wishlistitems.wish_item.all()})
 @login_required(login_url='login')
@@ -213,7 +217,6 @@ def check_out(request):
 def order_save(request):
     if request.method=="POST":
         custid=request.POST.get['custid']
-        
         if order_status=='created': 
             payment=Payment(
             user=request.user,

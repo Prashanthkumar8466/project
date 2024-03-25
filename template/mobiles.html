@@ -163,7 +163,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Realme %}
     {% for product in Realme %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -196,7 +196,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Poco %}
     {% for product in Poco %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -229,7 +229,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Samsung %}
     {% for product in Samsung %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -262,7 +262,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Vivo %}
     {% for product in Vivo %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -295,7 +295,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Apple %}
     {% for product in Apple %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -328,7 +328,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Motorola %}
     {% for product in Motorola %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -361,7 +361,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Redmi %}
     {% for product in Redmi %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -394,7 +394,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Google %}
     {% for product in Google %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -427,7 +427,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Oppo %}
     {% for product in Oppo %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -460,7 +460,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Infinix %}
     {% for product in Infinix %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
@@ -493,7 +493,7 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Other %}
     {% for product in Other %}
-    <a style='display:flex' href="productdetails/{{product.id}}">
+    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">

@@ -144,7 +144,7 @@ color: #f0ad1c;
     </a>
   </li>
   <li>
-    <a href="">
+    <a href="{% url 'Furnitures' %}">
       <img src="{% static 'images/banner/home&furnitures.webp'%}">
       <h6>Furnitures</h6>
     </a>
@@ -299,35 +299,75 @@ color: #f0ad1c;
   <h3 style='margin-left:30%;background-color:green;width:135px'>NEW LAUNCH</h3> 
   <ul class="adv"> 
     <li>
-        <a href="">
-          {% for order in orders %}
-        <img style='margin-top:-25%;border-radius:5px;' src="{{order.product.product_image.url}}" alt="...">
-        {% endfor %}
-        </a>   
+        {% for order in orders %}
+          <a href="{% url 'productdetails' product_id=order.product.id %}">
+          <img style='margin-top:-25%;border-radius:5px;' src="{{order.product.product_image.url}}" alt="...">
+          </a>
+        {% endfor %} 
     </li>
 </ul>
 </div>
-<div class="baseproducts"style="overflow: hidden;">
-  <h3 style='margin-left:30%;background-color:green;width:135px'></h3> 
-  <ul class="adv"> 
-    <li>
-        <a href="">
-        <img src="{% static 'images/products/curd-total.png'%}" alt="...">
-      </a>   
-    </li>
-    <li>
-      <a href="">
-      <img src="{% static 'images/products/curd-total.png'%}" alt="...">
-    </a>   
-  </li>
-  <li>
-    <a href="">
-    <img src="{% static 'images/products/curd-total.png'%}" alt="...">
-    </a>
-  </li>
-</ul>
+<div class="container">
+  <h1>Recent Search</h1>
+  <div class="products">
+    {% for product in Recent %}
+    <a href="{% url 'productdetails' product_id=product.id %}"><div class="product">
+      <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
+      <p>{{product.productname}}<p>      
+    </div></a>
+    {% endfor %}
+  </div>
+</div>
+<style>
+  .container {
+    background-color:white;
+    padding-bottom:30px;
+  }
+  h1 {
+    margin-top:2px;
+    padding-top:10px;
+    text-align: center;
+  }
+  .products {
+    padding-left:20px;
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar on Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar on IE/Edge */
+  }
+  .products::-webkit-scrollbar {
+    display: none; /* Hide scrollbar on WebKit browsers */
+  }
+  .product { /* Adjust width as needed for each product */
+    height:100px;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  .product img{
+    width:70px;
+    height:90px;
+    margin-top:-4px;
+  }
+  .product p{
+    margin-top:-2px;
+  }
+</style>
+<div class="container">
+  <h1>Suggestion</h1>
+  <div class="products">
+    <div class="product">Product 1</div>
+    <div class="product">Product 2</div>
+    <div class="product">Product 3</div>
+    <div class="product">Product 4</div>
+    <div class="product">Product 5</div>
+  </div>
 </div>
 {% endblock%}
+<!--- Admin start page-->
+<div class='admin'>
 {% if user.is_staff%} 
 {% block admin%}
 <style>
@@ -602,3 +642,5 @@ td a{
 {% endblock %}
 {% else %}
 {% endif %}
+</div>
+<!--- Admin start page-->
