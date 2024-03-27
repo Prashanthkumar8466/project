@@ -4,6 +4,24 @@
 {% endblock %}
 {% block main %}
 <style>
+  .bar-content{
+    display:flex;
+    justify-content:space-around;
+    background-color:white;
+  }
+  .bar-content a{
+    padding:15px;
+  }
+  .bar-content .active{
+    color:rgba(248, 149, 0, 0.644);
+    border-bottom:1px solid rgba(248, 149, 0, 0.644);
+    border-radius:10px;
+  }
+  .bar-content a:hover{
+    color:rgba(248, 149, 0, 0.644);
+    border-bottom:1px solid rgba(248, 149, 0, 0.644);
+    border-radius:10px;
+  }
   a{
     text-decoration: none;
   }
@@ -31,9 +49,7 @@
   background-color:white;
   }
   .space{
-    margin-top:7%;
-    margin-left:8px;
-    margin-right:8px;
+    margin-top:5.5%;
   }
   .mobiles{
     width:160px;
@@ -102,7 +118,7 @@
   .phone-brand-tittle h5 a{
     color:white;
   }
-  a{
+  .phone-brand-tittle a{
     color:white;
   }
   @media screen and (max-width:800px){
@@ -130,6 +146,17 @@
 </style>
 <!-- ads start-->
 <div class='space'>
+  <div class='bar-content'>
+    <p><a href="{% url 'Groceries'%}">Grocery</a></p>
+    <p><a class='active' href="{% url 'Mobiles'%}">Mobiles</a></p>
+    <p><a href="{% url 'Electronics'%}">Electronics</a></p>
+    <p><a href="{% url 'Fashion'%}">Fashion</a></p>
+    <p><a href="{% url 'Furnitures'%}">Furnitures</a></p>
+    <p><a href="{% url 'Appliances'%}">Appliances</a></p>
+    <p><a href="{% url 'Travel'%}">Travel</a></p>
+    <p><a href="  ">Beauty&Toys</a></p>
+  </div>
+  </div>
     <div class='mob-content'>
         <h3>Mobile Phones</h3>
     </div>

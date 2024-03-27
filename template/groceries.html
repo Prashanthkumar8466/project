@@ -36,7 +36,7 @@
     font-size:14px;
     color:rgb(80, 73, 73);
     align-items:center;
-    text-align:justify
+    text-align:justify;
   }
   .space .mob-content p a{
     color: rgb(53, 53, 201);
@@ -144,18 +144,18 @@
 <!-- ads start-->
 <div class='space'>
   <div class='bar-content'>
-    <p><a href="{% url 'Groceries'%}">Grocery</a></p>
+    <p><a class='active'  href="{% url 'Groceries'%}">Grocery</a></p>
     <p><a href="{% url 'Mobiles'%}">Mobiles</a></p>
     <p><a href="{% url 'Electronics'%}">Electronics</a></p>
     <p><a href="{% url 'Fashion'%}">Fashion</a></p>
-    <p><a  href="{% url 'Furnitures'%}">Furnitures</a></p>
-    <p><a class='active' href="{% url 'Appliances'%}">Appliances</a></p>
+    <p><a href="{% url 'Furnitures'%}">Furnitures</a></p>
+    <p><a href="{% url 'Appliances'%}">Appliances</a></p>
     <p><a href="{% url 'Travel'%}">Travel</a></p>
     <p><a href="  ">Beauty&Toys</a></p>
   </div>
   </div>
     <div class='mob-content'>
-        <h3>APPLIANCES</h3>
+        <h3>Groceries</h3>
     </div>
     {% for mobile in mobile %}
     <div class='mobile-ads'>
@@ -183,7 +183,7 @@
     <!-- ads end-->
     <!-- Products-->
     <div class='phone-brand-tittle'>
-        <h3>KITCHEN APPLIANCES</h3>
+        <h3>--</h3>
         <a href="{% url 'Appliances' brand_name='Kitchen' %}"><h5>view all</h5></a>
     </div>
     <div class="product-items" style='margin-bottom:2px'>
@@ -212,7 +212,7 @@
         {% endif %}
       </div> 
       <div class='phone-brand-tittle'>
-        <h3>HALL APPLIANCES</h3>
+        <h3>--</h3>
         <a href="{% url 'Appliances' brand_name='Hall' %}"><h5>view all</h5></a>
       </div>
     <div class="product-items">
@@ -241,7 +241,7 @@
         {% endif %}
     </div> 
     <div class='phone-brand-tittle'>
-      <h3>BED ROOM APPLIANCES</h3>
+      <h3>--</h3>
       <a href="{% url 'Appliances' brand_name='Bed Room' %}"><h5>view all</h5></a>
     </div>
     <div class="product-items">
@@ -270,7 +270,7 @@
           {% endif %}
     </div>
     <div class='phone-brand-tittle'>
-      <h3>DINNING APPLIANCES</h3>
+      <h3>--</h3>
       <h5><a href="{% url 'Appliances' brand_name='Dinning' %}">view all</a></h5>
     </div>
     <div class="product-items">
@@ -299,7 +299,7 @@
         {% endif %}
     </div>
     <div class='phone-brand-tittle'>
-      <h3>OTHER APPLIANCES</h3>
+      <h3>--</h3>
       <h5><a href="{% url 'Appliances' brand_name='Other' %}">view all</a></h5>
     </div>
     <div class="product-items">

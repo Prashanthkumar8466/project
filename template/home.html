@@ -307,16 +307,24 @@ color: #f0ad1c;
     </li>
 </ul>
 </div>
-<div class="container">
+<div style='display:flex' style='width:100%'>
+<div class="container" style='width:70%'>
   <h1>Recent Search</h1>
-  <div class="products">
-    {% for product in Recent %}
-    <a href="{% url 'productdetails' product_id=product.id %}"><div class="product">
+  <div class="products" >
+    {% for product in Recent|slice:'-7:' %}
+    <a href="{% url 'productdetails' product_id=product.id %}">
+    <div class="product">
       <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
       <p>{{product.productname}}<p>      
     </div></a>
     {% endfor %}
   </div>
+</div>
+<div class="container" style='width:30%;'>
+  <h1></h1>
+  <h5></h5>
+  <div class="product advi" >Adv </div>
+</div>
 </div>
 <style>
   .container {
@@ -326,6 +334,45 @@ color: #f0ad1c;
   h1 {
     margin-top:2px;
     padding-top:10px;
+    padding-bottom:10px;
+    text-align: center;
+  }
+  .products {
+    padding-left:20px;
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar on Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar on IE/Edge */
+  }
+  .products::-webkit-scrollbar {
+    display: none; /* Hide scrollbar on WebKit browsers */
+  }
+  .product { /* Adjust width as needed for each product */
+    height:200px;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  .product img{
+    width:150px;
+    height:180px;
+    margin-top:-4px;
+  }
+  .product p{
+    text-align: center;
+    margin-top:-2px;
+  }
+  @media screen and (max-width:800px){  
+  .container {
+    background-color:white;
+    padding-bottom:30px;
+  }
+  h1 {
+    margin-top:2px;
+    padding-top:10px;
+    padding-bottom:10px;
     text-align: center;
   }
   .products {
@@ -354,9 +401,63 @@ color: #f0ad1c;
   .product p{
     margin-top:-2px;
   }
+  .container .advi{
+    display:none; 
+  }
+}
 </style>
 <div class="container">
   <h1>Suggestion</h1>
+  <div class="products">
+    <div class="product">Product 1</div>
+    <div class="product">Product 2</div>
+    <div class="product">Product 3</div>
+    <div class="product">Product 4</div>
+    <div class="product">Product 5</div>
+  </div>
+</div>
+<div class="container">
+  <h1>Top Deals</h1>
+  <div class="products">
+    <div class="product">Product 1</div>
+    <div class="product">Product 2</div>
+    <div class="product">Product 3</div>
+    <div class="product">Product 4</div>
+    <div class="product">Product 5</div>
+  </div>
+</div>
+<div class="container">
+  <h1>NEW LAUNCHING</h1>
+  <div class="products">
+    <div class="product">Product 1</div>
+    <div class="product">Product 2</div>
+    <div class="product">Product 3</div>
+    <div class="product">Product 4</div>
+    <div class="product">Product 5</div>
+  </div>
+</div>
+<div class="container">
+  <h1>Most sales</h1>
+  <div class="products">
+    <div class="product">Product 1</div>
+    <div class="product">Product 2</div>
+    <div class="product">Product 3</div>
+    <div class="product">Product 4</div>
+    <div class="product">Product 5</div>
+  </div>
+</div>
+<div class="container">
+  <h1>Festival Offers</h1>
+  <div class="products">
+    <div class="product">Product 1</div>
+    <div class="product">Product 2</div>
+    <div class="product">Product 3</div>
+    <div class="product">Product 4</div>
+    <div class="product">Product 5</div>
+  </div>
+</div>
+<div class="container">
+  <h1>Products</h1>
   <div class="products">
     <div class="product">Product 1</div>
     <div class="product">Product 2</div>
@@ -536,7 +637,7 @@ td a{
                   <td>Users</td>
                   <td><a href='#'>{{Total}}</a></td>
                   <td><a href=''>{{ active }}</a></td>
-                  <td><a href=''>{{Deactive }}</a></td>
+                  <td><a href=''>{{ Deactive }}</a></td>
                   <td><a href=''>{{ staff }}</a></td>
                   <td><a href=''>{{ Admin }}</a></td>
               </tr>
@@ -636,8 +737,7 @@ td a{
         </td>
       </tbody>
   </table>
-  </div>
-
+  </div> 
 </div>
 {% endblock %}
 {% else %}

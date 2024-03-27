@@ -36,7 +36,7 @@ def home(request):
     refund=order.objects.filter(status='Refund completed')
     amountrefund=sum(order.amountpaid for order in refund)
     availableamount=(totalamount+otheramount)-amountrefund
-    recentitems,created=Recentsearch.objects.get_or_create(user=request.user)
+    recentitems,created=Recentsearch.objects.get_or_create(user=request.user)[:7]
     return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'Recent':recentitems.recent.all()})
 def category(request):
     products=product.objects.all()
@@ -58,7 +58,7 @@ def category_mobiles(request):
     return render(request,"mobiles.html",{'Realme':Realme,'Samsung':Samsung,'Poco':Poco,'Vivo':Vivo,'Apple':Apple,'Motorola':Motorola,'Redmi':Redmi,'Google':Google,'Oppo':Oppo,'Infinix':Infinix,'Other':Other,"Brand":'Realme','mobile':mobile,'mobile3':mobile3,})
 def category_curd(request):
     products=product.objects.filter(category='groceries')
-    return render(request,"category.html",{'products':products,'category':'groceries'})
+    return render(request,"groceries.html",{'products':products,'category':'groceries'})
 def category_paneer(request):
     products=product.objects.filter(category='Furnitures')
     return render(request,"furnitures.html",{'products':products,"category":'Electronics'})
@@ -67,8 +67,7 @@ def category_cheese(request):
     return render(request,"electronics.html",{'products':products,"category":'Travel'})
 def category_Icecream(request):
     products=product.objects.filter(category='Beauty, Toys & More')
-    return render(request,"category.html",{'products':products,"category":'Beauty, Toys & More'})
-
+    return render(request,"Travel.html",{'products':products,"category":'Beauty, Toys & More'})
 def product_details(request,product_id):
     products=product.objects.filter(pk=product_id)
     Product = get_object_or_404(product,pk=product_id)
