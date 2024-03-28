@@ -407,63 +407,75 @@ color: #f0ad1c;
 }
 </style>
 <div class="container">
-  <h1>Suggestion</h1>
+  <h1>Most View</h1>
   <div class="products">
-    <div class="product">Product 1</div>
-    <div class="product">Product 2</div>
-    <div class="product">Product 3</div>
-    <div class="product">Product 4</div>
-    <div class="product">Product 5</div>
+    {% for product in top_products %}
+    <a href="{% url 'productdetails' product_id=product.id %}">
+      <div class="product">
+        <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
+        <p>{{product.productname}}<p>      
+      </div></a>
+      {% endfor %}
   </div>
 </div>
 <div class="container">
   <h1>Top Deals</h1>
   <div class="products">
-    <div class="product">Product 1</div>
-    <div class="product">Product 2</div>
-    <div class="product">Product 3</div>
-    <div class="product">Product 4</div>
-    <div class="product">Product 5</div>
+    {% for product in Top_Dealsview %}
+    <a href="{% url 'productdetails' product_id=product.id %}">
+      <div class="product">
+        <img src="{{Top_Dealsview.product.product_image.url}}" alt="{{product.productname}}">  
+        <p>{{product.productname}}<p>      
+      </div></a>
+      {% endfor %}
   </div>
 </div>
 <div class="container">
   <h1>NEW LAUNCHING</h1>
   <div class="products">
-    <div class="product">Product 1</div>
-    <div class="product">Product 2</div>
-    <div class="product">Product 3</div>
-    <div class="product">Product 4</div>
-    <div class="product">Product 5</div>
+    {% for product in products_with_order_counts %}
+    <a href="{% url 'productdetails' product_id=product.id %}">
+      <div class="product">
+        <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
+        <p>{{product.productname}}<p>      
+      </div></a>
+      {% endfor %}
   </div>
 </div>
 <div class="container">
   <h1>Most sales</h1>
   <div class="products">
-    <div class="product">Product 1</div>
-    <div class="product">Product 2</div>
-    <div class="product">Product 3</div>
-    <div class="product">Product 4</div>
-    <div class="product">Product 5</div>
+    {% for product in Most_sales %}
+    <a href="{% url 'productdetails' product_id=product.id %}">
+      <div class="product">
+        <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
+        <p>{{product.productname}}<p>      
+      </div></a>
+      {% endfor %}
   </div>
 </div>
 <div class="container">
   <h1>Festival Offers</h1>
   <div class="products">
-    <div class="product">Product 1</div>
-    <div class="product">Product 2</div>
-    <div class="product">Product 3</div>
-    <div class="product">Product 4</div>
-    <div class="product">Product 5</div>
+    {% for product in Festival %}
+    <a href="{% url 'productdetails' product_id=product.id %}">
+      <div class="product">
+        <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
+        <p>{{product.productname}}<p>      
+      </div></a>
+      {% endfor %}
   </div>
 </div>
 <div class="container">
   <h1>Products</h1>
   <div class="products">
-    <div class="product">Product 1</div>
-    <div class="product">Product 2</div>
-    <div class="product">Product 3</div>
-    <div class="product">Product 4</div>
-    <div class="product">Product 5</div>
+    {% for product in Products %}
+    <a href="{% url 'productdetails' product_id=product.id %}">
+      <div class="product">
+        <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
+        <p>{{product.productname}}<p>      
+      </div></a>
+      {% endfor %}
   </div>
 </div>
 {% endblock%}

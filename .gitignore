@@ -68,7 +68,6 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
-
 # Translations
 *.mo
 
@@ -134,7 +133,6 @@ celerybeat.pid
 
 # Environments
 .env/
-venv/
 ENV/
 env.bak/
 venv.bak/
@@ -152,7 +150,6 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
 # Pyre type checker
 .pyre/
 

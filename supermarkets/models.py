@@ -224,6 +224,24 @@ class home_spldeal(models.Model):
 class Recentsearch(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     recent=models.ManyToManyField('product')
+class Most_view(models.Model):
+    product=models.ForeignKey(product,on_delete=models.CASCADE)
+    view_count=models.IntegerField(default=0)
 class poppularproduct(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    product=models.ForeignKey(product,on_delete=models.CASCADE)
+class Suggestionproduct(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    product=models.ForeignKey(product,on_delete=models.CASCADE)
+class Top_Dealsproduct(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    product=models.ForeignKey(product,on_delete=models.CASCADE)
+class NEW_LAUNCHINGproduct(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    product=models.ForeignKey(product,on_delete=models.CASCADE)
+class Most_salesproduct(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    product=models.ForeignKey(product,on_delete=models.CASCADE)
+class Festivalproduct(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     product=models.ForeignKey(product,on_delete=models.CASCADE)

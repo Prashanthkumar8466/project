@@ -1,4 +1,5 @@
 #source .venv/bin/activate
+from django.db import models
 from urllib import request
 from django.conf import settings
 from django.urls import reverse_lazy
@@ -12,6 +13,7 @@ from .forms import customerform,PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification,Fashion_ad,Fashion_ad3,home_spldeal,Recentsearch
 import razorpay
+from .models import Suggestionproduct,Top_Dealsproduct,poppularproduct,NEW_LAUNCHINGproduct,Festivalproduct,Most_view
 # Create your views here.
 def home(request):
     orderlst=order.objects.all()
@@ -36,8 +38,17 @@ def home(request):
     refund=order.objects.filter(status='Refund completed')
     amountrefund=sum(order.amountpaid for order in refund)
     availableamount=(totalamount+otheramount)-amountrefund
-    recentitems,created=Recentsearch.objects.get_or_create(user=request.user)[:7]
-    return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'Recent':recentitems.recent.all()})
+    products_by_view_count = Most_view.objects.order_by('-view_count')[:3]
+    top_products = [most_view.product for most_view in products_by_view_count]
+    products_with_order_counts = product.objects.annotate(order_count=models.Count('order'))
+    Festivalview=Festivalproduct.objects.all()
+    Products=product.objects.all()
+    if request.user.is_authenticated:
+        recentitems,created=Recentsearch.objects.get_or_create(user=request.user)
+        return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'top_products':top_products,'products_with_order_counts':products_with_order_counts,'Products':Products,'Recent':recentitems.recent.all()})
+    else:
+        return render(request,'home.html',{'products':products,'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'Suggestion':Suggestionview,'Top_Deals':Top_Dealsview,'NEW_LAUNCHING':NEW_LAUNCHINGview,'Most_sales':Most_salesview,'Festival': Festivalview})
+
 def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
@@ -74,6 +85,13 @@ def product_details(request,product_id):
     user_profile,created=Recentsearch.objects.get_or_create(user=request.user)
     user_profile.recent.add(Product)
     product_specifications=mobile_specification.objects.filter(pk=product_id)
+    product_instance = product.objects.get(id=product_id)
+    most_view_instance,created= Most_view.objects.get_or_create(product=product_instance)
+    if created:
+        most_view_instance.view_count = 1
+    else:
+        most_view_instance.view_count += 1
+    most_view_instance.save()
     return render(request,"productdetails.html",{'products':products,'product_specifications':product_specifications,'product_id':product_id})
 def about(request):
     return render(request,"about.html")
