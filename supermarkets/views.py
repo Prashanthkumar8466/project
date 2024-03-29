@@ -13,7 +13,7 @@ from .forms import customerform,PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification,Fashion_ad,Fashion_ad3,home_spldeal,Recentsearch
 import razorpay
-from .models import Suggestionproduct,Top_Dealsproduct,poppularproduct,NEW_LAUNCHINGproduct,Festivalproduct,Most_view
+from .models import Suggestionproduct,Top_Dealsproduct,poppularproduct,NEW_LAUNCHINGproduct,Festivalproduct,Most_view,Most_sale
 # Create your views here.
 def home(request):
     orderlst=order.objects.all()
@@ -40,15 +40,15 @@ def home(request):
     availableamount=(totalamount+otheramount)-amountrefund
     products_by_view_count = Most_view.objects.order_by('-view_count')[:3]
     top_products = [most_view.product for most_view in products_by_view_count]
-    products_with_order_counts = product.objects.annotate(order_count=models.Count('order'))
+    products_by_order_count = Most_sale.objects.order_by('-view_count')[:3]
+    top_orders = [most_sale.product for most_sale in products_by_order_count] 
     Festivalview=Festivalproduct.objects.all()
     Products=product.objects.all()
     if request.user.is_authenticated:
         recentitems,created=Recentsearch.objects.get_or_create(user=request.user)
-        return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'top_products':top_products,'products_with_order_counts':products_with_order_counts,'Products':Products,'Recent':recentitems.recent.all()})
+        return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'top_products':top_products,'Products':Products,'top_orders':top_orders,'Recent':recentitems.recent.all()})
     else:
-        return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'Festival': Festivalview})
-
+        return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'top_orders':top_orders,'availableamount':availableamount,'Festival': Festivalview})
 def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
@@ -231,7 +231,7 @@ def check_out(request):
     client = razorpay.Client(auth=(settings.RAZORPAY_KEY,settings.RAZORPAY_SECRET))
     response_payment=client.order.create(dict(amount=razoramount,currency='INR'))
     return render(request,'checkout.html',locals())
-def order_save(request):
+def order_save(request,product_id):
     if request.method=="POST":
         custid=request.POST.get['custid']
         if order_status=='created': 
@@ -262,6 +262,13 @@ def order_save(request):
                 customer= custom,
             )
             orders.save()
+            product_instance = product.objects.get(product)
+            most_sale_instance,created= Most_sale.objects.get_or_create(product=product_instance)
+            if created:
+                most_sale_instance.view_count = 1
+            else:
+                most_sale_instance.view_count += 1
+                most_sale_instance.save()
             cart_items.objects.get(user=request.user).delete()  
         else:
             return redirect('checkout')

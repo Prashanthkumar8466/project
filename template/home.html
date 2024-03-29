@@ -445,7 +445,7 @@ color: #f0ad1c;
 <div class="container">
   <h1>Most sales</h1>
   <div class="products">
-    {% for product in Most_sales %}
+    {% for product in top_orders %}
     <a href="{% url 'productdetails' product_id=product.id %}">
       <div class="product">
         <img src="{{product.product_image.url}}" alt="{{product.productname}}">  

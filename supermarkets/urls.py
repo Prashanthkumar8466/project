@@ -4,7 +4,7 @@ from django.contrib.auth import views as auth_views
 from .views import add_to_cart,password_change_done, remove_from_wishlist, view_cart
 from .views import add_to_wishlist,view_last_add,add_fashion
 urlpatterns = [
-    path('home', views.home,name="home"),
+    path('', views.home,name="home"),
     #products 
     path('categories/', views.all_categories,name="categories"),
     path('category/', views.category,name="category"),

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from . models  import Payment, cart_item, order,product,contact_u,customer,wishlist,mobile_ad,mobile_ad3,mobile_specification
 from . models  import furniture_ad,furniture_ad3,Appliance_ad,Appliance_ad3,Fashion_ad,Fashion_ad3,Electronics_ad,Electronics_ad3,home_spldeal
-from . models  import Recentsearch,poppularproduct,Suggestionproduct,Top_Dealsproduct,Festivalproduct,Most_view
+from . models  import Recentsearch,poppularproduct,Suggestionproduct,Top_Dealsproduct,Festivalproduct,Most_view,Most_sale
 # Register your models here.
 @admin.register(product)
 class productModelAdmin(admin.ModelAdmin):
@@ -82,4 +82,7 @@ class FestivalproductModelAdmin(admin.ModelAdmin):
     list_display=["id","user"]
 @admin.register(Most_view)
 class Most_viewModelAdmin(admin.ModelAdmin):
+    list_display=["id","product"]
+@admin.register(Most_sale)
+class Most_saleModelAdmin(admin.ModelAdmin):
     list_display=["id","product"]
