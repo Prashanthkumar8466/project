@@ -308,10 +308,11 @@ color: #f0ad1c;
 </ul>
 </div>
 <div style='display:flex' style='width:100%'>
+  {% if user.is_authenticated%}
 <div class="container" style='width:70%'>
   <h1>Recent Search</h1>
   <div class="products" >
-    {% for product in Recent|slice:'-7:' %}
+    {% for product in Recent|slice:':7' %}
     <a href="{% url 'productdetails' product_id=product.id %}">
     <div class="product">
       <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
@@ -325,6 +326,8 @@ color: #f0ad1c;
   <h5></h5>
   <div class="product advi" >Adv </div>
 </div>
+{% else %}
+{% endif %}
 </div>
 <style>
   .container {
@@ -421,19 +424,20 @@ color: #f0ad1c;
 <div class="container">
   <h1>Top Deals</h1>
   <div class="products">
-    {% for product in Top_Dealsview %}
-    <a href="{% url 'productdetails' product_id=product.id %}">
+    {% for product in topdeals %}
+    <a href="{% url 'productdetails' product_id=product.product.id %}">
       <div class="product">
-        <img src="{{Top_Dealsview.product.product_image.url}}" alt="{{product.productname}}">  
-        <p>{{product.productname}}<p>      
+        <img src="{{product.product.product_image.url}}" alt="{{product.productname}}">  
+        <p>{{product.product.productname}}<p>      
       </div></a>
       {% endfor %}
   </div>
+  </div>
 </div>
 <div class="container">
-  <h1>NEW LAUNCHING</h1>
+  <h1>NEW LAUNCHED</h1>
   <div class="products">
-    {% for product in products_with_order_counts %}
+    {% for product in newproducts %}
     <a href="{% url 'productdetails' product_id=product.id %}">
       <div class="product">
         <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
@@ -457,11 +461,11 @@ color: #f0ad1c;
 <div class="container">
   <h1>Festival Offers</h1>
   <div class="products">
-    {% for product in Festival %}
+    {% for product in  Festival_offers %}
     <a href="{% url 'productdetails' product_id=product.id %}">
       <div class="product">
-        <img src="{{product.product_image.url}}" alt="{{product.productname}}">  
-        <p>{{product.productname}}<p>      
+        <img src="{{product.product.product_image.url}}" alt="{{product.productname}}">  
+        <p>{{product.product.productname}}<p>      
       </div></a>
       {% endfor %}
   </div>

@@ -230,18 +230,9 @@ class Most_view(models.Model):
 class Most_sale(models.Model):
     product=models.ForeignKey(product,on_delete=models.CASCADE)
     view_count=models.IntegerField(default=0)
-class poppularproduct(models.Model):
+class Top_Deals(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     product=models.ForeignKey(product,on_delete=models.CASCADE)
-class Suggestionproduct(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-    product=models.ForeignKey(product,on_delete=models.CASCADE)
-class Top_Dealsproduct(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-    product=models.ForeignKey(product,on_delete=models.CASCADE)
-class NEW_LAUNCHINGproduct(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-    product=models.ForeignKey(product,on_delete=models.CASCADE)
-class Festivalproduct(models.Model):
+class Festival_offer(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     product=models.ForeignKey(product,on_delete=models.CASCADE)

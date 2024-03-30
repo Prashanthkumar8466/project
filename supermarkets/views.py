@@ -13,7 +13,7 @@ from .forms import customerform,PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification,Fashion_ad,Fashion_ad3,home_spldeal,Recentsearch
 import razorpay
-from .models import Suggestionproduct,Top_Dealsproduct,poppularproduct,NEW_LAUNCHINGproduct,Festivalproduct,Most_view,Most_sale
+from .models import Top_Deals,Festival_offer,Most_view,Most_sale
 # Create your views here.
 def home(request):
     orderlst=order.objects.all()
@@ -42,13 +42,15 @@ def home(request):
     top_products = [most_view.product for most_view in products_by_view_count]
     products_by_order_count = Most_sale.objects.order_by('-view_count')[:3]
     top_orders = [most_sale.product for most_sale in products_by_order_count] 
-    Festivalview=Festivalproduct.objects.all()
     Products=product.objects.all()
+    topdeals=Top_Deals.objects.all()
+    Festival_offers=Festival_offer.objects.all()
+    newproducts =product.objects .order_by('-id')[:7]
     if request.user.is_authenticated:
         recentitems,created=Recentsearch.objects.get_or_create(user=request.user)
-        return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'top_products':top_products,'Products':Products,'top_orders':top_orders,'Recent':recentitems.recent.all()})
+        return render(request,'home.html',{'Festival_offers':Festival_offers,'newproducts':newproducts,'Products':Products,'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'availableamount':availableamount,'top_products':top_products,'Products':Products,'top_orders':top_orders,'Recent':recentitems.recent.all()})
     else:
-        return render(request,'home.html',{'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'top_orders':top_orders,'availableamount':availableamount,'Festival': Festivalview})
+        return render(request,'home.html',{'Festival_offers':Festival_offers,'newproducts':newproducts,'topdeals':topdeals,'Products':Products,'orders':orderslist,'Total':Total,'active':active,'Deactive':Deactive,'staff':staff,'Admin':Admin,'Totalorders':Totalorders,'Pendingorders':Pendingorders,'OFDorders':OFDorders,'Deliveredorders':Deliveredorders,'Returnorders':Returnorders,'Cancelorders':Cancelorders,'acceptedorders':acceptedorders,'amount':amount,'amountrefund':amountrefund,'otheramount':otheramount,'top_orders':top_orders,'top_products':top_products,'availableamount':availableamount})
 def category(request):
     products=product.objects.all()
     return render(request,"category.html",{'products':products})
@@ -82,8 +84,6 @@ def category_Icecream(request):
 def product_details(request,product_id):
     products=product.objects.filter(pk=product_id)
     Product = get_object_or_404(product,pk=product_id)
-    user_profile,created=Recentsearch.objects.get_or_create(user=request.user)
-    user_profile.recent.add(Product)
     product_specifications=mobile_specification.objects.filter(pk=product_id)
     product_instance = product.objects.get(id=product_id)
     most_view_instance,created= Most_view.objects.get_or_create(product=product_instance)
@@ -92,6 +92,12 @@ def product_details(request,product_id):
     else:
         most_view_instance.view_count += 1
     most_view_instance.save()
+    if request.user.is_authenticated:
+        user_profile,created=Recentsearch.objects.get_or_create(user=request.user)
+        user_profile.recent.add(Product)
+        return render(request,"productdetails.html",{'products':products,'product_specifications':product_specifications,'product_id':product_id})
+    else:
+        return render(request,"productdetails.html",{'products':products,'product_specifications':product_specifications,'product_id':product_id})
     return render(request,"productdetails.html",{'products':products,'product_specifications':product_specifications,'product_id':product_id})
 def about(request):
     return render(request,"about.html")
@@ -274,11 +280,13 @@ def order_save(request,product_id):
             return redirect('checkout')
     else:
         return render(request,'ordersaved.html',locals())  
+@login_required(login_url='login')
 def order_view(request):
     orderslist=order.objects.filter(user=request.user)
     return render(request,'orders.html',{'orders':orderslist})
 # adding products page functions
 #product adding 
+@login_required(login_url='login')
 def add_product(request):
     if request.method=="POST":
             productname=request.POST['productname']
@@ -293,6 +301,7 @@ def add_product(request):
             return redirect('addproduct')
     return render(request,'addproduct.html')
 #fashion adding 
+@login_required(login_url='login')
 def add_fashion(request):
     return render(request,'addfashion.html')
 def view_last_fashion(request):
@@ -304,6 +313,7 @@ def category_fashion(request):
     products=product.objects.filter(category='Fashion')
     return render(request,"fashion.html",{'products':products,"category":'Fashion','mobile':mobile,'mobile3':mobile3}) 
 #mobile adding
+@login_required(login_url='login')
 def add_Mobile(request):
     if request.method=="POST":
             productname=request.POST['productname']
@@ -327,6 +337,7 @@ def view_last_add(request):
     return render(request,'mobileadd.html',{'products':products})
 #end add product functions 
 #appliances
+@login_required(login_url='login')
 def add_appliances(request):
     return render(request,'addappliances.html')
 def view_appliances(request):
@@ -334,9 +345,11 @@ def view_appliances(request):
 def view_all_appliances(request,brand_name):
     products = product.objects.filter(sub_category=brand_name)
     return render(request,'mobilesview.html',{'Realme':products,'brand_name': brand_name})
+@login_required(login_url='login')
 def allorder_view(request):
     orderslist,created=order.objects.get_or_create(user=request.user)
     return render(request,'orders.html',{'orders':orderslist.product.all()})
+@login_required(login_url='login')
 def order_details(request,pk):
     order_details=order.objects.filter(user=request.user,id=pk)
     return render(request,'orderdetails.html',{'orders':order_details,'pk':pk})
