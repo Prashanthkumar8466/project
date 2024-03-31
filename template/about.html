@@ -1,6 +1,11 @@
 {% extends 'base.html'%}
 {% load static%}
 {%block Back %}
+<style>
+    a:active{
+        background-color: transparent;
+    }
+</style>
 <div>
   <a href="{% url 'back' %}"><img src="{% static 'images/banner/back.png'%}" alt="image" style="height:30px; margin-top: 3px;margin-left:100%;"></a>
 </div>
