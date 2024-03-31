@@ -701,8 +701,12 @@
     </style>
     <div class="menu-sidebar" id="sidemenubar" >
         <div class='userblock' style='display:flex;border-bottom:2px solid rgba(68, 67, 67, 0.1);' >
+        {% if user.is_authenticated%}
         <h3 style='margin-left:20px;width:100px;margin-top:12px'>{{request.user}}</h3>
-        <ul id ="burger1" style='margin-left:23%;'>
+        {% else %}
+        <h3 style='margin-left:20px;width:100px;margin-top:12px'>Supermarket</h3>
+        {% endif%}
+        <ul id ="burger1" style='margin-left:33%;'>
             <img src="{% static 'images/banner/close_btn.png' %}" style=" height:40px">
         </ul>
         </div>
@@ -728,6 +732,7 @@
             </li>
         </ul>
     </div>
+    <div>
     <!--end phone view-->
 </footer>
 <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
