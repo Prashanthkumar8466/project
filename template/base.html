@@ -127,6 +127,47 @@
     {% block information %}{% endblock %}
     {% block main%}{% endblock %}
     {% block paymentlink %}{% endblock %}
+    <style>
+        /* Style for the loading spinner */
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+    </style>
+    <div class="loading-spinner">
+        <!-- Add your loading animation or image here -->
+        Loading...
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Add your JavaScript links here -->
+
+    <!-- JavaScript for showing/hiding the loading spinner -->
+    <script>
+        // Show the loading spinner
+        function showLoadingSpinner() {
+            document.querySelector('.loading-spinner').style.display = 'block';
+        }
+
+        // Hide the loading spinner
+        function hideLoadingSpinner() {
+            document.querySelector('.loading-spinner').style.display = 'none';
+        }
+
+        // Add event listener for page load
+        window.addEventListener('load', function() {
+            hideLoadingSpinner(); // Hide the loading spinner when the page is fully loaded
+        });
+    </script>
 </section>
 {% endif %}
     <!--Close Html page attachment -->
