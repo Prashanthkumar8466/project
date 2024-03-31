@@ -87,6 +87,7 @@ def product_details(request,product_id):
     product_specifications=mobile_specification.objects.filter(pk=product_id)
     product_instance = product.objects.get(id=product_id)
     most_view_instance,created= Most_view.objects.get_or_create(product=product_instance)
+    request.session['previous_url']=request.META.get('HTTP_REFERER')
     if created:
         most_view_instance.view_count = 1
     else:
@@ -355,3 +356,21 @@ def order_details(request,pk):
     return render(request,'orderdetails.html',{'orders':order_details,'pk':pk})
 def all_categories(request):
     return render(request,'allcategories.html')
+def back_view(request):
+    previous_url=request.session.get('previous_url','/')
+    return redirect(previous_url)
+ # Redirect to the home page if no previous URL is found
+def add_to_history(request):
+    history = request.session.get('history', [])
+    current_url = request.build_absolute_uri()
+    if current_url not in history:
+        history.append(current_url)
+        request.session['history'] = history
+def get_previous_url(request):
+    history = request.session.get('history', [])
+    if len(history) >= 2:
+        # Pop the current URL from history
+        history.pop()
+        # Return the previous URL
+        return history.pop()
+    return None

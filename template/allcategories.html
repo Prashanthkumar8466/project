@@ -4,6 +4,11 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 {% endblock %}
+{%block Back %}
+<div>
+  <a href="{% url 'home' %}"><img src="{% static 'images/banner/back.png'%}" alt="image" style="height:30px; margin-top: 3px;margin-left:30%;"></a>
+</div>
+{% endblock %}
 {% block banner-slider %}
 <style>
   .top{

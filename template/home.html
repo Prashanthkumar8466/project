@@ -3,6 +3,7 @@
 {% block link %}
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
+
 {% block banner-slider %}
 <style>
   .top{
@@ -372,7 +373,7 @@ color: #f0ad1c;
     background-color:white;
     padding-bottom:30px;
   }
-  h1 {
+  .container h1 {
     margin-top:2px;
     padding-top:10px;
     padding-bottom:10px;
@@ -458,12 +459,12 @@ color: #f0ad1c;
       {% endfor %}
   </div>
 </div>
-<div class="container">
+<div class="container" style='background-color:green;'>
   <h1>Festival Offers</h1>
-  <div class="products">
+  <div class="products" >
     {% for product in  Festival_offers %}
     <a href="{% url 'productdetails' product_id=product.id %}">
-      <div class="product">
+      <div class="product" style='background-color:#fff'>
         <img src="{{product.product.product_image.url}}" alt="{{product.productname}}">  
         <p>{{product.product.productname}}<p>      
       </div></a>

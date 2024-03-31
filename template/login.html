@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">{% endblock %}
-
+{%block Back %}
+<div>
+    <a href="{% url 'home' %}"><img src="{% static 'images/banner/back.png'%}" alt="image" style="height:30px; margin-top: 3px;margin-left:30%;"></a>
+</div>
+{% endblock %}
 {% block main %}
     <div class="login-container">
         <form class="login-form" method="post" action="/login" >

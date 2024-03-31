@@ -1,6 +1,11 @@
 {% extends 'base.html'%}
 {% load static %}
 {% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/addproduct.css' %}">{% endblock %}
+{%block Back %}
+<div>
+  <a href="{% url 'home' %}"><img src="{% static 'images/banner/back.png'%}" alt="image" style="height:30px; margin-top: 3px;margin-left:30%;"></a>
+</div>
+{% endblock %}
 {% block main%}
 <div class="contactus" style="display: grid;
 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
