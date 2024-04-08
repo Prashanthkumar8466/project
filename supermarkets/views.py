@@ -275,7 +275,7 @@ def order_save(request,product_id):
                 most_sale_instance.view_count = 1
             else:
                 most_sale_instance.view_count += 1
-                most_sale_instance.save()
+            most_sale_instance.save()
             cart_items.objects.get(user=request.user).delete()  
         else:
             return redirect('checkout')
@@ -331,8 +331,9 @@ def add_Mobile(request):
             mobile_specification.objects.create(In_the_Box= In_the_Box,Model_Number=Model_Number,user=request.user,product=Product)
     return render(request,'mobileadd.html')
 def viewall_Mobile(request,brand_name):
+    wishlistitems,created=wishlist.objects.get_or_create(user=request.user)
     products = product.objects.filter(Brand=brand_name)
-    return render(request,'mobilesview.html',{'Realme':products,'brand_name': brand_name})
+    return render(request,'mobilesview.html',{'Realme':products,'brand_name': brand_name},{'wishlist':wishlistitems.wish_item.all()})
 def view_last_add(request):
     products=product.objects.filter(category='Mobiles').order_by('-id')[:3]
     return render(request,'mobileadd.html',{'products':products})

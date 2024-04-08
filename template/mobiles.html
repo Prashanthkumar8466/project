@@ -203,7 +203,13 @@
       <div class=mobiles>
         <div style='display:flex'>
           <img style='margin-left:14%;' src="{{product.product_image.url}}">
-          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+          {% for wish in wishlist %}
+          {% if product in wish %}
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/heartbeat.png'%}"></a>
+          {% else %}
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/heart.png'%}"></a>
+          {% endif %}
+          {% endfor %}
         </div>
         <p class='name'>{{product.productname}}</p>
         <div>
@@ -331,13 +337,12 @@
   <div class="product-items" style='margin-bottom:2px'>
     {% if Apple %}
     {% for product in Apple %}
-    <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}">
       <div class=mobiles>
         <div style='display:flex'>
-          <img style='margin-left:14%;' src="{{product.product_image.url}}">
-          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/wishlist.svg'%}"></a>
+          <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}"><img style='margin-left:14%;' src="{{product.product_image.url}}"></a>
+          <a href="{% url 'add-to-wishlist' product_id=product.id %}"><img style='height:20px;' src="{% static 'images/banner/heart.svg'%}"></a>
         </div>
-        <p class='name'>{{product.productname}}</p>
+        <a style='display:flex' href="{% url 'productdetails' product_id=product.id %}"> <p class='name'>{{product.productname}}</p>
         <div>
           <p ><span class='rating'>4.5 *</span><span style='margin-left:5px;color:rgb(150, 150, 177);'>(1,345)</span></p>
           <p><span style='margin-right:7px'>₹</span >{{product.price}}
@@ -346,10 +351,9 @@
                 var original = parseInt({{product.price}}/(1-({{product.discount}}/100)))
                 document.getElementById('percentage-{{product.id}}').innerHTML = "₹" + original;
             </script>
-            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p>
+            <span style='color:green;margin-left:7px'>{{product.discount}}%</span></p></a>
         </div>
       </div>
-    </a>
     {% endfor %}
     {% else %}
     <p>No Products</p>

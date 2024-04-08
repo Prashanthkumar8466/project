@@ -10,6 +10,13 @@
 {% endblock %}
 {% block main %}
 <style>
+    .space{
+        margin-top:6%;
+      }
+      .product{
+        background-color:#fff;
+        border-radius:10px;
+      }
     .profilebtn {
         background-color: #007bff;
         color: #ffffff;
@@ -35,15 +42,11 @@
         border-bottom: 1px solid red;
     }
   </style>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div>
-    <a href="{% url 'password_change' %}"><button type="submit" class="btn btn-primary">Change Password</button></a>
+  <div class='space'>
+    <a href="{% url 'password_change' %}"><button type="submit" class="profilebtn">Change Password</button></a>
     <h3>welcome <span class="text-captilize">{{request.user}}</span></h3>
     <ul class="list-unstyled" style="list-style: none;">
-      <li class="d-grid"><a href="{% url 'profile'%}" class="btn btn-primary"><button class="profilebtn">New Profile</button></a></li><br>
+      <li class="d-grid"><a href="{% url 'profile'%}" class="btn btn-primary"><button class="profilebtn">Add-New</button></a></li><br>
       <li class="d-grid"><a href="{% url 'address'%}" class="btn "><button class="adrsbtn">Adress</button></a></li>
   </ul>
   </div>
@@ -56,8 +59,8 @@
         <p><b>State:</b>{{address.state}}</p>
         <p><b>Phone:</b>{{address.phone}}</p>
         <div class="btns">
-        <a href="address/{{address.id}}"><button type="button" class="btn btn-outline-success">Update</button></a>
-        <a href="{% url 'address' address_id=address.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+        <a href="address/{{address.id}}"><button type="button" class="profilebtn ">Update</button></a>
+        <a href="{% url 'address' address_id=address.id %}"><button type="button" class="profilebtn">Delete</button></a>
         </div>
         </div> 
     {% endfor %}
