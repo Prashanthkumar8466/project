@@ -5,10 +5,10 @@ from django.utils import timezone
 
 # Create your models here.
 STATUS_CHOICE=[
-    ('Pending','Pending'),
+    ('Order Confirmed','Order Confirmed'),
    ('Out For Delivery','Out For Delivery'),
     ('Cancel','Cancel'),
-    ('Deliverd','Deliverd'),
+    ('Delivered','Delivered'),
     ('Return','Return'),
     ('Refund completed','Refund completed'),
     ('Packing','Packing')

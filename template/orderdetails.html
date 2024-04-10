@@ -64,7 +64,8 @@
         padding: 20px;    
     }
     .order{
-      width:300px;
+      width:280px;
+     
     }
     .order .pay{
     }
@@ -72,7 +73,9 @@
         margin-left:-60px;
     }
     .order-details .product-Offers img{
-
+    }
+    .offers{
+        
     }
 }
 </style>
@@ -99,13 +102,13 @@
         </div>
     </div>
     <div class="order-details">
-        <div class="product-Offers">
+        <div class="product-Offers" style='margin-left:-35px'>
             <ul style="list-style: none;display: flex;">
             <li style="width: 100px;margin-top: 10%;"><img src="{{order.product.product_image.url}}"></li>
             <li><p>{{order.product.productname}}</p>
             <p>color:{{order.product.color}}</p>
             <p>₹ {{order.product.price}}</p>
-            <p style="color: green;"> 0 Offers & 0 Coupons Applied</p></li>
+            <p style="color: green;" >0 Offers & 0 Coupons Applied</p></li>
         </ul>
         </div>
         <div >
@@ -113,12 +116,23 @@
                 <h4>
                 Order status</h4>
             </div>
-            <div>{{order.status}}</div>
+            <div>
+                {% if order.status == 'Order Confirmed' %}
+                    <p style='color:rgb(180, 199, 184);background-color:green;width:120px;padding:30px;border-radius:10px;'>{{ order.status }}</p>
+                {% elif order.status == 'Return' %}
+                    <p style='color:rgb(180, 199, 184);background-color:orange;width:120px;padding:30px;border-radius:10px;'>{{ order.status }}</p>
+                {% else %}
+                    <p style='color:rgb(180, 199, 184);background-color:orange;width:120px;padding:30px;border-radius:10px;'>{{ order.status }}</p>
+                {% endif %}
+            </div>            
         </div>
-        <div >
+        <div class='cancel'>
             <ul>
-            <li><a href="#">Cancel</a></li>
-            <li><a href="#">Need Help ?</a></li>
+                {% if order.status == 'Refund completed' %}
+                {% else %}
+                <li><a href="#">Cancel</a></li>
+                {% endif %}
+                <li><a href="#">Need Help ?</a></li>
             </ul>
         </div>
     </div>
