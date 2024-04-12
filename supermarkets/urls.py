@@ -44,12 +44,13 @@ urlpatterns = [
     path('wishlist',views.wishlist_view ,name='wishlist'),
     #card functions
     path('cart',view_cart,name='cart'),
+    path('save_quantity/<int:product_id>/',views.update_quantity,name='save_quantity'),
     path('add-to-cart/<int:product_id>/',add_to_cart,name='add-to-cart'),
     path('remove-from-cart/<int:product_id>/',views.remove_from_cart,name='remove-from-cart'),
     path('checkout',views.check_out,name='checkout'),
     #orders
     path('orders',views.order_view,name='orders'),
-    path('ordersave',views.order_save,name='ordersave'),
+    #path('ordersave',views.order_save,name='ordersave'),
     path('orderdetails/<int:pk>/', views.order_details, name='orderdetails'),
     #admin/staff
     path('addproduct',views.add_product,name='addproduct'),

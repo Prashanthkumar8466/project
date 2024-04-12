@@ -84,17 +84,19 @@
       }
     }
 </style>
-<form class='space'>
+<form class='space'method='post'>
     {% csrf_token %}
     {% if cart_items %}
     <div class='product-items'>
         {% for product in cart_items %}
         <div class="product">
-        <img src="{{product.product_image.url}}" alt="{{product.productname}}">
-        <h3>Name:{{product.productname}}</h3>
-        <p>₹{{product.price}}<br>
-         {{product.discount}}% discount<br>
-            Quantity:{{product.quantity}}<br></p> 
+        <img src="{{product.product.product_image.url}}" alt="{{product.productname}}">
+        <h3>Name:{{product.product.productname}}</h3>
+        <p>₹{{product.product.price}}<br>
+         {{product.product.discount}}% Off<br>
+         <form method="post" href="{% url 'save_quantity' product_id=product.id %}" >
+         <label for="quantity">Quantity:</label>
+         <input type="number" id="quantity" name="quantity" value="1" min="1" max='5'style='width:25px;'><a href=''><img src="{% static 'images/banner/save_quantity.svg'%}" style='width:15px;height:20px;margin-left:10px;margin-top:5px;'></a><br></p>
           <a href="{% url 'remove-from-cart' product_id=product.id %}"><button type="button" class="Remove">Remove</button></a>
         </div>
         {% endfor %}

@@ -4,7 +4,7 @@ from urllib import request
 from django.conf import settings
 from django.urls import reverse_lazy
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Payment, cart_item, order, product,contact_u,customer
+from .models import Payment,cart_item, order, product,contact_u,customer
 from django.views import View
 from django.contrib.auth import login,logout,authenticate
 from  django.contrib.auth.models import User
@@ -212,16 +212,26 @@ def wishlist_view(request):
     return render(request,'wishlist.html',{'wishlist':wishlistitems.wish_item.all()})
 @login_required(login_url='login')
 def view_cart(request):
-    cart,created=cart_item.objects.get_or_create(user=request.user)
-    cart_items=cart.cart_items.all()
-    amount=sum(product.price for product in cart_items)
+    cart_items=cart_item.objects.filter(user=request.user)
+    amount=sum(item.product.price * item.quantity for item in cart_items)
     totalamount=amount+40
     return render(request,'cart.html',{'amount':amount,'totalamount':totalamount,'cart_items':cart_items})
+def update_quantity(request,product_id):
+    cart_items=cart_item.objects.get(user=request.user,pk=product_id)
+    if request.method=='POST':
+        quantity=request.POST('quantity',instance=cart_items)
+        cart=cart_item(quantity=quantity)
+        cart.save()
+        return redirect('cart')
+    return redirect('cart')
 @login_required(login_url='login')
 def add_to_cart(request,product_id):
-    Product=get_object_or_404(product,pk=product_id)
-    cart_items,created=cart_item.objects.get_or_create(user=request.user)
-    cart_items.cart_items.add( Product)
+    product_obj = product.objects.get(pk=product_id)
+    if cart_item.objects.filter(user=request.user,product=product_obj).exists():
+        return redirect('cart')
+    else:
+        cart = cart_item(user=request.user, product=product_obj)
+        cart.save() 
     return redirect('cart')
 def remove_from_cart(request,product_id):
     Product=get_object_or_404(product,pk=product_id)

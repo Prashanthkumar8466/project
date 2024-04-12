@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models  import Payment, cart_item, order,product,contact_u,customer,wishlist,mobile_ad,mobile_ad3,mobile_specification
+from . models  import Payment,cart_item,order,product,contact_u,customer,wishlist,mobile_ad,mobile_ad3,mobile_specification
 from . models  import furniture_ad,furniture_ad3,Appliance_ad,Appliance_ad3,Fashion_ad,Fashion_ad3,Electronics_ad,Electronics_ad3,home_spldeal
 from . models  import Recentsearch,Top_Deals,Most_view,Most_sale,Festival_offer
 # Register your models here.
@@ -58,9 +58,9 @@ class contactModelAdmin(admin.ModelAdmin):
 @admin.register(wishlist)
 class wishlistModelAdmin(admin.ModelAdmin):
     list_display=["id","user"]
-@admin.register(cart_item)
-class cartitemsModelAdmin(admin.ModelAdmin):
-    list_display=["id","user"]
+class CartItemAdmin(admin.ModelAdmin):
+    list_display = ["id", "user"]
+admin.site.register(cart_item, CartItemAdmin)
 @admin.register(order)
 class orderplacedModelAdmin(admin.ModelAdmin):
    list_display=['id']

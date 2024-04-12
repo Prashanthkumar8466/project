@@ -139,11 +139,10 @@ class wishlist(models.Model):
     def __str__(self):
         return f'wishlist for {self.user.username}'
 class cart_item(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
-    cart_items=models.ManyToManyField(product)
-    add_at=models.DateTimeField(auto_now_add=True)  
-    def __str__(self):
-        return f'cart items of {self.user.username}'
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    add_at=models.DateTimeField(auto_now_add=True) 
 class Payment(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     amount=models.FloatField(default=0)
