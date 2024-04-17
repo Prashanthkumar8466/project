@@ -41,6 +41,9 @@
     .about-content{
         width:30%;
     }
+    .about-content.add ul li{
+        padding:5px;
+    }
     @media screen and (max-width:800px){
         #header{
             overflow-x:hidden;
@@ -128,7 +131,7 @@
                     <li ><a href="#about">About</a></li>
                     <li ><a href="#Projects">Projects</a></li>
                     <li ><a href="#Services">Services</a></li>
-                    <li ><a href="">Contact</a></li>
+                    <li ><a href="#Contact">Contact</a></li>
                 </ul>
             </nav>
             <div class='header-text'>
@@ -146,7 +149,7 @@
         <div class='about-contents'>
             <div class='row about-content'>
                 <h1>Education</h1>
-                <ul>
+                <ul >
                     <li><span style='color:#ff004f'>2020 – 2023	    B.Tech – Mechanical</span></li>
                     <li class='skills-list' ><a style='text-decoration:none;color: #b8b5b5;' href='https://mrem.ac.in/'>Malla reddy college of engineering & Management Science</a></li>
                     <li><span class='skills-list' style='color:blue;'>Location:</span><a style='text-decoration:none;color: #b8b5b5;' href='https://maps.app.goo.gl/jScZWKus4mxyHcfP8'>Hyderabad,Medchal</a></li>
@@ -351,8 +354,31 @@
 <div id="Contact">
     <div class="container row">
         <h1><span style="color: #ff004f">#</span>Contact</h1>
-        <div class="work-list">
-
+        <div class='about-contents'>
+            <div class='row about-content add'>
+                <h1>Personal Info</h1>
+                <ul >
+                    <li>GUNTA PRASHANTH KUMAR</li>
+                    <li>Python FullStack Developer</li>
+                    <li>+91 8466868727</li>
+                    <li>guntaprashanthkumar@gmail.com</li>
+                </ul>
+            </div>
+            <div class='row about-content add'>
+                <h1>Permanent Address</h1>
+                <ul style='border:none;height:60px'>
+                    <li class='skills-list' >1-54/2, somanpalli,Anthergoam</li>
+                    <li class='skills-list'>Hyderabad,Telangana-505514</li> 
+                    <li ><span class='skills-list' style='color:blue;'>Location:</span><a style='text-decoration:none;color: #b8b5b5;' href='https://maps.app.goo.gl/FvwFFE9gwHVSB1Nx6'>https://maps.app.goo.gl</a></li>
+                    
+                </ul>
+                <h1>Current Adress</h1>
+                <ul style='border:none'>
+                    <li class='skills-list'>Shamlal Begumpet,Anthergoam</li>
+                    <li class='skills-list'>Hyderabad,Telangana-50XXX</li> 
+                    <li><span class='skills-list' style='color:blue;'>Location:</span><a style='text-decoration:none;color: #b8b5b5;' href='https://maps.app.goo.gl/hAHAMiEGYLEd9kVE8'>hhttps://maps.app.goo.gl</a></li>
+                </ul>
+            </div>
         </div>
 </div>
    <script type="text/javascript" src="{% static 'js/resume.js' %}"></script>
