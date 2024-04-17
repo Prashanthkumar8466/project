@@ -1,0 +1,357 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/resume.css' %}">
+    {% block link %}{% endblock %}
+    <title></title>
+    <link rel="website icon" type="text/css" href="{% static 'images/banner/my-logo2.webp'%}">
+</head>
+<style>
+    #header{
+            background-image: url("{% static 'images/banner/my_pic.jpg' %}");
+    }
+    .header-text{
+        font-size:24px;
+    }
+    .about-contents{
+        display:flex;
+        width:100%;
+        justify-content: space-around;
+    }
+    .about-contents .row ul{
+        list-style-type:none;
+        border-right: 1px solid #666;
+        padding-right:12px
+    }
+    .about-contents .row ul{
+        height:250px;
+    }
+    .skills-list{
+        padding-left:20px;
+    }
+    .project-contents {
+        display:flex;
+        width:100%;
+        justify-content: space-around;
+        margin-bottom:30px 
+    }
+    .about-content{
+        width:30%;
+    }
+    @media screen and (max-width:800px){
+        #header{
+            overflow-x:hidden;
+            background-image: url("{% static 'images/banner/my_pic_phone.jpg' %}");
+            background-color: #000000;
+            background-size: contain;
+            background-position:left;
+            background-repeat: no-repeat;
+            height:100vh;
+        }
+        nav{
+            padding-top:10px;
+            display:block;
+        }
+        nav img{
+            margin-left:18%;
+            border-bottom:1px solid #fff;
+        }
+        nav ul{
+            padding-top:10px;
+        }
+        nav ul li{
+            padding:8px;
+        }
+        #about{
+            margin-top:-40%;
+            padding:0px;
+        }
+        #Projects .project-contents img{
+            width:90%;
+        }
+        #Projects .project-contents{
+           display:block;
+           padding-left:40px;
+           width:80%;
+        }
+        #Projects .project-contents .row{
+            margin-bottom:20px;
+        }
+        #Services{
+            display:block;
+        }
+        #header .container .header-text{
+            margin-left:22%;
+            margin-top:110%;
+            position:relative;
+            align-items: end;
+        }
+        #header .container .header-text h1{
+            font-size: 20px;
+            
+        }
+        #header .container .header-text p{
+            font-size: 10px;
+            
+        }
+        .about-contents{
+            display:block;
+        }
+        .about-content{
+            width:100%;
+        }
+        .about-contents .row ul{
+            border:none;
+            align-items:center;
+        }
+        .headtag{
+            padding-right: 10px;
+        }
+        #Vaccum-content h1,#Design-content h1 ,#Hexacopter-content h1{
+            font-size: 20px;
+            text-align: center;
+            padding: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+    }
+</style>
+<body>
+   <div id='header'>
+        <div class ="container">
+            <nav>
+                <img src="{% static 'images/banner/prashanth.jpg' %}" alt='prashanth'>
+                <ul>
+                    <li ><a href="#header">Home</a></li>
+                    <li ><a href="#about">About</a></li>
+                    <li ><a href="#Projects">Projects</a></li>
+                    <li ><a href="#Services">Services</a></li>
+                    <li ><a href="">Contact</a></li>
+                </ul>
+            </nav>
+            <div class='header-text'>
+                <p><span style='color:blue;'>Fresher</span>-Python fullstack developer</p>
+                <h1>Hi,I'm <span style='color:#ff004f'>Prashanth kumar</span> from Hyderabad-505514</h1>
+            </div>
+        </div>
+   </div>
+   <div id='about'>
+    <div class="container">
+        <div class='row'>
+            <h1><span style='color:#ff004f'>#</span>Career Objective</h1>
+            <p>A recent graduate with a passion for <span style='color:blue;'>Python Fullstack Developer</span> eager to embark on a dynamic career journey. Seeking an entry-level position where I can apply my strong academic background, <span style='color:orange;'>Python,Java,Django-FrameWorks,Html-5,CSS-3,Javascript,Git &GitHub,Mysql</span>, and fresh perspectives to contribute to the success of a forward-thinking company. Committed to learning, growing, and making meaningful contributions while embracing challenges and opportunities for development.            </p>
+        </div>
+        <div class='about-contents'>
+            <div class='row about-content'>
+                <h1>Education</h1>
+                <ul>
+                    <li><span style='color:#ff004f'>2020 – 2023	    B.Tech – Mechanical</span></li>
+                    <li class='skills-list' ><a style='text-decoration:none;color: #b8b5b5;' href='https://mrem.ac.in/'>Malla reddy college of engineering & Management Science</a></li>
+                    <li><span class='skills-list' style='color:blue;'>Location:</span><a style='text-decoration:none;color: #b8b5b5;' href='https://maps.app.goo.gl/jScZWKus4mxyHcfP8'>Hyderabad,Medchal</a></li>
+                    <li><span class='skills-list' style='color:orange;'>Percentage:</span>62.5%</li>
+                    <li><span style='color:#ff004f'>2017 – 2020	    Diploma – Mechanical</span></li>
+                    <li  class='skills-list'><a style='text-decoration:none;color: #b8b5b5;' href='http://vmrpolytechnic.com/'>V.M.R polytechnic Collage </a></li>
+                    <li><span class='skills-list' style='color:blue;'>Location:</span><a style='text-decoration:none;color: #b8b5b5;' href='https://maps.app.goo.gl/Sf1pcNNnuA5UBbG6A'>Warangal,Rampur</a></li>
+                    <li><span class='skills-list' style='color:orange;'>Percentage:</span>62.5%</li>
+                    <li><span style='color:#ff004f'>* – 2017	    SSC</span></li>
+                    <li class='skills-list' >St.Joseph High School </li>
+                    <li><span class='skills-list' style='color:blue;'>Location:</span><a style='text-decoration:none;color: #b8b5b5;' href='https://g.co/kgs/8cq4YKm'>Karimnagar,Jammikunta</a></li>
+                    <li><span class='skills-list' style='color:orange;'>Percentage:</span>62.5%</li>
+                   </ul>
+            </div>
+            <div class='row about-content'>
+                <h1>Skills</h1>
+                <ul>
+                    <li><span style='color:#ff004f'>* Programming languages:</span></li>
+                    <li class='skills-list' > Java, Python, Javascript</li>
+                    <li><span style='color:#ff004f'>* Web development:</span></li>
+                    <li class='skills-list' >Django-Frameworks, HTML, CSS, BootStrap, JSON</li>
+                    <li><span style='color:#ff004f'>* Database Management:</span></li>
+                    <li class='skills-list'>MySQL</li>
+                    <li><span style='color:#ff004f'>* Version control:</span></li>
+                    <li class='skills-list'>Git & GitHub</li>
+                    <li><span style='color:#ff004f'>* IDEs:</span></li>
+                    <li class='skills-list'>VScode,Intellij IDEA Comm.</li>
+                </ul>
+            </div>
+            <div class='row about-content'>
+              <h1>Strengths</h1>
+                <ul class="strength" style='list-style:none;border:none'>
+                    <li><span style='color:#ff004f'>* </span>Ability to understand and manage emotions effectively</li>
+                    <li><span style='color:#ff004f'>* </span>Excelling at prioritizing tasks, meeting deadlines, and efficiently utilizing time to achieve objectives.</li>
+                    <li><span style='color:#ff004f'>* </span>Contributing positively to group dynamics, supporting colleagues, and fostering a collaborative work environment.</li>
+                    <li><span style='color:#ff004f'>* </span>Thinking outside the box, generating innovative ideas, and finding novel solutions to problems.</li>
+                    <li><span style='color:#ff004f'>* </span>Flexibility in adjusting to changes in tasks, priorities, or work environments, and willingness </li>
+    
+                </ul>
+            </div>
+        </div>
+    </div>
+   </div>
+   <div id='Projects'>
+    <div class='container'>
+        <div class='headtag'>
+            <h1><span style='color:#ff004f'>#</span>Projects</h1>
+        </div>
+        <div class='project-contents'>
+            <div class='row ' id='Vaccum'>
+               <div class='project' >
+                    <img src="{% static 'images/banner/vaccum_cleaner.jpg' %}">
+               </div>
+               <p>VACCUM CLEANER & AIR BLOWER</p>
+            </div>
+            <div class='row ' id='Design' >
+                <div class='project' >
+                    <img src="{% static 'images/banner/design.png' %}">
+                </div>
+                <p>DESIGN HEXACOPTER</p>
+             </div>
+             <div class='row ' id='Hexacopter'>
+                <div class='project'>
+                    <img src="{% static 'images/banner/hexacopter.webp' %}">
+                </div>
+                <p>IMP- HEXACOPTER</p>
+             </div>
+    </div>
+    <style>
+        #Vaccum-content{
+           display:none;
+           z-index: 0.5s;
+        }
+        #Design-content{
+            display:none;
+            z-index: 0.5s;
+        }
+        #Hexacopter-content{
+            display:none;
+            z-index: 0.5s;
+        }
+        
+    </style>
+    <div>
+        <div class='headtag' id="Vaccum-content">
+            <h1>COMBINATION OF VACCUM CLEANER & AIR BLOWER <span id='close' style='cursor:pointer;'><img src="{% static 'images/banner/close_btn.png' %}"><span></h1>
+            <p>The purpose of this project is to design and create a floor and road cleaning 
+                machine for colleges, hospitals, auditoriums, and workshops. A "low-cost highpower sweeper with lattice blades" was created and developed as a new way of 
+                implementing street cleaning on streets and university floors. </p>
+         </div>
+         <div class='headtag' id='Design-content'>
+            <h1>DESIGN & ANNALSYS OF HEXACOPTER<span id='Designclose' style='cursor:pointer;'><img src="{% static 'images/banner/close_btn.png' %}"><span></h1>
+         </div>
+         <div class='headtag' id='Hexacopter-content'>
+            <h1>HEXACOPTER INTEGRATED WITH LIDERSENSOR <span id='Hexacopterclose' style='cursor:pointer;'><img src="{% static 'images/banner/close_btn.png' %}"><span></h1>
+            <p>Light Detection and Ranging (LiDAR)sensors use light energy, emitted from a 
+                leaser, to scan the ground and measure variable distances. The result is a rich 
+                set of elevation data that can be used to produce high-resolution maps and 3D 
+                models of natural and man-made objects.
+                <ul style='margin-left:30px;'>
+                <li>Integrated backup system for in-flight recovery and manual override.</li>
+                <li> A GPS module is used to calculate and record the current location of 
+                the hexacopter for various purposes in the project.</li>
+                <li> PiCam mounted on the Hexacopter system is a %-megapixel monafocal rolling shutter camera.It is used to take still pictures and record.</li>
+                <li> Videos during flight.</li>
+                <li> Raspberry Pi is used. software ultimately makes the raspberry pi a mini 
+                computer and creates a suitable platform to test all the code in project.</li>
+                </ul></p>
+         </div>
+    </div>
+    </div>
+   </div>
+   <style>
+    .work {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 300px;
+    }
+
+    .work img {
+        height: 200px;
+        width: 300px;
+        border-radius: 10px;
+        display: block;
+        transition: transform 0.5s;
+    }
+
+    .layer {
+        display: none;
+        height: 0;
+        width: 300px;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), #ff004f);
+        border-radius: 10px;
+        bottom: -200px; 
+        overflow: hidden;
+        position: absolute;
+        text-align: center;
+        padding: 0 40px;
+        transition: height 0.5s, bottom 0.5s, opacity 0.5s;
+    }
+
+    .work:hover .layer {
+        display: block;
+        height: 220px;
+        bottom: 0;
+        opacity: 1;
+    }
+    .layer h3{
+        margin-top:30%;
+        margin-bottom:10px;
+    }
+    .layer img{
+        margin-left:35%;
+        width:40px;
+        height:40px;
+        border: 2px solid #fff;
+    }
+    .work:hover img {
+        transform: scale(1.1);
+    }
+    #Services{
+        height:90vh;
+    }
+    #Services h1{
+        padding-bottom:60px;
+    }
+    .closecontent{
+        padding-left:200px
+    }
+    .work-list{
+        display:flex;
+        justify-content: space-around;
+    }
+</style>
+<div id="Services">
+    <div class="container row">
+        <h1><span style="color: #ff004f">#</span>My Works</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="{% static 'images/banner/shopping.webp' %}">
+                <div class="layer">
+                    <h3>Online Shopping</h3>
+                    <a href="{% url 'home' %}"><img src="{% static 'images/banner/link_icon.png' %}"></a>
+                </div>
+                <h3 style='text-align:center'>Online Shopping</h3>
+            </div>
+            <!--
+            <div class="work">
+                <img src="{% static 'images/banner/shopping.webp' %}">
+                <div class="layer">
+                    <h3>Online Shopping</h3>
+                    <a href="{% url 'home' %}"><img src="{% static 'images/banner/link_icon.png' %}"></a>
+                </div>
+                <h3 style='text-align:center'>Online Shopping</h3>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<div id="Contact">
+    <!-- Your contact content here -->
+</div>
+   <script type="text/javascript" src="{% static 'js/resume.js' %}"></script>
+</body>
+</html>

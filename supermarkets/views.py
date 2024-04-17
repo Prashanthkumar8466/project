@@ -15,6 +15,8 @@ from .models import wishlist,mobile_ad,mobile_ad3,mobile_specification,Fashion_a
 import razorpay
 from .models import Top_Deals,Festival_offer,Most_view,Most_sale
 # Create your views here.
+def resume(request):
+    return render(request,'resume_home.html')
 def home(request):
     orderlst=order.objects.all()
     orderslist=home_spldeal.objects.all()
@@ -215,15 +217,14 @@ def view_cart(request):
     cart_items=cart_item.objects.filter(user=request.user)
     amount=sum(item.product.price * item.quantity for item in cart_items)
     totalamount=amount+40
+    if request.method=="POST":
+        product_id = request.POST.get('product_id')
+        new_quantity = request.POST.get('quantity')
+        cart_item_instance = get_object_or_404(cart_item,pk=product_id)
+        cart_item_instance.quantity = new_quantity
+        cart_item_instance.update()
+        return render(request,'cart.html')
     return render(request,'cart.html',{'amount':amount,'totalamount':totalamount,'cart_items':cart_items})
-def update_quantity(request,product_id):
-    cart_items=cart_item.objects.get(user=request.user,pk=product_id)
-    if request.method=='POST':
-        quantity=request.POST('quantity',instance=cart_items)
-        cart=cart_item(quantity=quantity)
-        cart.save()
-        return redirect('cart')
-    return redirect('cart')
 @login_required(login_url='login')
 def add_to_cart(request,product_id):
     product_obj = product.objects.get(pk=product_id)
@@ -234,15 +235,13 @@ def add_to_cart(request,product_id):
         cart.save() 
     return redirect('cart')
 def remove_from_cart(request,product_id):
-    Product=get_object_or_404(product,pk=product_id)
-    cart_items,created=cart_item.objects.get_or_create(user=request.user)
-    cart_items.cart_items.remove(Product)
-    return redirect('cart')
+    cart = cart_item(user=request.user, pk=product_id)
+    cart.delete()
+    return redirect('cart') 
 def check_out(request):
     address=customer.objects.filter(user=request.user)
-    cart=cart_item.objects.first()
-    cart_items=cart.cart_items.all()
-    amount=sum(product.price for product in cart_items)
+    cart_items=cart_item.objects.filter(user=request.user)
+    amount=sum(item.product.price * item.quantity for item in cart_items)
     totalamount=amount+40
     razoramount=int(totalamount*100)
     client = razorpay.Client(auth=(settings.RAZORPAY_KEY,settings.RAZORPAY_SECRET))
@@ -261,25 +260,12 @@ def order_save(request,product_id):
         )
         payment.save() 
         address=customer.objects.filter(user=request.user)
-        cart=cart_item.objects.first()
-        cart_items=cart.cart_items.all()
-        amount=sum(product.discount for product in cart_items)
-        totalamount=amount+40
-        razoramount=int(totalamount*100)
-        client = razorpay.Client(auth=(settings.RAZORPAY_KEY,settings.RAZORPAY_SECRET))
-        response_payment=client.order.create(dict(amount=razoramount,currency='INR'))
-        order_id=response_payment['id']
-        order_status=response_payment['status']
-        custom=customer.objects.get(id=custid)
-        for product in cart_items:
-            orders=order.objects.create(
-                payment=order_id,
-                user=request.user,
-                product=product,
-                customer= custom,
-            )
-            orders.save()
-            product_instance = product.objects.get(product)
+        cart_items = cart_item.objects.filter(user=request.user)
+        if cart_items.exists():
+            for cart_itm in cart_items:
+                cart_itm.order= order.objects.create(user=request.user,status='pending',customer_id=1,product_id=cart_itm.product_id ,amountpaid=5000,othercharges=10)
+                cart_itm.save() 
+                cart_items.delete()
             most_sale_instance,created= Most_sale.objects.get_or_create(product=product_instance)
             if created:
                 most_sale_instance.view_count = 1
@@ -290,7 +276,17 @@ def order_save(request,product_id):
         else:
             return redirect('checkout')
     else:
-        return render(request,'ordersaved.html',locals())  
+        return render(request,'ordersaved.html',locals()) 
+'''def order_save(request):
+    cart_items = cart_item.objects.filter(user=request.user)
+    if cart_items.exists():
+        for cart_itm in cart_items:
+            product_id=2
+            cart_itm.order= order.objects.create(user=request.user,status='pending',customer_id=1,product_id=product_id ,amountpaid=5000,othercharges=10)
+            cart_itm.save() 
+        cart_items.delete()
+        return redirect('orders')   
+    return redirect('orders')'''
 @login_required(login_url='login')
 def order_view(request):
     orderslist=order.objects.filter(user=request.user)

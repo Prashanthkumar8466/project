@@ -155,7 +155,7 @@ class order(models.Model):
     customer=models.ForeignKey(customer,on_delete=models.CASCADE)
     product=models.ForeignKey(product,on_delete=models.CASCADE)
     quality=models.PositiveSmallIntegerField(default=1)
-    order_date=models.DateTimeField(auto_now_add=True)
+    order_date=models.DateTimeField(auto_now=True)
     status=models.CharField(max_length=50,choices=STATUS_CHOICE,default='pending')
     amountpaid=models.IntegerField(blank=True)
     othercharges=models.IntegerField(blank=True)

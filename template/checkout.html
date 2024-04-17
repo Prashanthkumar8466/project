@@ -9,21 +9,16 @@
 {% endblock %}
 {% block main %}
 <div class="product-items">
-<form method="post" action="/ordersave">
+<form method="post" action='/ordersave'>
     {% csrf_token %}
     <div>
     {% for product in cart_items %}
         <div class="product">
         <img style='width:100px'src="{{product.product_image.url}}" alt="{{product.productname}}">
-        <p><b>Name:</b>{{product.title}}</p>
-        <p><b>Selling_price:</b>{{product.price}}</p>
-        <p><b>Discounted_price:</b>{{product.discount}}</p>
-        <div class="my-3">
-            <label for="Quantity">Quantity:</label>
-            <a class="minus-cart btn" pid={{product.id}}><i class="fas fa-minus-square fa-lag"></i></a>
-            <span id="Quantity">{{product.quantity}}</span>
-            <a class="plus-cart btn" pid={{product.id}}><i class="fas fa-plus-square fa-lag"></i></a>
-        </div>    
+        <p><b>Name:</b>{{product.product.title}}</p>
+        <p><b>Selling_price:</b>{{product.product.price}}</p>
+        <p><b>Discounted_price:</b>{{product.product.discount}}</p>
+        <p><b>quantity :</b>{{product.quantity}}</p>
     </div>
 </div>
     {% endfor %}
@@ -46,7 +41,6 @@
     </div>
 </div>
 <label for="total_price">Total Price:{{totalamount}}</label>
-</form>
 </div>
 {% endblock %}
 {% block paymentlink%}
@@ -87,4 +81,5 @@ document.getElementById('rzp-button1').onclick = function(e){
     e.preventDefault();
 }
 </script>
+</form>
 {% endblock %}.

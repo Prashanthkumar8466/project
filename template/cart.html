@@ -84,7 +84,7 @@
       }
     }
 </style>
-<form class='space'method='post'>
+<form class='space'method='post' action='/update_cart'>
     {% csrf_token %}
     {% if cart_items %}
     <div class='product-items'>
@@ -94,9 +94,9 @@
         <h3>Name:{{product.product.productname}}</h3>
         <p>₹{{product.product.price}}<br>
          {{product.product.discount}}% Off<br>
-         <form method="post" href="{% url 'save_quantity' product_id=product.id %}" >
+         <form method="post" >
          <label for="quantity">Quantity:</label>
-         <input type="number" id="quantity" name="quantity" value="1" min="1" max='5'style='width:25px;'><a href=''><img src="{% static 'images/banner/save_quantity.svg'%}" style='width:15px;height:20px;margin-left:10px;margin-top:5px;'></a><br></p>
+         <input type="number" id="quantity" name="quantity" value='{{product.quantity}}'min="1" max='5'style='width:25px;'><button type='submit '><img src="{% static 'images/banner/save_quantity.svg'%}" style='width:15px;height:20px;margin-left:10px;margin-top:5px;'></button><br></p>
           <a href="{% url 'remove-from-cart' product_id=product.id %}"><button type="button" class="Remove">Remove</button></a>
         </div>
         {% endfor %}
@@ -118,6 +118,7 @@
         </ul>
         <br>
     </div>
+    <a href="{% url 'ordersave' %}">save order</a>
     {% else %}
     <br>
     <br>

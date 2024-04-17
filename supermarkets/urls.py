@@ -4,7 +4,8 @@ from django.contrib.auth import views as auth_views
 from .views import add_to_cart,password_change_done, remove_from_wishlist, view_cart
 from .views import add_to_wishlist,view_last_add,add_fashion
 urlpatterns = [
-    path('', views.home,name="home"),
+    path('', views.resume,name="resume_home"),
+    path('home', views.home,name="home"),
     #products 
     path('categories/', views.all_categories,name="categories"),
     path('category/', views.category,name="category"),
@@ -44,13 +45,12 @@ urlpatterns = [
     path('wishlist',views.wishlist_view ,name='wishlist'),
     #card functions
     path('cart',view_cart,name='cart'),
-    path('save_quantity/<int:product_id>/',views.update_quantity,name='save_quantity'),
     path('add-to-cart/<int:product_id>/',add_to_cart,name='add-to-cart'),
     path('remove-from-cart/<int:product_id>/',views.remove_from_cart,name='remove-from-cart'),
     path('checkout',views.check_out,name='checkout'),
     #orders
     path('orders',views.order_view,name='orders'),
-    #path('ordersave',views.order_save,name='ordersave'),
+    path('ordersave',views.order_save,name='ordersave'),
     path('orderdetails/<int:pk>/', views.order_details, name='orderdetails'),
     #admin/staff
     path('addproduct',views.add_product,name='addproduct'),
