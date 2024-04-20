@@ -8,6 +8,35 @@
 </div>
 {% endblock %}
 {% block main %}
+<style>
+    .button{
+        display:flex;
+    }
+    .button button{
+        height:50px;
+        width:160px;
+        border:none;
+        font-size:20px;
+      }
+    @media screen and (max-width:800px){
+    .button{
+        position:fixed;
+        bottom:0%;
+        background-color: white;
+        width:105%;
+        overflow:hidden;
+        display:flex;
+        margin-left:-34px;
+        border:none;
+      }
+      .button button{
+        height:50px;
+        width:220px;
+        border:none;
+        font-size:20px;
+      }
+    }
+</style>
 <div class="product-items">
 <form method="post" action='/ordersave'>
     {% csrf_token %}
@@ -44,7 +73,10 @@
 </div>
 {% endblock %}
 {% block paymentlink%}
-<button type="button" class="btn btn-danger" id='rzp-button1'>Pay with Razorpay</button>
+<div class="button">
+    <a href="{% url 'ordersave' %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(253, 253, 253);" > C O D</button></a>
+    <button type="button" class="addtocart" id='rzp-button1' style="cursor: pointer;background-color:rgb(255, 136, 0)" >Online pay</button>
+  </div>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 var options = {

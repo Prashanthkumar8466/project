@@ -241,6 +241,10 @@ def remove_from_cart(request,product_id):
 def check_out(request):
     address=customer.objects.filter(user=request.user)
     cart_items=cart_item.objects.filter(user=request.user)
+    return render(request,'checkout.html',locals())
+'''def check_out(request):
+    address=customer.objects.filter(user=request.user)
+    cart_items=cart_item.objects.filter(user=request.user)
     amount=sum(item.product.price * item.quantity for item in cart_items)
     totalamount=amount+40
     razoramount=int(totalamount*100)
@@ -276,17 +280,17 @@ def order_save(request,product_id):
         else:
             return redirect('checkout')
     else:
-        return render(request,'ordersaved.html',locals()) 
-'''def order_save(request):
+        return render(request,'ordersaved.html',locals()) '''
+def order_save(request):
     cart_items = cart_item.objects.filter(user=request.user)
     if cart_items.exists():
         for cart_itm in cart_items:
-            product_id=2
+            product_id=cart_itm.product.id
             cart_itm.order= order.objects.create(user=request.user,status='pending',customer_id=1,product_id=product_id ,amountpaid=5000,othercharges=10)
             cart_itm.save() 
         cart_items.delete()
         return redirect('orders')   
-    return redirect('orders')'''
+    return redirect('orders')
 @login_required(login_url='login')
 def order_view(request):
     orderslist=order.objects.filter(user=request.user)

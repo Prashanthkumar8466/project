@@ -92,13 +92,15 @@
         <div class="product">
         <img src="{{product.product.product_image.url}}" alt="{{product.productname}}">
         <h3>Name:{{product.product.productname}}</h3>
-        <p>₹{{product.product.price}}<br>
+        <p >₹{{product.product.price}}<br>
+          <input type='number' value='{{product.id}}' style='display:none'>
          {{product.product.discount}}% Off<br>
          <form method="post" >
          <label for="quantity">Quantity:</label>
          <input type="number" id="quantity" name="quantity" value='{{product.quantity}}'min="1" max='5'style='width:25px;'><button type='submit '><img src="{% static 'images/banner/save_quantity.svg'%}" style='width:15px;height:20px;margin-left:10px;margin-top:5px;'></button><br></p>
           <a href="{% url 'remove-from-cart' product_id=product.id %}"><button type="button" class="Remove">Remove</button></a>
         </div>
+        
         {% endfor %}
     </div>
     <div class =payment>
@@ -113,12 +115,11 @@
                 <div class="button" style='justify-content:center;'>
                     <a><button type="button" class="addtocart" style="background-color:rgb(253, 253, 253);" >Total:₹ {{totalamount}}</button></a>
                     <a href="{% url 'checkout' %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(255, 136, 0)" >PAYMENT</button></a>
-                  </div>
+                </div>
             </li>
         </ul>
         <br>
     </div>
-    <a href="{% url 'ordersave' %}">save order</a>
     {% else %}
     <br>
     <br>
