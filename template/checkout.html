@@ -9,75 +9,97 @@
 {% endblock %}
 {% block main %}
 <style>
-    .button{
-        display:flex;
-    }
-    .button button{
-        height:50px;
-        width:160px;
-        border:none;
-        font-size:20px;
-      }
-    @media screen and (max-width:800px){
-    .button{
-        position:fixed;
-        bottom:0%;
-        background-color: white;
-        width:105%;
-        overflow:hidden;
-        display:flex;
-        margin-left:-34px;
-        border:none;
-      }
-      .button button{
-        height:50px;
-        width:220px;
-        border:none;
-        font-size:20px;
-      }
-    }
+  .payment{
+    margin-top:6%;
+  }
+  button {
+    height:40px;
+    width:160px;
+    border:none;
+    font-size:20px;
+    border-radius:10px;
+  }
+  #COD-content{
+    display:none;
+  }
+  .payment-mode{
+    margin-left:10%;
+  }
+  #COD-close{
+    display:none;
+  }
+  #online-close{
+    display:none;
+  }
+  #online-content{
+    display:none;
+  }
+  .rotate{
+    transform: rotate(180deg);
+  }
+  .COD{
+    border-bottom:1px solid rgba(141, 136, 136, 0.1);
+    padding-bottom:20px;
+    width:70%;
+  }
 </style>
-<div class="product-items">
-<form method="post" action='/ordersave'>
-    {% csrf_token %}
-    <div>
+<div class='payment'>
+  <div>
+    <div class="product-items">
     {% for product in cart_items %}
         <div class="product">
-        <img style='width:100px'src="{{product.product_image.url}}" alt="{{product.productname}}">
-        <p><b>Name:</b>{{product.product.title}}</p>
+        <img style=''src="{{product.product.product_image.url}}" alt="{{product.productname}}">
+        <p><b>Name:</b>{{product.product.productname}}</p>
         <p><b>Selling_price:</b>{{product.product.price}}</p>
         <p><b>Discounted_price:</b>{{product.product.discount}}</p>
         <p><b>quantity :</b>{{product.quantity}}</p>
     </div>
-</div>
     {% endfor %}
-<div>
-    <h3>place Order</h3>
-    <div>
-        {% for address in address %}
-        <div class="product">
-            <label>
-                <input type="radio" name="custid" style="cursor: pointer;" value="{{address.id}}">
-               <h3>address{{forloop.counter}}</h3>
-            </label>
-        <p><b>Name:</b>{{address.name}}</p>
+  </div>
+  <h1>Address<h1>
+    <div class="product-items">
+    {% for address in address %}
+    <div class="product">
+      <p><b>Name:</b>{{address.name}}</p>
         <p><b>locality:</b>{{address.locality}}</p>
         <p><b>City:</b>{{address.city}}</p>
         <p><b>State:</b>{{address.state}}</p>
         <p><b>Phone:</b>{{address.phone}}</p>
-        </div>
-    {% endfor %}
     </div>
-</div>
-<label for="total_price">Total Price:{{totalamount}}</label>
-</div>
-{% endblock %}
-{% block paymentlink%}
-<div class="button">
-    <a href="{% url 'ordersave' %}"><button type="button" class="addtocart" style="cursor: pointer;background-color:rgb(253, 253, 253);" > C O D</button></a>
-    <button type="button" class="addtocart" id='rzp-button1' style="cursor: pointer;background-color:rgb(255, 136, 0)" >Online pay</button>
+    {% endfor %}
   </div>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <label for="total_price">Total Price:{{totalamount}}</label>
+  <h1 class='payment-mode' >Payment options</h1>
+  <div class='payment-mode'>
+    <h5 class="COD" id='COD' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%">↑</span></h5>
+    <h5 class="COD" id='COD-close' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%;">↓</span></h5>
+    <div id="COD-content"> 
+      <form method="post" action='/place-order'>
+        {% csrf_token %}
+        <label>
+          {% for address in address %}
+          <input style='display:none' type="text" name="address" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
+          {% endfor %}
+        </label>
+        <button type="submit" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Place Order</button>
+      </form>
+    </div>
+  </div>
+  <div class='payment-mode'>
+    <h5 class="COD" id='online'>Pay Online<span style="margin-left:50%">↑</span></h5>
+    <h5 class="COD" id='online-close'>Pay Online<span style="margin-left:50%">↓</span></h5>
+    <div id="online-content">
+      <form method="post" action=''>
+        {% csrf_token %}
+        <label>
+          {% for address in address %}
+          <input style='display:none' type="text" name="custid" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
+          {% endfor %}
+        </label>
+        <button type="submit"  id='rzp-button1' style="cursor: pointer;background-color:rgb(255, 136, 0)" >place order</button>
+      </form>
+    </div>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 var options = {
     "key": "rzp_test_wrDAPwMFn1t3ii", // Enter the Key ID generated from the Dashboard
@@ -113,5 +135,37 @@ document.getElementById('rzp-button1').onclick = function(e){
     e.preventDefault();
 }
 </script>
-</form>
-{% endblock %}.
+  </div>
+
+</div>
+<script >
+var CODbtn = document.querySelector('#COD');
+var onlinebtn = document.querySelector('#online');
+var CODcontent = document.querySelector('#COD-content');
+var onlinecontent = document.querySelector('#online-content');
+var closebtn = document.querySelector('#COD-close');
+var onlineclosebtn = document.querySelector('#online-close');
+CODbtn.addEventListener('click', () => {
+    CODcontent.style.display = 'block';  
+    CODbtn.style.display='none';
+    closebtn.style.display='block';
+    onlinecontent.style.display='none';
+});
+closebtn.addEventListener('click', () => {
+  CODcontent.style.display = 'none';  
+  closebtn.style.display='none';
+  CODbtn.style.display='block';
+});
+onlinebtn.addEventListener('click', () => {
+  onlinecontent.style.display='block';
+  CODcontent.style.display = 'none'; 
+  onlinebtn.style.display = 'none';
+  onlineclosebtn.style.display='block';
+});
+onlineclosebtn.addEventListener('click', () => {
+  onlinecontent.style.display='none';
+  onlinebtn.style.display ='block';
+  onlineclosebtn.style.display='none';
+});
+</script>
+{% endblock %}

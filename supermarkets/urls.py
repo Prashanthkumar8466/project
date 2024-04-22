@@ -51,6 +51,7 @@ urlpatterns = [
     #orders
     path('orders',views.order_view,name='orders'),
     path('ordersave',views.order_save,name='ordersave'),
+    path('place-order',views.order_save_cod,name='place-order'),
     path('orderdetails/<int:pk>/', views.order_details, name='orderdetails'),
     #admin/staff
     path('addproduct',views.add_product,name='addproduct'),
