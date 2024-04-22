@@ -51,6 +51,11 @@
   .payment-setup{
     display:flex;
   }
+  .payments-option{
+    margin-top:5%;
+    margin-left:10%;
+    display:flex;
+  }
   .product{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 2px solid #ddd;
@@ -59,7 +64,7 @@
   @media screen and (max-width:800px){
     .cart-items{
       margin-top:10%;
-    }
+    } 
     .product-items {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -70,6 +75,11 @@
       margin-left:10%;
       display:block;
       margin-bottom:80px;
+    }
+    .payments-option{
+      margin-top:0%;
+      margin-left:0%;
+      display:block;
     }
   }
 </style>
@@ -101,38 +111,42 @@
       </div>
     </div>
     <div class='payments-option'>
+      <div class='pay-cost'>
       <h1 >Payment options</h1>
       <label for="total_price">Total Price:{{totalamount}}</label>
-      <div class='payment-mode'>
-        <h5 class="COD" id='COD' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%">↑</span></h5>
-        <h5 class="COD" id='COD-close' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%;">↓</span></h5>
-        <div id="COD-content"> 
-          <form method="post" action='/place-order'>
-            {% csrf_token %}
-            <label>
-              {% for address in address %}
-              <input style='display:none' type="text" name="address" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
-              {% endfor %}
-            </label>
-            <button type="submit" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Place Order</button>
-          </form>
-        </div>
       </div>
-      <div class='payment-mode'>
-        <h5 class="COD" id='online'>Pay Online<span style="margin-left:50%">↑</span></h5>
-        <h5 class="COD" id='online-close'>Pay Online<span style="margin-left:50%">↓</span></h5>
-        <div id="online-content">
-          <form method="post" action=''>
-            {% csrf_token %}
-            <label>
-              {% for address in address %}
-              <input style='display:none' type="text" name="custid" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
-              {% endfor %}
-            </label>
-            <button type="submit"  id='rzp-button1' style="cursor: pointer;background-color:rgb(255, 136, 0)" >place order</button>
-          </form>
+      <div class='choose-mode'>
+        <div class='payment-mode'>
+          <h5 class="COD" id='COD' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%">↑</span></h5>
+          <h5 class="COD" id='COD-close' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%;">↓</span></h5>
+          <div id="COD-content"> 
+            <form method="post" action='/place-order'>
+              {% csrf_token %}
+              <label>
+                {% for address in address %}
+                <input style='display:none' type="text" name="address" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
+                {% endfor %}
+              </label>
+              <button type="submit" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Place Order</button>
+            </form>
+          </div>
         </div>
+        <div class='payment-mode'>
+          <h5 class="COD" id='online'>Pay Online<span style="margin-left:50%">↑</span></h5>
+          <h5 class="COD" id='online-close'>Pay Online<span style="margin-left:50%">↓</span></h5>
+          <div id="online-content">
+            <form method="post" action=''>
+              {% csrf_token %}
+              <label>
+                {% for address in address %}
+                <input style='display:none' type="text" name="custid" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
+                {% endfor %}
+              </label>
+              <button type="submit"  id='rzp-button1' style="cursor: pointer;background-color:rgb(255, 136, 0)" >place order</button>
+            </form>
+          </div>
       </div>
+    </div>
     </div>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
