@@ -9,8 +9,13 @@
 {% endblock %}
 {% block main %}
 <style>
-  .payment{
+  .cart-items{
     margin-top:6%;
+  }
+  .product-items{
+    display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
   }
   button {
     height:40px;
@@ -40,12 +45,36 @@
   .COD{
     border-bottom:1px solid rgba(141, 136, 136, 0.1);
     padding-bottom:20px;
-    width:250px
+    width:250px;
+    cursor:pointer;
+  }
+  .payment-setup{
+    display:flex;
+  }
+  .product{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
+    background-color: white;
+  }
+  @media screen and (max-width:800px){
+    .cart-items{
+      margin-top:10%;
+    }
+    .product-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 20px;
+        padding: 20px;    
+    }
+    .payment-setup{
+      margin-left:10%;
+      display:block;
+      margin-bottom:80px;
+    }
   }
 </style>
-<div class='payment'>
-  <div>
-    <div class="product-items">
+<div class='cart-items'>
+  <div class="product-items">
     {% for product in cart_items %}
         <div class="product">
         <img style=''src="{{product.product.product_image.url}}" alt="{{product.productname}}">
@@ -56,116 +85,121 @@
     </div>
     {% endfor %}
   </div>
-  <h1>Address<h1>
-    <div class="product-items">
-    {% for address in address %}
-    <div class="product">
-      <p><b>Name:</b>{{address.name}}</p>
-        <p><b>locality:</b>{{address.locality}}</p>
-        <p><b>City:</b>{{address.city}}</p>
-        <p><b>State:</b>{{address.state}}</p>
-        <p><b>Phone:</b>{{address.phone}}</p>
-    </div>
-    {% endfor %}
-  </div>
-  <label for="total_price">Total Price:{{totalamount}}</label>
-  <h1 class='payment-mode' >Payment options</h1>
-  <div class='payment-mode'>
-    <h5 class="COD" id='COD' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%">↑</span></h5>
-    <h5 class="COD" id='COD-close' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%;">↓</span></h5>
-    <div id="COD-content"> 
-      <form method="post" action='/place-order'>
-        {% csrf_token %}
-        <label>
+  <div class='payment-setup'>
+    <div class='address'>
+      <h1>Address<h1>
+      <div class="product-items">
           {% for address in address %}
-          <input style='display:none' type="text" name="address" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
-          {% endfor %}
-        </label>
-        <button type="submit" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Place Order</button>
-      </form>
+          <div class="product">
+            <p><b>Name:</b>{{address.name}}</p>
+              <p><b>locality:</b>{{address.locality}}</p>
+              <p><b>City:</b>{{address.city}}</p>
+              <p><b>State:</b>{{address.state}}</p>
+              <p><b>Phone:</b>{{address.phone}}</p>
+          </div>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-  <div class='payment-mode'>
-    <h5 class="COD" id='online'>Pay Online<span style="margin-left:50%">↑</span></h5>
-    <h5 class="COD" id='online-close'>Pay Online<span style="margin-left:50%">↓</span></h5>
-    <div id="online-content">
-      <form method="post" action=''>
-        {% csrf_token %}
-        <label>
-          {% for address in address %}
-          <input style='display:none' type="text" name="custid" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
-          {% endfor %}
-        </label>
-        <button type="submit"  id='rzp-button1' style="cursor: pointer;background-color:rgb(255, 136, 0)" >place order</button>
-      </form>
+    <div class='payments-option'>
+      <h1 >Payment options</h1>
+      <label for="total_price">Total Price:{{totalamount}}</label>
+      <div class='payment-mode'>
+        <h5 class="COD" id='COD' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%">↑</span></h5>
+        <h5 class="COD" id='COD-close' style='cursor:pointer'>Cash on Delivery<span style="margin-left:50%;">↓</span></h5>
+        <div id="COD-content"> 
+          <form method="post" action='/place-order'>
+            {% csrf_token %}
+            <label>
+              {% for address in address %}
+              <input style='display:none' type="text" name="address" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
+              {% endfor %}
+            </label>
+            <button type="submit" style="cursor: pointer;background-color:rgb(255, 136, 0)" >Place Order</button>
+          </form>
+        </div>
+      </div>
+      <div class='payment-mode'>
+        <h5 class="COD" id='online'>Pay Online<span style="margin-left:50%">↑</span></h5>
+        <h5 class="COD" id='online-close'>Pay Online<span style="margin-left:50%">↓</span></h5>
+        <div id="online-content">
+          <form method="post" action=''>
+            {% csrf_token %}
+            <label>
+              {% for address in address %}
+              <input style='display:none' type="text" name="custid" style="cursor: pointer;" value="{{address.name}}, {{address.locality}}, {{address.city}}, {{address.state}}-{{address.zipcode}}, {{address.phone}}">
+              {% endfor %}
+            </label>
+            <button type="submit"  id='rzp-button1' style="cursor: pointer;background-color:rgb(255, 136, 0)" >place order</button>
+          </form>
+        </div>
+      </div>
     </div>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-var options = {
-    "key": "rzp_test_wrDAPwMFn1t3ii", // Enter the Key ID generated from the Dashboard
-    "amount": "{{razoramount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
-    "name": "prashanth Corp",
-    "description": "Test Transaction",
-    "image": "https://example.com/your_logo",
-    "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "handler": function (response){
-        //alert(response.razorpay_payment_id);
-        //alert(response.razorpay_order_id);
-        //alert(response.razorpay_signature)
-    },
-    "prefill": {
-        "name": "{{user.username}}",
-        "email": "{{user.email}}",
-        "contact": "{{address.phone}}"
-    },
-    "notes": {
-        "address": "prashanth Corporate Office"
-    },
-    "theme": {
-        "color": "#3399cc"
-    }
-};
-var rzp1 = new Razorpay(options);
-rzp1.on('payment.failed', function (response){
-        alert(response.error.code);
-});
-document.getElementById('rzp-button1').onclick = function(e){
-    rzp1.open();
-    e.preventDefault();
-}
-</script>
+    <script>
+    var options = {
+        "key": "rzp_test_wrDAPwMFn1t3ii", // Enter the Key ID generated from the Dashboard
+        "amount": "{{razoramount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "prashanth Corp",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function (response){
+            //alert(response.razorpay_payment_id);
+            //alert(response.razorpay_order_id);
+            //alert(response.razorpay_signature)
+        },
+        "prefill": {
+            "name": "{{user.username}}",
+            "email": "{{user.email}}",
+            "contact": "{{address.phone}}"
+        },
+        "notes": {
+            "address": "prashanth Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.on('payment.failed', function (response){
+            alert(response.error.code);
+      });
+      document.getElementById('rzp-button1').onclick = function(e){
+          rzp1.open();
+          e.preventDefault();
+      }
+    </script>
+    <script >
+    var CODbtn = document.querySelector('#COD');
+    var onlinebtn = document.querySelector('#online');
+    var CODcontent = document.querySelector('#COD-content');
+    var onlinecontent = document.querySelector('#online-content');
+    var closebtn = document.querySelector('#COD-close');
+    var onlineclosebtn = document.querySelector('#online-close');
+    CODbtn.addEventListener('click', () => {
+        CODcontent.style.display = 'block';  
+        CODbtn.style.display='none';
+        closebtn.style.display='block';
+        onlinecontent.style.display='none';
+    });
+    closebtn.addEventListener('click', () => {
+      CODcontent.style.display = 'none';  
+      closebtn.style.display='none';
+      CODbtn.style.display='block';
+    });
+    onlinebtn.addEventListener('click', () => {
+      onlinecontent.style.display='block';
+      CODcontent.style.display = 'none'; 
+      onlinebtn.style.display = 'none';
+      onlineclosebtn.style.display='block';
+    });
+    onlineclosebtn.addEventListener('click', () => {
+      onlinecontent.style.display='none';
+      onlinebtn.style.display ='block';
+      onlineclosebtn.style.display='none';
+    });
+    </script>
   </div>
-
 </div>
-<script >
-var CODbtn = document.querySelector('#COD');
-var onlinebtn = document.querySelector('#online');
-var CODcontent = document.querySelector('#COD-content');
-var onlinecontent = document.querySelector('#online-content');
-var closebtn = document.querySelector('#COD-close');
-var onlineclosebtn = document.querySelector('#online-close');
-CODbtn.addEventListener('click', () => {
-    CODcontent.style.display = 'block';  
-    CODbtn.style.display='none';
-    closebtn.style.display='block';
-    onlinecontent.style.display='none';
-});
-closebtn.addEventListener('click', () => {
-  CODcontent.style.display = 'none';  
-  closebtn.style.display='none';
-  CODbtn.style.display='block';
-});
-onlinebtn.addEventListener('click', () => {
-  onlinecontent.style.display='block';
-  CODcontent.style.display = 'none'; 
-  onlinebtn.style.display = 'none';
-  onlineclosebtn.style.display='block';
-});
-onlineclosebtn.addEventListener('click', () => {
-  onlinecontent.style.display='none';
-  onlinebtn.style.display ='block';
-  onlineclosebtn.style.display='none';
-});
-</script>
 {% endblock %}
