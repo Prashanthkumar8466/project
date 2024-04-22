@@ -152,7 +152,7 @@ class Payment(models.Model):
     paid=models.BooleanField(default=False)
 class order(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    customer=models.ForeignKey(customer,on_delete=models.CASCADE)
+    customer=models.TextField(blank=True)
     product=models.ForeignKey(product,on_delete=models.CASCADE)
     quality=models.PositiveSmallIntegerField(default=1)
     order_date=models.DateTimeField(auto_now=True)
