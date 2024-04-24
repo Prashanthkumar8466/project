@@ -1,0 +1,637 @@
+  {% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/realestate.css' %}">
+    {% block link %}{% endblock %}
+    <title>Realstate-Home</title>
+    <link rel="website icon" type="text/css" href="{% static 'images/banner/my-logo2.webp'%}">
+</head>
+<style>
+</style>
+<body>
+    <main>
+        <header>
+            <div class="main-bar">
+                <ul class="menu">
+                    <li class="username" style=" cursor: pointer;">
+                        <a class="nav-link text-white" >Set Master <span class="rotate-text-180" style="margin-left:3px">⇪</span></a>
+                        <ul class="submenu">
+                            <li><a href=''>company Creation</a></li>
+                            <li><a >Set Up<span class="rotate-text-270" style="margin-left:125px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:200px;width:140px'>
+                                    <li><a >Project Type Creation</a></li>
+                                    <li><a href=''>Area Type Creation</a></li>
+                                    <li><a href=''>Profession</a></li>
+                                    <li><a href=''>Currency Configuration</a></li>
+                                    <li><a >Bank Master<span class="rotate-270" style="margin-left:60px;">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:180px'>
+                                            <li><a href=''>Company Bank Creation</a></li>
+                                            <li><a href=''>Customer Bank Creation</a></li>
+                                            <li><a href=''>Loan Bank Creation</a></li>
+                                            <li><a href=''>Mortgage BAnk Creation</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Country Master</a></li>
+                                </ul>
+                            </li>
+                            <style>
+                                .rotate-270{
+                                    transform:rotate(90deg);
+                                }
+                                .pop-menu li:hover .rotate-270{
+                                    transform:rotate(270deg);
+                                }
+                            </style>
+                            <li><a >Employee Login Creation<span class="rotate-text-270" style="margin-left:3px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:200px;width:150px'>
+                                    <li><a >Employee<span class="rotate-270" style="margin-left:80px;">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:187px;'>
+                                            <li><a href=''>Department</a></li>
+                                            <li><a href=''>Employee Information</a></li>
+                                            <li><a href=''>Report</a></li>
+                                            <li><a href=''>Set Manager</a></li>
+                                            <li><a href=''>Team Manager</a></li>
+                                            <li><a href=''>Set Team Head</a></li>
+                                            <li><a href=''>Team Head Detail</a></li>
+                                            <li><a href=''>Employee Tree</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Create Login</a></li>
+                                    <li><a href=''>View Login</a></li>
+                                    <li><a href=''>Broker Login Creation<span class="rotate-270" style="margin-left:3px">⇪</span></a></a></li>
+                                </ul>
+                            
+                            </li>
+                            <li><a >Documents<span class="rotate-text-270" style="margin-left:95px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:200px;width:160px'>
+                                    <li><a href=''>Document Type Creation</a></li>
+                                    <li><a href=''>Document Dispatch Master</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Customized Letter<span class="rotate-text-270" style="margin-left:50px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:200px;width:140px'>
+                                    
+                                    <li><a href=''>Create Letter</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Security<span class="rotate-text-270" style="margin-left:115px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:200px;width:140px'>
+                                    <li><a href=''>Password/code</a></li>
+                                    <li><a href=''>Login History</a></li>
+                                    <li><a >Ip Based Security<span class="rotate-270" style="margin-left:30px;">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;'>
+                                            <li><a href=''>Enable/Disable Security</a></li>
+                                            <li><a href=''>Add Ip Address</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a >Role and Menu<span class="rotate-text-270" style="margin-left:70px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:200px;width:140px'>
+                                    
+                                    <li><a href=''>Role Creation</a></li>
+                                    <li><a href=''>Role wise Menu</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Administration<span class="rotate-text-270" style="margin-left:70px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:200px;width:140px'>
+                                    <li><a href=''>Receipt Locking</a></li>
+                                    <li><a href=''>Customer Audit Track</a></li>
+                                    <li><a href=''>Customer History</a></li>
+                                </ul> 
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="username" style=" cursor: pointer;">
+                        <a class="nav-link text-white" >Set Projects <span class="rotate-text-180" style="margin-left:3px">⇪</span></a>
+                        <ul class="submenu">
+                            <li><a >Create Project<span class="rotate-text-270" style="margin-left:40px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:164px;width:180px'>
+                                    <li><a href=''>Add Tower/Plot</a></li>
+                                    <li><a href=''>Add Base Floor</a></li>
+                                    <li><a href=''>Floor Creation</a></li>
+                                    <li><a href=''>Unit Type Creation</a></li>
+                                    <li><a href=''>Floor wise unit allocation</a></li>
+                                    <li><a >Pre-attach PLC/othercharges<span class="rotate-270" style="margin-left:3px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:220px;width:170px'>
+                                            <li><a href=''>Pre-attach PLC Charges</a></li>
+                                            <li><a href=''>Pre Attach Other Charges</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Address Owner<span class="rotate-270" style="margin-left:86px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:220px;'>
+                                            <li><a href=''>Master</a></li>
+                                            <li><a href=''>Unit Wise</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Unit Location Creation</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Edit Project<span class="rotate-text-270" style="margin-left:57px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:164px;width:200px'>
+                                    <li><a href=''>Edit Project</a></li>
+                                    <li><a href=''>Edit Block</a></li>
+                                    <li><a href=''>Edit Floor</a></li>
+                                    <li><a >Add Plot<span class="rotate-270" style="margin-left:150px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:240px;'>
+                                            <li><a href=''>Add Plot</a></li>
+                                            <li><a href=''>Allocate Plot</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Change Unit Type</a></li>
+                                    <li><a href=''>Change Floor wise unit allocation</a></li>
+                                    <li><a href=''>Change No.Plot/villa</a></li>
+                                    <li><a href=''>Edit Unit address & Location</a></li>
+                                    <li><a href=''>Address Indexing</a></li>
+                                    <li><a href=''>Detach Unit Address</a></li>
+                                    <li><a href=''>Change unit Area-Individual</a></li>
+                                    <li><a href=''>Unit wise Area</a></li>
+                                    <li><a href=''>Unit wise Area Report</a></li>
+                                </ul> 
+                            </li>
+                            <li><a >Payment Plan Setup<span class="rotate-text-270" style="margin-left:3px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:164px;'>
+                                    <li><a >New<span class="rotate-270" style="margin-left:116px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:200px'>
+                                            <li><a href=''>Stage Master</a></li>
+                                            <li><a href=''>Payment Plan Creation</a></li>
+                                            <li><a href=''>Set Booking Amount</a></li>
+                                            <li><a href=''>Create Installment</a></li>
+                                            <li><a href=''>Customer Wise Timely Discount</a></li>
+                                            <li><a href=''>Cancel Demand</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Edit<span class="rotate-270" style="margin-left:118px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:200px'>
+                                            <li><a href=''>Installment</a></li>
+                                            <li><a href=''>PLC Charges</a></li>
+                                            <li><a href=''>Other Charges</a></li>
+                                            <li><a href=''>Edit Personal Installment</a></li>
+                                            <li><a href=''>Personalise Installment</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >View<span class="rotate-270" style="margin-left:110px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;'>
+                                            <li><a href=''>Raised Demand Stage</a></li>
+                                            <li><a href=''>View Payment Plan</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Setup<span class="rotate-270" style="margin-left:108px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;'>
+                                            <li><a href=''>Reminder Days Configeration</a></li>
+                                            <li><a href=''>Demand Format Customization</a></li>
+                                        </ul>
+                                    </li>
+                                </ul> 
+                            </li>
+                            <li><a >Set Rate <span class="rotate-text-270" style="margin-left:78px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:164px;'>
+                                    <li><a href=''>Change Rate</a></li>
+                                    <li><a href=''>Change charges Rate</a></li>
+                                    <li><a href=''>Unit Wise Rate</a></li>
+                                    <li><a href=''>Rate Report</a></li>
+                                </ul> 
+                            </li>
+                            <li><a href=''>Project Set Up<span class="rotate-text-270" style="margin-left:40px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:164px;width:180px'>
+                                    <li><a >Charge Master<span class="rotate-270" style="margin-left:90px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:220px;width:280px'>
+                                            <li><a href=''>Other Charges</a></li>
+                                            <li><a href=''>Preffered Location Charges(PLC)</a></li>
+                                            <li><a href=''>Interest Free Maintenance Charges (IFMS)</a></li>
+                                            <li><a >Addon Charges</a></li>
+                                            <li><a href=''>Waive Off Other/PLC charges</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Service Tax Configuration<span class="rotate-270" style="margin-left:14px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:220px;'>
+                                            <li><a href=''>Tax Master</a></li>
+                                            <li><a href=''>Tax Information</a></li>
+                                            <li><a href=''>Tax Configuration Report</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >GST<span class="rotate-270" style="margin-left:155px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:220px;width:200px'>
+                                            <li><a href=''>GST Process User Rights</a></li>
+                                            <li><a href=''>GST Configuration</a></li>
+                                            <li><a href=''>ITC Configuration</a></li>
+                                            <li><a href=''>Set Invoice Prefix</a></li>
+                                            <li><a href=''>GST Number Configuration</a></li>
+                                            <li><a href=''>Customer Wise GST Discount</a></li>
+                                            <li><a href=''>Help</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Completion Certificate<span class="rotate-270" style="margin-left:38px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:220px;width:180px'>
+                                            <li><a href=''>Tower Wise Completion</a></li>
+                                            <li><a href=''>Unit Wise Completion</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Automated/Manual<span class="rotate-270" style="margin-left:61px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:220px;width:150px'>
+                                            <li><a href=''>Booking Authentication</a></li>
+                                            <li><a href=''>Receipt No.</a></li>
+                                            <li><a href=''>Registration No.</a></li>
+                                            <li><a href=''>Transfer Authentication</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Customer Classification</a></li>
+                                    <li><a href=''>Project Configuration Details</a></li>
+                                </ul> 
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="username" style=" cursor: pointer;">
+                        <a class="nav-link text-white" >Broker <span class="rotate-text-180" style="margin-left:3px">⇪</span></a>
+                        <ul class="submenu">
+                            <li><a >Broker<span class="rotate-text-270" style="margin-left:50px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:126px;'>
+                                    <li><a href=''>Application</a></li>
+                                    <li><a href=''>View/Edit</a></li>
+                                    <li><a href=''>Broker Project Mapping</a></li>
+                                    <li><a href=''>Sub Broker Mapping</a></li>
+                                    <li><a href=''>Address Label</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Broker Report<span class="rotate-text-270" style="margin-left:3px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:126px;'>
+                                    <li><a href=''>Summary</a></li>
+                                    <li><a href=''>Summary Sold-Unit</a></li>
+                                    <li><a href=''>Broker</a></li>
+                                    <li><a href=''>Broker Wise Booking</a></li>
+                                    <li><a href=''>Broker Hierarchy</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Investor/Hold<span class="rotate-text-270" style="margin-left:3px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:126px;'>
+                                    <li><a href=''>Hold Unit</a></li>
+                                    <li><a href=''>UnHold Unit</a></li>
+                                    <li><a href=''>Broker Wise Hold</a></li>
+                                    <li><a href=''>UnHold Unit Details</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="username" style=" cursor: pointer;">
+                        <a class="nav-link text-white" >Application <span class="rotate-text-180" style="margin-left:3px">⇪</span></a>
+                        <ul class="submenu">
+                            <li><a >Booking<span class="rotate-text-270" style="margin-left:97px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;width:200px'>
+                                    <li><a href=''>Booking Form</a></li>
+                                    <li><a href=''>Edit Booking Form</a></li>
+                                    <li><a >Approval Status<span class="rotate-270" style="margin-left:101px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:240px;'>
+                                            <li><a href=''>Booking Status</a></li>
+                                            <li><a href=''>Editing Status</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Unit Shifting Process<span class="rotate-270" style="margin-left:70px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:240px;'>
+                                            <li><a href=''>Shift Units</a></li>
+                                            <li><a href=''>Unit Shift Report</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Applicant Addi/Deleti Process</a></li>
+                                    <li><a href=''>Head Wise Cost</a></li>
+                                    <li><a href=''>Edit Customer Address</a></li>
+                                    <li><a href=''>Customer Registration</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Allotment of unit<span class="rotate-text-270" style="margin-left:42px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;width:180px'>
+                                    <li><a >Transaction<span class="rotate-270" style="margin-left:110px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:220px;'>
+                                            <li><a href=''>Allotment Form</a></li>
+                                            <li><a href=''>Allotment Letter</a></li>
+                                            <li><a href=''>Allotment Cancellation</a></li>
+                                            <li><a href=''>Allotment Information</a></li>
+                                            <li><a href=''>Maintenance Agreement</a></li>
+                                            <li><a href=''>Rera Agreement</a> </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Allotment & agreement status</a></li>
+                                    <li><a href=''>Allotment Cancel Report</a></li>
+                                
+                                </ul>
+                            </li>
+                            <li><a >Receipt Process<span class="rotate-text-270" style="margin-left:53px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;'>
+                                    <li><a >Receipt Generation</a></li>
+                                    <li><a >Receipt Print</a></li>
+                                    <li><a >Journal Entry<span class="rotate-270" style="margin-left:60px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;'>
+                                            <li><a href=''>Journal Entry</a></li>
+                                            <li><a href=''>Debit/Credit/Refund</a></li>
+                                            <li><a href=''>Journal Report</a></li>
+                                            <li><a href=''>JV/Dr/Cr/Refund Reversal</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Edit Receipt<span class="rotate-270" style="margin-left:65px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;'>
+                                            <li><a href=''>Receipt Edit</a></li>
+                                            <li><a href=''>Edit Head Wise Receipt</a></li>
+                                            <li><a href=''>Reset Receipt</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Cancel Receipt<span class="rotate-270" style="margin-left:50px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;'>
+                                            <li><a href=''>Receipt Cancel</a></li>
+                                            <li><a href=''>Cancel Receipt Report</a></li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Assign Re Challan</a></li>
+                                    <li><a >Report<span class="rotate-270" style="margin-left:100px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;'>
+                                            <li><a href=''>Receipt Register</a></li>
+                                            <li><a href=''>Payment Clear Delay</a></li>
+                                            <li><a href=''>Cumulative Receipt Booking</a></li>
+                                            <li><a href=''>TDS Challan Report</a></li>
+                                        </ul> 
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a >Demand Raise<span class="rotate-text-270" style="margin-left:58px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;width:200px'>
+                                    <li><a href=''>Stage Wise</a></li>
+                                    <li><a href=''>Tower Wise</a></li>
+                                    <li><a href=''>Customer Wise</a></li>
+                                    <li><a href=''>Installment Wise</a></li>
+                                    <li><a href=''>Unit/Stage Wise</a></li>
+                                    <li><a href=''>Demand Unraise</a></li>
+                                    <li><a href=''>Construction Update For Demand</a></li>
+                                    <li><a href=''>Help</a></li>
+                                </ul>
+                            </li>
+                            <li><a >GST Invoicing<span class="rotate-text-270" style="margin-left:58px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:190px;'>
+                                    <li><a >Setup<span class="rotate-270" style="margin-left:110px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:180px'>
+                                            <li><a href=''>Set Customer Opening</a></li>
+                                            <li><a href=''>Assigned ITC For Customer</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Transaction<span class="rotate-270" style="margin-left:70px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:180px'>
+                                            <li><a href=''>Invoice Generation</a></li>
+                                            <li><a href=''>Manual Invoice Generation</a></li>
+                                            <li><a href=''>Invoice Reversal</a></li>
+                                            <li><a href=''>Invoice Against Advance</a></li>
+                                            <li><a href=''>Debit/Credit Against Invoice</a></li>
+                                            <li><a href=''>Pending Invoice</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Report<span class="rotate-270" style="margin-left:100px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:180px'>
+                                            <li><a href=''>Invoice details</a></li>
+                                            <li><a href=''>Opening Balance</a></li>
+                                            <li><a href=''>Invoice Receipt</a></li>
+                                            <li><a href=''>Month Wise Invoice Details</a></li>
+                                            <li><a href=''>HSN & Charge Wise Report</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Help</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Printing Of Documents<span class="rotate-text-270" style="margin-left:3px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;'>
+                                    <li><a href=''>Print Welcome</a></li>
+                                    <li><a>Demand Printing<span class="rotate-270" style="margin-left:25px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:200px'>
+                                            <li><a href=''>Print Demand</a></li>
+                                            <li><a href=''>Installment Wise Demand Status</a></li>
+                                            <li><a href=''>Print Demand Manual</a></li>
+                                            <li><a href=''>Email Notification</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>agreement(BBA)</a></li>
+                                    <li><a href=''>TPA</a></li>
+                                    <li><a href=''>User Define Letter</a></li>
+                                    <li><a href=''>Applicant Ledger</a></li>
+                                    <li><a href=''>Address Labels</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Banking<span class="rotate-text-270" style="margin-left:99px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;'>
+                                    <li><a href=''>Cheque Deposit (Bank)</a></li>
+                                    <li><a href=''>Verify Cheque Status</a></li>
+                                    <li><a href=''>Change Cheque Status</a></li>
+                                    <li><a href=''>Cheque Status Report</a></li>
+                                    <li><a href=''>Cheque Represent</a></li>
+                                    <li><a href=''>Change Clearing Date</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Interest Calculator<span class="rotate-text-270" style="margin-left:40px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;'>
+                                    <li><a href=''>Interest Schedular</a></li>
+                                    <li><a >Project Wise<span class="rotate-270" style="margin-left:60px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:200px'>
+                                            <li><a href=''>Interest Master</a></li>
+                                            <li><a href=''>Installment Wise Interest</a></li>
+                                           
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Customer Wise<span class="rotate-270" style="margin-left:44px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:200px'>
+                                            <li><a href=''>Interest Master</a></li>
+                                            <li><a href=''>Delete Interest</a></li>
+                                            <li><a href=''>Installment Wise Interest</a></li>
+                                            <li><a href=''>Manual Intrest</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Interest Waiver<span class="rotate-270" style="margin-left:40px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:200px'>
+                                            <li><a href=''>Interest Wavie Off Letter</a></li>
+                                            <li><a href=''>Customer Waiver Report</a></li>
+                                            <li><a href=''>Interest Waive Off</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Grace Period<span class="rotate-270" style="margin-left:60px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:250px'>
+                                            <li><a href=''>Project Wise Grace Period</a></li>
+                                            <li><a href=''>Installment Wise Grace Period</a></li>
+                                            <li><a href=''>Customer & Installment Wise Grace Period</a></li>
+                                          
+                                        </ul>
+                                    </li>
+                                    <li><a href=''>Addon Charge<span class="rotate-270" style="margin-left:47px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:200px'>
+                                            <li><a href=''>Addon Interest Master</a></li>
+                                            
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a >Documents<span class="rotate-text-270" style="margin-left:80px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;width:150px'>
+                                    <li><a href=''>Pending Documents</a></li>
+                                    <li><a href=''>Uploaded Documents</a></li>
+                                    <li><a href=''>Dispatch</a></li>
+                                    <li><a href=''>Printed Document</a></li>
+                                    <li><a href=''>Pending KYC in Booking</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Loan Process<span class="rotate-text-270" style="margin-left:68px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;'>
+                                    <li><a href=''>Finance Detail</a></li>
+                                    <li><a href=''>Loan Dispersal Report</a></li>
+                                    <li><a href=''>Mortgage</a></li>
+                                </ul>
+                            </li>
+                            <li><a>Transfer<span class="rotate-text-270" style="margin-left:99px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;'>
+                                    <li><a href=''>Setup</a></li>
+                                    <li><a href=''>Application</a></li>
+                                    <li><a href=''>Transfer Report</a></li>
+                                    <li><a href=''>Transfer Detail</a></li>
+                                </ul>
+                            </li>
+                            <li><a >surrender/Cancellation<span class="rotate-text-270" style="margin-left:9px">⇪</span></a>
+                                <ul class="pop-menu"  style='margin-left:190px;width:200px'>
+                                    <li><a href=''>Application</a></li>
+                                    <li><a href=''>surrender/Cancellation Report</a></li>
+                                    <li><a href=''>surrender/Cancellation Restore</a></li>
+                                    <li><a href=''>surrender/Cancellation Summary</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="username" style=" cursor: pointer;">
+                        <a class="nav-link text-white" >Reports <span class="rotate-text-180" style="margin-left:3px">⇪</span></a>
+                        <ul class="submenu">
+                            <li><a >Inventory <span class="rotate-text-270" style="margin-left:53px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:146px;width:170px'>
+                                    <li><a href=''>Project Details</a></li>
+                                    <li><a href=''>Unit Status</a></li>
+                                    <li><a href=''>Unit Wise PLC</a></li>
+                                    <li><a href=''>Unit Sold/Avilb.Area Wise</a></li>
+                                    <li><a href=''>Unit Cost</a></li>
+                                </ul></li>
+                            <li><a >Applicant Details<span class="rotate-text-270" style="margin-left:3px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:146px;'>
+                                    <li><a href=''>Applicant Payment File</a></li>
+                                    <li><a href=''>Master Report</a></li>
+                                    <li><a href=''>Report Builder</a></li>
+                                    <li><a href=''>Applicant History</a></li>
+                                    <li><a href=''>Applicant Birthday</a></li>
+                                    <li><a href=''>Search Customer</a></li>
+                                    <li><a href=''>Customer Detail</a></li>
+                                    <li><a href=''>Customer Classification</a></li>
+                                    <li><a href=''>Average Cost</a></li>
+                                    <li><a href=''>Multiple Booking</a></li>
+                                    <li><a href=''>Customers Names</a></li>
+                                    <li><a href=''>Increase Area Report</a></li>
+                                    <li><a href=''>Communication Report</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Collection<span class="rotate-text-270" style="margin-left:47px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:146px;width:180px'>
+                                    <li><a href=''>Project Wise Collection</a></li>
+                                    <li><a href=''>Collection Report</a></li>
+                                    <li><a href=''>Customer Wise Collection</a></li>
+                                    <li><a href=''>Charges Wise Collection</a></li>
+                                    <li><a href=''>Customer Wise Balance</a></li>
+                                    <li><a href=''>Receipt Wise Collection</a></li>
+                                    <li><a href=''>Collection Against Dues</a></li>
+                                    <li><a href=''>Year Month Wise Collection</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Dues<span class="rotate-text-270" style="margin-left:80px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:146px;width:280px'>
+                                    <li><a href=''>Due Report</a></li>
+                                    <li><a href=''>Customer Wise Dues</a></li>
+                                    <li><a href=''>Date Wise Dues</a></li>
+                                    <li><a href=''>Stage Wise Dues</a></li>
+                                    <li><a href=''>Percentage Wise</a></li>
+                                    <li><a href=''>Due Ageing Report</a></li>
+                                    <li><a href=''>Month Wise Dues</a></li>
+                                    <li><a href=''>Customer Forecasting Details</a></li>
+                                    <li><a href=''>Customer Dues Details(install/Head wise)</a></li>
+                                    <li><a href=''>Year Month Wise Dues</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Sales Reports<span class="rotate-text-270" style="margin-left:27px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:146px;width:170px'>
+                                    <li><a href=''>Sales Report</a></li>
+                                    <li><a href=''>Yearly Sales Report</a></li>
+                                    <li><a href=''>Commulative sales</a></li>
+                                    <li><a href=''>Tower Floor Sales</a></li>
+                                    <li><a href=''>Broker Tower Wise Details</a></li>
+                                    <li><a href=''>Toer Wise Charge Summary</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Financial Details<span class="rotate-text-270" style="margin-left:3px;justify-content:end">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:146px;width:170px'>
+                                    <li><a href=''>Cash/Bank Ledger</a></li>
+                                    <li><a href=''>Bank Ledger</a></li>
+                                    <li><a href=''>Unit Type Wise Unit Status</a></li>
+                                    <li><a href=''>Bank Wise Balance</a></li>
+                                </ul>
+                            </li>
+                            <li><a >Charge Details<span class="rotate-text-270" style="margin-left:18px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:146px;'>
+                                    <li><a href=''>Other Charge</a></li>
+                                    <li><a href=''>Parking Report</a></li>
+                                    <li><a href=''>IFMS</a></li>
+                                    <li><a href=''>PLC</a></li>
+                                    <li><a href=''>Customer PLC</a></li>
+                                    <li><a href=''>Customer Alteration</a></li>
+                                    <li><a href=''>Extra Addon</a></li>
+                                </ul>
+                            </li>
+                            <li><a >MIS<span class="rotate-text-270" style="margin-left:85px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:146px;width:200px'>
+                                    <li><a href=''>Company Wise Stock Report</a></li>
+                                    <li><a href=''>Company Wise Summary</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="username" style=" cursor: pointer;">
+                        <a class="nav-link text-white" >Email/SMS <span class="rotate-text-180" style="margin-left:3px">⇪</span></a>
+                        <ul class="submenu">
+                            <li><a >EMail<span class="rotate-text-270" style="margin-left:57px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:126px;'>
+                                    <li><a href=''>Subject Master</a></li>
+                                    <li><a href=''>Email Setup</a></li>
+                                    <li><a href=''>Email Head Master</a></li>
+                                    <li><a href=''>Email Test</a></li>
+                                    <li><a href=''>Email Config. Test</a></li>
+                                    <li><a href=''>Email History</a></li>
+                                </ul>
+                            </li>
+                            <li><a >SMS<span class="rotate-text-270" style="margin-left:63px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:126px;'>
+                                    <li><a href=''>Setup SMS</a></li>
+                                    <li><a href=''>SMS Subject Master</a></li>
+                                    <li><a href=''>SMS Head Master</a></li>
+                                    <li><a href=''>Short Code Details</a></li>
+                                    <li><a href=''>SMS Tracker Detail</a></li>
+                                </ul>
+                            </li>
+                            <li><a href=''>Email/SMS</a>
+                            </li>
+                            <li><a >Address Book<span class="rotate-text-270" style="margin-left:3px">⇪</span></a>
+                                <ul class="pop-menu" style='margin-left:126px;'>
+                                    <li><a href=''>Group</a></li>
+                                    <li><a href=''>Address Book</a></li>
+                                    <li><a href=''>Import Excel Sheet</a></li>
+                                    <li><a href=''>Address Label</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+</header>
+<section>
+    {% block banner-slider%}{% endblock %}
+    {% block information %}{% endblock %}
+    {% block main%}{% endblock %}
+    {% block paymentlink %}{% endblock %}
+</section>
+</body>
+</html>
