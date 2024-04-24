@@ -10,8 +10,40 @@
     <link rel="website icon" type="text/css" href="{% static 'images/banner/my-logo2.webp'%}">
 </head>
 <style>
+    main header {
+        margin-top:20px;
+    }
+    .softwareowner{
+        list-style-type:none;
+        display:flex;
+        width:300px;
+        justify-content:space-between;
+        margin-right:30px;
+        margin-top:7px; 
+    }
+    .softwareowner li{
+        border-right:1px solid black;
+        padding-right:5px;
+    }
 </style>
 <body>
+    <div style='display:flex;justify-content:space-between'>
+        <div style='height:50px;margin-top:-17px;display:flex'>
+            <img src="{% static 'images/banner/my-logo2.webp'%}" alt="image" style="height: 50px;margin-top:20px;background-color:rgb(255, 136, 0);">
+            <div>
+                <h3>Real Estate Manager</h3>
+                <p style='color:red'>You are currently logged in from the IP address <p>
+            </div>
+        </div>
+        <ul class='softwareowner'>
+            <li>
+                
+            </li>
+            <li>Welcome {{request.user}}</li>
+            <li><a href=''>Home</a></li>
+            <li style='border-right:none;'><a href=''>Log out</a></li>
+        </ul>
+    </div>
     <main>
         <header>
             <div class="main-bar">
@@ -42,6 +74,23 @@
                                     transform:rotate(90deg);
                                 }
                                 .pop-menu li:hover .rotate-270{
+                                    transform:rotate(270deg);
+                                }
+                                .pop-sub-submenu{
+                                    border-left: none;
+                                    display:none;
+                                    position:absolute;
+                                    margin-top:-38px;
+                                    width: 140px;
+                                    background-color:#301380;
+                                }
+                                .username .submenu .pop-menu .pop-submenu li:hover .pop-sub-submenu{
+                                    display: block;
+                                }
+                                .rotate-submenu-270{
+                                    transform:rotate(90deg);
+                                }
+                                .addon:hover .rotate-submenu-270{
                                     transform:rotate(270deg);
                                 }
                             </style>
@@ -198,11 +247,18 @@
                             <li><a href=''>Project Set Up<span class="rotate-text-270" style="margin-left:40px">⇪</span></a>
                                 <ul class="pop-menu"  style='margin-left:164px;width:180px'>
                                     <li><a >Charge Master<span class="rotate-270" style="margin-left:90px">⇪</span></a>
-                                        <ul class="pop-submenu" style='margin-left:220px;width:280px'>
+                                        <ul class="pop-submenu" style='margin-left:220px;width:260px'>
                                             <li><a href=''>Other Charges</a></li>
                                             <li><a href=''>Preffered Location Charges(PLC)</a></li>
                                             <li><a href=''>Interest Free Maintenance Charges (IFMS)</a></li>
-                                            <li><a >Addon Charges</a></li>
+                                            <li class='addon'><a >Addon Charges<span class="rotate-submenu-270" style="margin-left:160px">⇪</span></a>
+                                                <ul class="pop-sub-submenu" style='margin-left:299.5px;width:180px'>
+                                                    <li><a href=''>Stage wise Due</a></li>
+                                                    <li><a href=''>Tower Wise Due</a></li>
+                                                    <li><a href=''>Plan & Stage Wise Dues</a></li>
+                                                    <li><a href=''>Customerwise Stagewise</a></li>
+                                                </ul>
+                                            </li>
                                             <li><a href=''>Waive Off Other/PLC charges</a></li>
                                         </ul>
                                     </li>
@@ -434,7 +490,7 @@
                                            
                                         </ul>
                                     </li>
-                                    <li><a href=''>Customer Wise<span class="rotate-270" style="margin-left:44px">⇪</span></a>
+                                    <li><a >Customer Wise<span class="rotate-270" style="margin-left:44px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:180px;width:200px'>
                                             <li><a href=''>Interest Master</a></li>
                                             <li><a href=''>Delete Interest</a></li>
@@ -442,14 +498,14 @@
                                             <li><a href=''>Manual Intrest</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href=''>Interest Waiver<span class="rotate-270" style="margin-left:40px">⇪</span></a>
+                                    <li><a>Interest Waiver<span class="rotate-270" style="margin-left:40px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:180px;width:200px'>
                                             <li><a href=''>Interest Wavie Off Letter</a></li>
                                             <li><a href=''>Customer Waiver Report</a></li>
                                             <li><a href=''>Interest Waive Off</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href=''>Grace Period<span class="rotate-270" style="margin-left:60px">⇪</span></a>
+                                    <li><a >Grace Period<span class="rotate-270" style="margin-left:60px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:180px;width:250px'>
                                             <li><a href=''>Project Wise Grace Period</a></li>
                                             <li><a href=''>Installment Wise Grace Period</a></li>
@@ -457,7 +513,7 @@
                                           
                                         </ul>
                                     </li>
-                                    <li><a href=''>Addon Charge<span class="rotate-270" style="margin-left:47px">⇪</span></a>
+                                    <li><a >Addon Charge<span class="rotate-270" style="margin-left:47px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:180px;width:200px'>
                                             <li><a href=''>Addon Interest Master</a></li>
                                             
@@ -469,7 +525,14 @@
                                 <ul class="pop-menu"  style='margin-left:190px;width:150px'>
                                     <li><a href=''>Pending Documents</a></li>
                                     <li><a href=''>Uploaded Documents</a></li>
-                                    <li><a href=''>Dispatch</a></li>
+                                    <li><a >Dispatch<span class="rotate-270" style="margin-left:100px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:190px;width:200px'>
+                                            <li><a href=''>Document Dispatch Regis.</a></li>
+                                            <li><a href=''>Dispatch Report</a></li>
+                                            <li><a href=''>Customer Document Dispatch</a></li>
+                                            <li><a href=''>Printed Document Dispatch</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href=''>Printed Document</a></li>
                                     <li><a href=''>Pending KYC in Booking</a></li>
                                 </ul>
@@ -483,14 +546,18 @@
                             </li>
                             <li><a>Transfer<span class="rotate-text-270" style="margin-left:99px">⇪</span></a>
                                 <ul class="pop-menu"  style='margin-left:190px;'>
-                                    <li><a href=''>Setup</a></li>
+                                    <li><a >Setup<span class="rotate-270" style="margin-left:100px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:120px'>
+                                            <li><a href=''>Transfer Fee</a></li>
+                                            <li><a href=''>Service TAx Master</a></li>
+                                            </ul>
+                                    </li>
                                     <li><a href=''>Application</a></li>
                                     <li><a href=''>Transfer Report</a></li>
-                                    <li><a href=''>Transfer Detail</a></li>
                                 </ul>
                             </li>
                             <li><a >surrender/Cancellation<span class="rotate-text-270" style="margin-left:9px">⇪</span></a>
-                                <ul class="pop-menu"  style='margin-left:190px;width:200px'>
+                                <ul class="pop-menu"  style='margin-left:190px;margin-top:-158px;width:200px'>
                                     <li><a href=''>Application</a></li>
                                     <li><a href=''>surrender/Cancellation Report</a></li>
                                     <li><a href=''>surrender/Cancellation Restore</a></li>
@@ -503,9 +570,17 @@
                         <a class="nav-link text-white" >Reports <span class="rotate-text-180" style="margin-left:3px">⇪</span></a>
                         <ul class="submenu">
                             <li><a >Inventory <span class="rotate-text-270" style="margin-left:53px">⇪</span></a>
-                                <ul class="pop-menu" style='margin-left:146px;width:170px'>
+                                <ul class="pop-menu" style='margin-left:146px;width:160px'>
                                     <li><a href=''>Project Details</a></li>
-                                    <li><a href=''>Unit Status</a></li>
+                                    <li><a >Unit Status</a>
+                                        <ul class="pop-submenu" style='margin-left:199px;width:160px'>
+                                            <li><a href=''>Project Wise</a></li>
+                                            <li><a href=''>Tower Wise</a></li>
+                                            <li><a href=''>Unit Type Wise</a></li>
+                                            <li><a href=''>Inventory Summary Report</a></li>
+                                            <li><a href=''>Availability Sheet</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href=''>Unit Wise PLC</a></li>
                                     <li><a href=''>Unit Sold/Avilb.Area Wise</a></li>
                                     <li><a href=''>Unit Cost</a></li>
@@ -520,7 +595,13 @@
                                     <li><a href=''>Search Customer</a></li>
                                     <li><a href=''>Customer Detail</a></li>
                                     <li><a href=''>Customer Classification</a></li>
-                                    <li><a href=''>Average Cost</a></li>
+                                    <li><a >Average Cost<span class="rotate-270" style="margin-left:60px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:180px;width:120px'>
+                                            <li><a href=''>Tower Wise</a></li>
+                                            <li><a href=''>Unit Wise</a></li>
+                                            <li><a href=''>Customer Wise</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href=''>Multiple Booking</a></li>
                                     <li><a href=''>Customers Names</a></li>
                                     <li><a href=''>Increase Area Report</a></li>
@@ -532,7 +613,12 @@
                                     <li><a href=''>Project Wise Collection</a></li>
                                     <li><a href=''>Collection Report</a></li>
                                     <li><a href=''>Customer Wise Collection</a></li>
-                                    <li><a href=''>Charges Wise Collection</a></li>
+                                    <li><a >Charges Wise Collection<span class="rotate-270" style="margin-left:22px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:219px;width:120px'>
+                                            <li><a href=''>Horizontal View</a></li>
+                                            <li><a href=''>Vertical view</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href=''>Customer Wise Balance</a></li>
                                     <li><a href=''>Receipt Wise Collection</a></li>
                                     <li><a href=''>Collection Against Dues</a></li>
@@ -540,13 +626,32 @@
                                 </ul>
                             </li>
                             <li><a >Dues<span class="rotate-text-270" style="margin-left:80px">⇪</span></a>
-                                <ul class="pop-menu" style='margin-left:146px;width:280px'>
+                                <ul class="pop-menu" style='margin-left:146px;width:255px'>
                                     <li><a href=''>Due Report</a></li>
                                     <li><a href=''>Customer Wise Dues</a></li>
                                     <li><a href=''>Date Wise Dues</a></li>
-                                    <li><a href=''>Stage Wise Dues</a></li>
-                                    <li><a href=''>Percentage Wise</a></li>
-                                    <li><a href=''>Due Ageing Report</a></li>
+                                    <li><a href=''>Stage Wise Dues<span class="rotate-270" style="margin-left:150px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:295px;width:180px'>
+                                            <li><a href=''>Stage wise Due</a></li>
+                                            <li><a href=''>Tower Wise Due</a></li>
+                                            <li><a href=''>Plan & Stage Wise Dues</a></li>
+                                            <li><a href=''>Customerwise Stagewise</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Percentage Wise<span class="rotate-270" style="margin-left:150px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:295px;width:200px'>
+                                            <li><a href=''>Percentage Wise Dues</a></li>
+                                            <li><a href=''>Customer Dues Report(%)</a></li>
+                                            <li><a href=''>Due Report With All Charges (%)</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a >Due Ageing Report<span class="rotate-270" style="margin-left:135px">⇪</span></a>
+                                        <ul class="pop-submenu" style='margin-left:295px;width:250px'>
+                                            <li><a href=''>Project/Tower/Plan/Customer wise Ageing</a></li>
+                                            <li><a href=''>Installment Wise Dues Report</a></li>
+                                            <li><a href=''>Stages Wise Collection Ageing</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href=''>Month Wise Dues</a></li>
                                     <li><a href=''>Customer Forecasting Details</a></li>
                                     <li><a href=''>Customer Dues Details(install/Head wise)</a></li>
