@@ -344,73 +344,198 @@
                             </li>
                             {% else %}
                             {% endif %}
+                            {% if employee.user_role.edit_project %}
                             <li><a >Edit Project<span class="rotate-text-270" style="margin-left:57px">⇪</span></a>
                                 <ul class="pop-menu"  style='margin-left:164px;width:200px'>
+                                    {% if employee.user_role.edit_project_edit %}
                                     <li><a href=''>Edit Project</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.edit_block%}
                                     <li><a href=''>Edit Block</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.edit_floor %}
                                     <li><a href=''>Edit Floor</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.add_plot %}
                                     <li><a >Add Plot<span class="rotate-270" style="margin-left:150px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:240px;'>
+                                            {% if employee.user_role.add_plot_edit %}
                                             <li><a href=''>Add Plot</a></li>
+                                            {% else %}
+                                            {% endif %}
+                                            {% if employee.user_role.allocate_plot %}
                                             <li><a href=''>Allocate Plot</a></li>
+                                            {% else %}
+                                            {% endif %}
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.change_unit_type %}
                                     <li><a href=''>Change Unit Type</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.change_floor_wise_unit_allocation %}
                                     <li><a href=''>Change Floor wise unit allocation</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.change_no_plot %}
                                     <li><a href=''>Change No.Plot/villa</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.edit_unit_address %}
                                     <li><a href=''>Edit Unit address & Location</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.address_indexing %}
                                     <li><a href=''>Address Indexing</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.detach_unit_address %}
                                     <li><a href=''>Detach Unit Address</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.change_unit_area %}
                                     <li><a href=''>Change unit Area-Individual</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.unit_wise_area %}
                                     <li><a href=''>Unit wise Area</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.unit_wise_area_report %}
                                     <li><a href=''>Unit wise Area Report</a></li>
+                                    {% else %}
+                                    {% endif %}
                                 </ul> 
                             </li>
+                            {% else %}
+                            {% endif %}
+                            {% if employee.user_role.payment_plan_setup %}
                             <li><a >Payment Plan Setup<span class="rotate-text-270" style="margin-left:3px">⇪</span></a>
                                 <ul class="pop-menu"  style='margin-left:164px;'>
+                                    {% if employee.user_role.new_payment_plan %}
                                     <li><a >New<span class="rotate-270" style="margin-left:116px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:180px;width:200px'>
+                                            {% if employee.user_role.stage_master %}
                                             <li><a href=''>Stage Master</a></li>
+                                            {% else %}
+                                            {% endif %}
+                                            {% if employee.user_role.payment_plan_creation %}
                                             <li><a href=''>Payment Plan Creation</a></li>
+                                            {% else %}
+                                            {% endif %}
+                                            {% if employee.user_role.set_booking_amount %}
                                             <li><a href=''>Set Booking Amount</a></li>
+                                            {% else %}
+                                            {% endif %}
+                                            {% if employee.user_role.create_installement %}
                                             <li><a href=''>Create Installment</a></li>
+                                            {% else %}
+                                            {% endif %}
+                                            {% if employee.user_role.customer_wise_timely_discount %}
                                             <li><a href=''>Customer Wise Timely Discount</a></li>
+                                            {% else %}
+                                            {% endif %}
+                                            {% if employee.user_role.cancel_demand %}
                                             <li><a href=''>Cancel Demand</a></li>
+                                            {% else %}
+                                            {% endif %}
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.edit_payment_plan %}
                                     <li><a >Edit<span class="rotate-270" style="margin-left:118px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:180px;width:200px'>
+                                            {% if employee.user_role.installment %}
                                             <li><a href=''>Installment</a></li>
+                                            {% else%}
+                                            {% endif %}
+                                            {% if employee.user_role.plc_charges %}
                                             <li><a href=''>PLC Charges</a></li>
+                                            {% else%}
+                                            {% endif %}
+                                            {% if employee.user_role.other_charges %}
                                             <li><a href=''>Other Charges</a></li>
+                                            {% else%}
+                                            {% endif %}
+                                            {% if employee.user_role.edit_personal_installment %}
                                             <li><a href=''>Edit Personal Installment</a></li>
+                                            {% else%}
+                                            {% endif %}
+                                            {% if employee.user_role.personalise_installment %}
                                             <li><a href=''>Personalise Installment</a></li>
+                                            {% else%}
+                                            {% endif %}
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.view_payment_plan %}
                                     <li><a >View<span class="rotate-270" style="margin-left:110px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:180px;'>
+                                            {% if employee.user_role.raised_demand_stage %}
                                             <li><a href=''>Raised Demand Stage</a></li>
+                                            {% else%}
+                                            {% endif %}
+                                            {% if employee.user_role.view_payment_plan_view %}
                                             <li><a href=''>View Payment Plan</a></li>
+                                            {% else%}
+                                            {% endif %}
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role.payment_setup %}
                                     <li><a >Setup<span class="rotate-270" style="margin-left:108px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:180px;'>
+                                            {% if employee.user_role.reminder_days_config %}
                                             <li><a href=''>Reminder Days Configeration</a></li>
+                                            {% else%}
+                                            {% endif %}
+                                            {% if employee.user_role.demand_format_customiz %}
                                             <li><a href=''>Demand Format Customization</a></li>
+                                            {% else%}
+                                            {% endif %}
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
                                 </ul> 
                             </li>
+                            {% else %}
+                            {% endif %}
+                            {% if employee.user_role.set_rate %}
                             <li><a >Set Rate <span class="rotate-text-270" style="margin-left:78px">⇪</span></a>
                                 <ul class="pop-menu"  style='margin-left:164px;'>
+                                    {% if employee.user_role.change_rate %}
                                     <li><a href=''>Change Rate</a></li>
+                                    {%else %}
+                                    {% endif %}
+                                    {% if employee.user_role.change_charge_rate %}
                                     <li><a href=''>Change charges Rate</a></li>
+                                    {%else %}
+                                    {% endif %}
+                                    {% if employee.user_role.unit_wise_rate %}
                                     <li><a href=''>Unit Wise Rate</a></li>
+                                    {%else %}
+                                    {% endif %}
+                                    {% if employee.user_role.rate_report %}
                                     <li><a href=''>Rate Report</a></li>
+                                    {%else %}
+                                    {% endif %}
                                 </ul> 
                             </li>
+                            {% else %}
+                            {% endif %}
+                            {% if employee.user_role.proect_setup %}
                             <li><a href=''>Project Set Up<span class="rotate-text-270" style="margin-left:40px">⇪</span></a>
                                 <ul class="pop-menu"  style='margin-left:164px;width:180px'>
+                                    {% if employee.user_role.charge_master %}
                                     <li><a >Charge Master<span class="rotate-270" style="margin-left:90px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:220px;width:260px'>
                                             <li><a href=''>Other Charges</a></li>
@@ -427,6 +552,9 @@
                                             <li><a href=''>Waive Off Other/PLC charges</a></li>
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role. %}
                                     <li><a >Service Tax Configuration<span class="rotate-270" style="margin-left:14px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:220px;'>
                                             <li><a href=''>Tax Master</a></li>
@@ -434,6 +562,9 @@
                                             <li><a href=''>Tax Configuration Report</a></li>
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role. %}
                                     <li><a >GST<span class="rotate-270" style="margin-left:155px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:220px;width:200px'>
                                             <li><a href=''>GST Process User Rights</a></li>
@@ -445,12 +576,18 @@
                                             <li><a href=''>Help</a></li>
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role. %}
                                     <li><a href=''>Completion Certificate<span class="rotate-270" style="margin-left:38px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:220px;width:180px'>
                                             <li><a href=''>Tower Wise Completion</a></li>
                                             <li><a href=''>Unit Wise Completion</a></li>
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role. %}
                                     <li><a >Automated/Manual<span class="rotate-270" style="margin-left:61px">⇪</span></a>
                                         <ul class="pop-submenu" style='margin-left:220px;width:150px'>
                                             <li><a href=''>Booking Authentication</a></li>
@@ -459,10 +596,20 @@
                                             <li><a href=''>Transfer Authentication</a></li>
                                         </ul>
                                     </li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role. %}
                                     <li><a href=''>Customer Classification</a></li>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if employee.user_role. %}
                                     <li><a href=''>Project Configuration Details</a></li>
+                                    {% else %}
+                                    {% endif %}
                                 </ul> 
                             </li>
+                            {% else %}
+                            {% endif %}
                         </ul>
                     </li>
                     {% else %}
