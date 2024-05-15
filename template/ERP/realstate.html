@@ -19,6 +19,19 @@
     .toggle .ownerdetails{
         padding-bottom:25px;
     }
+    .phone{
+        display:none;
+    }
+    @media screen and (max-width:800px){
+        .toggle{
+            display: none;
+        }
+        .phone{
+            display:block;
+            margin-top:60%;
+            margin-left:10%;
+        }
+    }
 </style>
 <body>
     <div class='toggle'>
@@ -1277,6 +1290,9 @@
                 {% endfor %}
             </header>
         </main>
+    </div>
+    <div class='phone'>
+        <h1>Use laptop/Desktop<h4>
     </div>
 {% block contentpart%}{% endblock %}
 </body>
