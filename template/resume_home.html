@@ -10,6 +10,14 @@
     <link rel="website icon" type="text/css" href="{% static 'images/banner/my-logo2.webp'%}">
 </head>
 <style>
+    a{
+        -WebKit-tap-highlight-color:rgba(0,0,0,0);
+    } a:focus,a:visited,a:active{
+        outline:none;
+    }
+    *{
+        -webkit-tap-highlight-color:transparent;
+    }
     #header{
             background-image: url("{% static 'images/banner/my_pic.jpg' %}");
     }
@@ -136,7 +144,7 @@
                 </ul>
             </nav>
             <div class='header-text'>
-                <p><span style='color:blue;'>Fresher</span>-Python fullstack developer</p>
+                <p><span style='color:blue;'></span>Python fullstack developer</p>
                 <h1>Hi,I'm <span style='color:#ff004f'>Prashanth kumar</span> from Hyderabad-505514</h1>
             </div>
         </div>
@@ -326,6 +334,15 @@
         display:flex;
         justify-content: space-around;
     }
+    @media screen and (max-width:800px){
+        .work-list{
+        display:block;
+        justify-content: space-around;
+    }
+    .work-list .work{
+        margin-bottom:30px;
+    }
+}
 </style>
 <div id="Services">
     <div class="container row">
@@ -344,7 +361,7 @@
                 <img src="{% static 'images/banner/realestate.jpg' %}">
                 <div class="layer">
                     <h3>Realestate software</h3>
-                    <a href="{% url 'ERP-Realstate' %}"><img src="{% static 'images/banner/link_icon.png' %}"></a>
+                    <a href="{% url 'ERP-login' %}"><img src="{% static 'images/banner/link_icon.png' %}"></a>
                 </div>
                 <h3 style='text-align:center'>Realestate software</h3>
             </div>
@@ -363,22 +380,19 @@
                     <li>Python FullStack Developer</li>
                     <li>+91 8466868727</li>
                     <li>guntaprashanthkumar@gmail.com</li>
-                    <li>Download Resume<br><a style='text-decoration:none;'href="{% static 'images/banner/gunta prashanth kumar.pdf' %}" download><img style='width:30px;margin-left:35px'src="{% static 'images/banner/download.png' %}"></a></li>
+                    <li>Download Resume<br><a style='text-decoration:none;'href="{% static 'images/banner/Gunta-Prashanthkumar-resume.pdf' %}" download><img style='width:30px;margin-left:35px'src="{% static 'images/banner/download.png' %}"></a></li>
                 </ul>
             </div>
             <div class='row about-content add'>
                 <h1>Permanent Address</h1>
                 <ul style='border:none;height:60px'>
                     <li class='skills-list' >1-54/2, somanpalli,Anthergoam</li>
-                    <li class='skills-list'>Hyderabad,Telangana-505514</li> 
-                    <li ><span class='skills-list' style='color:blue;'>Location:</span><a style='text-decoration:none;color: #b8b5b5;' href='https://maps.app.goo.gl/FvwFFE9gwHVSB1Nx6'>https://maps.app.goo.gl</a></li>
-                    
+                    <li class='skills-list'>Hyderabad,Telangana-505514</li>  
                 </ul>
                 <h1>Current Adress</h1>
                 <ul style='border:none'>
                     <li class='skills-list'>Shamlal Begumpet,Anthergoam</li>
-                    <li class='skills-list'>Hyderabad,Telangana-50XXX</li> 
-                    <li><span class='skills-list' style='color:blue;'>Location:</span><a style='text-decoration:none;color: #b8b5b5;' href='https://maps.app.goo.gl/hAHAMiEGYLEd9kVE8'>hhttps://maps.app.goo.gl</a></li>
+                    <li class='skills-list'>Hyderabad,Telangana-500016</li> 
                 </ul>
             </div>
         </div>

@@ -1,0 +1,30 @@
+{% load static %}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">{% endblock %}
+{%block Back %}
+<div>
+    <a href="{% url 'home' %}"><img src="{% static 'images/banner/back.png'%}" alt="image" style="height:30px; margin-top: 3px;margin-left:100%;"></a>
+</div>
+{% endblock %}
+{% block main %}
+    <div class="login-container">
+        <form class="login-form" method="post" action="/ERP-login" >
+            {% csrf_token %}
+            <h2>Login</h2>
+            {{error_message}}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+            <br>
+            <br>
+            New User <a href="signup">signup<h4><br>
+                <a href="">Forget password ?</a><br><br> 
+        
+        </form>
+    </div>
+{% endblock %}
+</body>
+</html>

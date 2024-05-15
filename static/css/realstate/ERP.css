@@ -1,0 +1,215 @@
+body{
+    background-color: rgb(231, 233, 233);
+    margin: 0px;
+    width: 100%;
+    height:100%;
+    padding: 0px;
+    overflow:auto;
+}
+.ownerdetails{
+    display:flex;
+    justify-content:space-between;
+    margin-top:-1px;
+}
+.owner-tag{
+    height:20px;
+    display:flex;
+}
+.softwareowner{
+    align-items: center;
+    height:20px;
+    list-style-type:none;
+    display:flex;
+    width:400px;
+    justify-content:space-between;
+}
+.softwareowner li{
+    border-right:1px solid black;
+    padding-right:20px;
+}
+p{
+    text-align:justify
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+a{
+    -WebKit-tap-highlight-color:rgba(0,0,0,0);
+} a:focus,a:visited,a:active{
+    outline:none;
+}
+*{
+    -webkit-tap-highlight-color:transparent;
+}
+main header{
+    border: 1px solid #ddd;
+    background-color:#301380;
+    display: flex;
+    height: 40px;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+    transition: 0.6s;
+    left: 0%;
+}
+main header ul{
+    list-style-type: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+}
+main header ul li a{
+    text-decoration: none;
+    padding: 10px;
+    display: flex;
+    color:#ffff;
+}
+.username:hover .submenu {
+    margin-left:-1px;
+    margin-top:1px;
+    display: block;
+    border: 1px solid #ffff;
+    position: absolute;
+    background-color:#301380;
+    justify-content:start;
+    align-items:start;
+    transition: transform 4s ease;
+}
+.username .submenu .rotate-text-270{
+    transform: rotate(90deg);
+}
+.username .submenu li:hover .rotate-text-270{
+    transform: rotate(270deg);
+}
+.menu li{
+    border-left: 0.2px solid #ffff;
+}
+.username:hover{
+    background-color:rgb(255, 136, 0);
+}
+.username:hover .submenu li{
+    border-bottom: 1px solid #ffff;
+    
+}
+.username:hover .submenu li:hover{
+    background-color:rgb(255, 136, 0);
+    border-left: 1.5px solid red;
+}
+.username .submenu li{
+    align-items:start;
+    margin-left:-39px;
+}
+.main-bar ul .username:hover .rotate-text-180 {
+    transform: rotate(180deg);
+}
+.username .submenu{
+    display: none;
+}
+.menu-sidebar{
+    display: none;
+    }
+.username .submenu .pop-menu{
+    border-left: none;
+    display:none;
+    position:absolute;
+    margin-left:180px;
+    margin-top:-38px;
+    width: 140px;
+    background-color:#301380;
+}
+.pop-submenu{
+    border-left: none;
+    display:none;
+    position:absolute;
+    margin-top:-38px;
+    width: 140px;
+    background-color:#301380;
+}
+.pop-menu li:hover .pop-submenu{
+    display:block;
+}
+.username .submenu li:hover .pop-menu{
+    display: block;
+}
+a{
+    -WebKit-tap-highlight-color:rgba(0,0,0,0);
+} a:focus,a:visited,a:active{
+    outline:none;
+}
+*{
+    -webkit-tap-highlight-color:transparent;
+}
+@media screen and (max-width:800px){
+    a{
+        -WebKit-tap-highlight-color:rgba(0,0,0,0);
+    } a:focus,a:visited,a:active{
+        outline:none;
+    }
+    *{
+        -webkit-tap-highlight-color:transparent;
+    }
+    main header .nav{
+        height:50px;
+        background-color:rgb(248, 149, 0);
+    }
+    main header .nav ul li a{
+        padding: 10px;
+    }
+    main header .nav .main-bar{
+        display: none;
+    }
+    .menu-sidebar{
+        display: block;
+        top:0.1%;
+        left:0%;
+        position:fixed;
+        height: 100%;
+        width:-0%;
+        z-index: 11;
+        background-color:white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s linear;
+        overflow: hidden;
+    }
+    .menu-menubar{
+        display: flex;
+    }
+    .menu-list{
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+        flex-direction: column;
+        list-style: none;
+        text-decoration: none;
+        width: 100px;
+    }
+    .menu-sidebar .close-menu{
+        font-size: 1.4em;
+        padding-left:70%;
+    }
+    .menu-list a{
+        text-decoration: none;
+        color: #090909;
+        padding: 10px;
+        padding-left: 0px;
+    }
+    .menu-list-items a{
+        color: #f09d51;
+        text-decoration: none;
+    }
+    header .menu-list-item:hover a{
+        color: #f09d51;
+    }
+    .menu-list-items a:hover{
+        color: rgb(33, 33, 117);
+    }
+    .menu-list li img{
+        width:15px;
+        margin-bottom:-2px;
+        margin-right:4px
+    }
+    footer h4{
+        display: none;
+    }
+    }

@@ -113,6 +113,10 @@ class role(models.Model):
     prefered_location_charges=models.BooleanField(default=False)
     intrest_free_maintainance=models.BooleanField(default=False)
     addon_charges=models.BooleanField(default=False)
+    stage_wise_due=models.BooleanField(default=False)
+    tower_wise_due=models.BooleanField(default=False)
+    plan_stage_wise_due=models.BooleanField(default=False)
+    customerwise_stagewise_due=models.BooleanField(default=False)
     wavie_off_other_charges=models.BooleanField(default=False)
     service_tax_master=models.BooleanField(default=False)
     tax_master=models.BooleanField(default=False)
@@ -135,7 +139,7 @@ class role(models.Model):
     registration_no=models.BooleanField(default=False)
     transfer_authentication=models.BooleanField(default=False)
     customer_classfication=models.BooleanField(default=False)
-    proect_configuration_details=models.BooleanField(default=False)
+    project_configuration_details=models.BooleanField(default=False)
     broker=models.BooleanField(default=False)
     Broker_broker=models.BooleanField(default=False)
     broker_aplication=models.BooleanField(default=False)
@@ -244,6 +248,7 @@ class role(models.Model):
     cheque_status_report=models.BooleanField(default=False)
     cheque_represent=models.BooleanField(default=False)
     change_clearing_date=models.BooleanField(default=False)
+    intrest_calculator=models.BooleanField(default=False)
     intrest_schedular=models.BooleanField(default=False)
     project_wise=models.BooleanField(default=False)
     interest_master=models.BooleanField(default=False)
@@ -284,6 +289,8 @@ class role(models.Model):
     surrender_report=models.BooleanField(default=False)
     surrender_restore=models.BooleanField(default=False)
     surrender_summary=models.BooleanField(default=False)
+    reports=models.BooleanField(default=False)
+    email_setup=models.BooleanField(default=False)
     def __str__(self):
         return self.role_name
 class employee_info(models.Model):

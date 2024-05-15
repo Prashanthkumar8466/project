@@ -1,0 +1,78 @@
+{% extends 'ERP/realstate.html'%}
+{% load static%}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/realstate/companycre.css' %}">
+{% endblock %}
+{% block contentpart %}
+  <form action="/submit_company_form" method="post">
+    <h3>COMPANY MASTER</h3>
+    <div>
+      <ul class="company">
+        <li>
+          <label for="companycode">Code</label><br>
+          <input type="text" id="companycode" name="companycode" placeholder="Enter company code" required>
+        </li>
+        <li>
+          <label for="groupname">Group Name</label><br>
+          <input type="text" id="groupname" name="groupname" placeholder="Enter group name">
+        </li>
+        <li>
+          <label for="companyname">Company Name</label><br>
+          <input type="text" id="companyname" name="companyname" placeholder="Enter company name" required>
+        </li>
+        <li>
+          <label for="companyaddress">Company Address</label><br>
+          <textarea id="companyaddress" name="companyaddress" placeholder="Enter company address" maxlength="200" required></textarea>
+        </li>
+        <li>
+          <label for="companycity">City</label><br>
+          <input type="text" id="companycity" name="companycity" placeholder="Enter city" required>
+        </li>
+        <li>
+          <label for="companystate">State</label><br>
+          <input type="text" id="companystate" name="companystate" placeholder="Enter state" required>
+        </li>
+        <li>
+          <label for="companycountry">Country</label><br>
+          <input type="text" id="companycountry" name="companycountry" placeholder="Enter country" required>
+        </li>
+        <li>
+          <label for="companypincode">Pin Code</label><br>
+          <input type="number" id="companypincode" name="companypincode" placeholder="Enter pin code" minlength="6" maxlength="6" required>
+        </li>
+        <li>
+          <label for="companyphonenumber">Phone No.</label><br>
+          <input type="tel" id="companyphonenumber" name="companyphonenumber" placeholder="Enter phone number" minlength="10" maxlength="12" required>
+        </li>
+        <li>
+          <label for="companyemail">Email</label><br>
+          <input type="email" id="companyemail" name="companyemail" placeholder="Enter email" required>
+        </li>
+        <li>
+          <label for="companywebsite">Website</label><br>
+          <input type="url" id="companywebsite" name="companywebsite" placeholder="Enter website">
+        </li>
+        <li>
+          <label for="companyclno">C.L. No</label><br>
+          <input type="text" id="companyclno" name="companyclno" placeholder="Enter C.L. No">
+        </li>
+        <li>
+          <label for="companyservicetaxno">Service Tax No</label><br>
+          <input type="text" id="companyservicetaxno" name="companyservicetaxno" placeholder="Enter Service Tax No">
+        </li>
+        <li>
+          <label for="companypannum">PAN No.</label><br>
+          <input type="text" id="companypannum" name="companypannum" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" placeholder="Enter PAN No." required>
+        </li>
+        <li>
+          <label for="companyvatnum">VAT No.</label><br>
+          <input type="text" id="companyvatnum" name="companyvatnum" placeholder="Enter VAT No.">
+        </li>
+        <li>
+          <label for="companylogo">Company Logo</label><br>
+          <input type="file" id="companylogo" name="companylogo" style="width:70%" required>
+        </li>
+      </ul>
+    </div>
+    <button type="submit">Submit</button>
+  </form>   
+{% endblock %}
