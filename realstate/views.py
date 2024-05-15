@@ -21,7 +21,7 @@ def login_view(request):
             return render(request,'ERP/login.html',{'error_message':error_message})
     else:
         return render(request,"ERP/login.html")
-@login_required(login_url='login')
+@login_required(login_url='ERP-login')
 def resume(request):
     employee=employee_info.objects.filter(user=request.user)
     return render(request,'ERP/home.html',{"employee":employee})
