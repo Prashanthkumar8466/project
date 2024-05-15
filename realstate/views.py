@@ -15,7 +15,7 @@ def login_view(request):
         if user is not None:
             login(request,user)
             employee=employee_info.objects.filter(user=request.user)
-            return render(request,'ERP/home.html',{"employee":employee})
+            return redirect("ERP-Realestate")
         else:
             error_message = 'invalid username or password'
             return render(request,'ERP/login.html',{'error_message':error_message})
