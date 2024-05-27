@@ -407,3 +407,5 @@ def get_previous_url(request):
         # Return the previous URL
         return history.pop()
     return None
+def Error_page(request, exception):
+    return render(request, "404.html", {}, status=404)
